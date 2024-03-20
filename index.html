@@ -762,7 +762,7 @@ function startSlotMachine() {
     createNotification("Выпало: "+maxres,"top-right",4500)
     if(numstav <= maxres) {
       playEndSound()
-      var koef = 0.75 + Math.floor(Math.random() * 3.5) - ((maxres - numstav) * 0.650)
+      var koef = 1.75 + Math.floor(Math.random() * 2) - ((maxres - numstav) * 0.650)
       console.log("Кэф:",koef)
       creditBalance(stav*koef);
       console.log("Вы выйграли:",(stav*koef))
@@ -853,7 +853,7 @@ document.addEventListener("DOMContentLoaded", function() {
   <div class="main-content">
     <div class="user-info-box" id="user-info-box">
       <div class="content">
-        <span>Версия 1.32</span> | <span id="user-nickname"></span> | <span id="user-balance"></span> Дублей
+        <span>Версия 1.33</span> | <span id="user-nickname"></span> | <span id="user-balance"></span> Дублей
         <img id="logout-icon" src="https://cdn.discordapp.com/attachments/1177762529833914371/1220046161356787743/logout.svg?ex=660d8388&is=65fb0e88&hm=76761bf662c3fb6b3b97125e3274ad60537d0521f21ded9e0456a7dae5df8714" alt="logout icon">
       </div>
     </div>
