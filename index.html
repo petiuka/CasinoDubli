@@ -727,7 +727,7 @@ function creditBalance(amount) {
 function startSlotMachine() {
   const audio = new Audio("https://cdn.discordapp.com/attachments/1177762529833914371/1220033110239088701/bong_001.ogg?ex=660d7760&is=65fb0260&hm=e429243db2cd8f8e2aa96d9d944c655884380f1257a37c8f9ac9669f19f040be&");
   audio.play();
-  var stav = Number(document.getElementById('balstavka-input').value)
+  var stav = Math.abs(Number(document.getElementById('balstavka-input').value))
   var numstav = Number(document.getElementById('numstavka-input').value)
   if(debitBalance(stav))  {
     createNotification("Вы поставили "+stav,"top-right",1500)
@@ -735,7 +735,7 @@ function startSlotMachine() {
   var time = 85
   var resultBox = document.getElementById('bottom-box');
   var timer = setInterval(function() {
-    var randomNumber = Math.pow(2, Math.floor(Math.random() * 70) + 0).toFixed(0).toString() + Math.pow(2, Math.floor(Math.random() * 70) + 0).toFixed(0).toString().slice(0, -Math.floor(Math.random() * 3)) + Math.pow(2, Math.floor(Math.random() * 70) + 0).toFixed(0).toString().slice(0, -Math.floor(Math.random() * 4)) + Math.pow(2, Math.floor(Math.random() * 32) + 0).toFixed(0).toString().slice(0, -Math.floor(Math.random() * 7))
+    var randomNumber = Math.pow(2, Math.floor(Math.random() * 70) + 0).toFixed(0).toString() + Math.pow(2, Math.floor(Math.random() * 70) + 0).toFixed(0).toString().slice(0, -Math.floor(Math.random() * 6)) + Math.pow(2, Math.floor(Math.random() * 70) + 0).toFixed(0).toString().slice(0, -Math.floor(Math.random() * 4)) + Math.pow(2, Math.floor(Math.random() * 48) + 0).toFixed(0).toString().slice(0, -Math.floor(Math.random() * 7))
     playScrollSound()
     resultBox.textContent = randomNumber;
   }, time);
@@ -757,7 +757,7 @@ function startSlotMachine() {
       if((stav*koef) >0){
       setTimeout(createNotification("+"+Math.round((stav*koef)),"top-right",3500), 850)
       } else {
-        setTimeout(createNotification("-"+Math.round((stav*koef)),"top-right",3500), 850)
+        setTimeout(createNotification(Math.round((stav*koef)),"top-right",3500), 850)
       }
     } else {
       playEndSound()
