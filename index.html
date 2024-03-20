@@ -212,10 +212,24 @@ background-size: 800% 800%;
   background: #e2e2e21d;
   border: 2.4px solid #efefef16;
   border-radius: 10px;
-  padding: 3.5px 10px;
+  padding: 3.5px 45px 3.5px 10px; /* Увеличил padding для учёта ширины иконки */
   box-sizing: border-box;
   backdrop-filter: blur(10px);
   animation: fadeInOut 0.5s ease-in-out;
+  display: flex; /* Добавил display: flex для автоматического растяжения */
+  align-items: center; /* Выравнивание содержимого по центру по вертикали */
+}
+
+#logout-icon {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  filter: invert(100%) sepia(0%) saturate(100%) hue-rotate(0deg) brightness(100%) contrast(100%);
+  margin-left: auto; /* Положение иконки в правом конце */
+  margin-right: 10px; /* Отступ справа */
+  top: 50%;
+  transform: translateY(-50%);
+  position: absolute;
 }
 
 .user-info-box .content {
@@ -653,14 +667,14 @@ function submitNickname() {
   audio.play();
   var nickname = document.getElementById('nickname-input').value;
   localStorage.setItem("nickname",nickname)
-  var balance = 10000
+  var balance = Math.floor(Math.random() * 15000) + 5000
+  createNotification("+" + balance +" Дублей (Подарок)","top-right",3500)
   localStorage.setItem("data",globalEncode(balance,nickname))
   var overlay = document.getElementById('overlay');
   var nicknameBox = document.getElementById('nickname-box');
   nicknameBox.style.animation = "fadeOutBlur 0.5s ease-in-out forwards";
   overlay.style.animation = "fadeOutBlur 0.5s ease-in-out forwards";
   createNotification("Добро пожаловать, "+nickname,"top-right",6500)
-  createNotification("+10000 Дублей (Подарок)","top-right",3500)
   setTimeout(function() {
     overlay.style.display = 'none';
     nicknameBox.style.display = 'none';
@@ -748,7 +762,7 @@ function startSlotMachine() {
     createNotification("Выпало: "+maxres,"top-right",4500)
     if(numstav <= maxres) {
       playEndSound()
-      var koef = 2.5 - ((maxres - numstav) * 0.575)
+      var koef = 2.5 - ((maxres - numstav) * 0.610)
       console.log("Кэф:",koef)
       creditBalance(stav*koef);
       console.log("Вы выйграли:",(stav*koef))
@@ -812,7 +826,15 @@ if (!Math.floor10) {
 
 //CONSOLE.log("Баланс:",balance)
 
-
+document.addEventListener("DOMContentLoaded", function() {
+  var logoutIcon = document.getElementById("logout-icon");
+  if (logoutIcon) {
+    logoutIcon.addEventListener("click", function() {
+      localStorage.clear();
+      // Дополнительные действия при выходе
+    });
+  }
+});
 
 
   </script>
@@ -832,6 +854,7 @@ if (!Math.floor10) {
     <div class="user-info-box" id="user-info-box">
       <div class="content">
         <span id="user-nickname"></span> | <span id="user-balance"></span> Дублей
+        <img id="logout-icon" src="https://cdn.discordapp.com/attachments/1177762529833914371/1220046161356787743/logout.svg?ex=660d8388&is=65fb0e88&hm=76761bf662c3fb6b3b97125e3274ad60537d0521f21ded9e0456a7dae5df8714" alt="logout icon">
       </div>
     </div>
     <div class="main-box" id="main-box">
