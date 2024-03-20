@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>petiuka.gamble</title>
+  <style>
+body, html {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', sans-serif;
+}
+
+
+    .button-72 {
+      align-items: center;
+      background-color: initial;
+      background-image: linear-gradient(rgba(105, 124, 162, 0.35), rgba(31, 44, 91, 0.25) 50%);
+      border-radius: 16px;
+      border-width: 0;
+      box-shadow: rgba(31, 53, 91, 0.1) 0 1px 2px,rgba(144, 132, 201, 0.1) 0 1px 4px;
+      color: #FFFFFF;
+      cursor: pointer;
+      display: flex;
+      font-family: Quicksand,sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      justify-content: center;
+      letter-spacing: .04em;
+      line-height: 8px;
+      margin: 0;
+      padding: 18px 18px;
+      text-align: center;
+      text-decoration: none;
+      text-shadow: rgba(255, 255, 255, 0.114) 0 0 2px,rgba(255, 255, 255, 0.035) 0 0 2px,rgba(31, 34, 91, 0.114) 1px 1px 2px,rgba(31, 38, 91, 0.104) 2px 4px 16px;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      vertical-align: baseline;
+      transition: background-color 0.3s ease;
+    }
+
+    .button-72:hover {
+      background-image: linear-gradient(#8496c968, #1f325b6f 50%);
+    }
+
+    .button-72:active {
+      transform: translateY(1px);
+    }
+
+    @media (min-width: 768px) {
+      .button-72 {
+        font-size: 21px;
+        padding: 18px 34px;
+      }
+    }
+
+    .input-style {
+      padding: 6px 12px;
+      background: rgb(31, 32, 35);
+      border: 1px solid rgb(60, 63, 68);
+      border-radius: 4px;
+      font-size: 13px;
+      color: rgb(247, 248, 248);
+      height: 23px;
+      appearance: none;
+      transition: border 0.15s ease 0s;
+    }
+
+    .input-style:focus {
+      outline: none;
+      box-shadow: none;
+      border-color: rgb(56, 119, 255);
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px; 
+      margin: 10px 0; 
+    }
+    h2 {
+      margin: 5px 0; 
+    }
+
+
+.wrapper {
+  height: 100%;
+  width: 100%;
+  left:0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+}
+
+.wrapper:before { 
+  content: "";
+  height: 100%;
+  width: 100%;
+  left:0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+background: linear-gradient(124deg,#5448ff, #0045d0, #6200ff,#006aff,#a600ff,#00d5ff);
+background-size: 800% 800%;
+
+-webkit-animation: rainbow 30s ease infinite;
+-z-animation: rainbow 40s ease infinite;
+-o-animation: rainbow 35s ease infinite;
+  animation: rainbow 25s ease infinite;
+}
+
+@-webkit-keyframes rainbow {
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%;}
+    100%{background-position:0% 82%}
+}
+@-moz-keyframes rainbow {
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%;}
+    100%{background-position:0% 82%}
+}
+@-o-keyframes rainbow {
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%;}
+    100%{background-position:0% 82%}
+}
+@keyframes rainbow { 
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%; }
+    100%{background-position:0% 82%}
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  display: none;
+  z-index: 1000;
+  animation: fadeInOut 0.5s ease-in-out;
+}
+
+.nickname-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20%;
+    height: 20%;
+    color: #ffffff;
+    background: #e2e2e218;
+    border: 2.4px solid #efefef16;
+    border-radius: 10px;
+    display: none;
+    z-index: 1001;
+    padding: 20px;
+    box-sizing: border-box;
+    backdrop-filter: blur(50px);
+    animation: fadeInOut 0.5s ease-in-out;
+  }
+
+  @keyframes fadeInOut {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeOutBlur {
+    0% {
+      opacity: 1;
+      filter: blur(0px);
+    }
+    100% {
+      opacity: 0;
+      filter: blur(10px);
+    }
+  }
+.nickname-box.show {
+  display: block;
+}
+
+.nickname-box .content {
+  text-align: center;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.user-info-box {
+  position: fixed;
+  top: 1%;
+  left: 1%;
+  color: white;
+  background: #e2e2e21d;
+  border: 2.4px solid #efefef16;
+  border-radius: 10px;
+  padding: 3.5px 10px;
+  box-sizing: border-box;
+  backdrop-filter: blur(10px);
+  animation: fadeInOut 0.5s ease-in-out;
+}
+
+.user-info-box .content {
+  display: inline-block;
+  white-space: nowrap;
+  font-size: 1.5em;
+  text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.5);
+}
+.main-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 22.5%;
+  height: 37.5%;
+  background: #e2e2e218;
+  border: 2.4px solid #efefef16;
+  border-radius: 10px;
+  padding: 10px;
+  color: #FFFFFF;
+  text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.5);
+  box-sizing: border-box;
+  backdrop-filter: blur(10px);
+  animation: fadeInOut 0.5s ease-in-out;
+}
+
+.main-box .content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.bottom-box {
+  position: fixed;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 45%;
+  background: #333333b2;
+  border: 2px solid #1f1f1f4b;
+  border-radius: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+  color: white;
+  text-align: center;
+  font-size: 1.2em;
+  backdrop-filter: blur(20px);
+  box-shadow: -1px 1px 17px 3px rgba(0,0,0,0.49), 1px 1px 17px 12px rgba(0,0,0,0.35) inset;
+  animation: fadeInOut 0.5s ease-in-out;
+}
+
+
+  </style>
+  <script>
+    var defcolor = "#ffffff"
+function loadJQueryAndThenContent() {
+    var jqueryScript = document.createElement('script');
+    jqueryScript.src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js';
+    jqueryScript.onload = function() {
+        console.log('jQuery загружен');
+        
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Весь сайт загружен');
+        });
+    };
+    jqueryScript.onerror = function() {
+        console.error('Ошибка загрузки jQuery');
+    };
+    document.head.appendChild(jqueryScript);
+}
+
+loadJQueryAndThenContent();
+var notifications = [];
+var activeNotifications = 0;
+var interface_sounds = true
+function createNotification(text, corner, lifetime) {
+$('<style>').text(`
+  :root {
+    --defcolor: ${defcolor};
+  }
+
+  .notification-body {
+    font-family: "Lucida Console", Monaco, monospace;
+    font-size: 15px;
+    letter-spacing: -0.2px;
+    word-spacing: 2px;
+    color: var(--defcolor);
+    font-weight: normal;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: capitalize;
+    text-shadow: 0px 0px 7px var(--defcolor);
+  }
+
+  .notification {
+    position: fixed;
+    transform: translateX(-50%);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+    box-shadow: -1px 1px 17px 0px rgba(0,0,0,1);
+    -webkit-box-shadow: -1px 1px 17px 0px rgba(0,0,0,1);
+    -moz-box-shadow: -1px 1px 17px 0px rgba(0,0,0,1);
+    width: 250px;
+    height: auto;
+    background-color: #1c1c1c;
+    border-radius: 4px;
+    opacity: 0.1;
+    filter: blur(5px);
+    transition: opacity 0.3s ease-in-out, top 0.3s ease-in-out, filter 0.3s ease-in-out;
+    -webkit-border-radius: 15px 3px 15px 3px;
+    -moz-border-radius: 15px 3px 15px 3px;
+    border-radius: 15px 3px 15px 3px;
+  }
+
+  .notification.active {
+    opacity: 1;
+    top: 60px;
+    filter: blur(0px);
+    box-shadow: -1px 1px 17px 0px rgba(0,0,0,1);
+    -webkit-box-shadow: -1px 1px 17px 0px rgba(0,0,0,1);
+    -moz-box-shadow: -1px 1px 17px 0px rgba(0,0,0,1);
+    transition: opacity 0.3s ease-in-out, top 0.3s ease-in-out, filter 0.3s ease-in-out;
+    -webkit-border-radius: 15px 3px 15px 3px;
+    -moz-border-radius: 15px 3px 15px 3px;
+    border-radius: 15px 3px 15px 3px;
+  }
+`).appendTo('head');
+
+  if (interface_sounds == true) {
+  var notification = $('<div>', {
+    class: 'notification',
+  }).appendTo('body');
+
+  var body = $('<div>', {
+    class: 'notification-body',
+    text: text,
+  }).appendTo(notification);
+
+  if (corner == 'top-left') {
+    notification.css({
+      top: '10px',
+      left: '160px',
+    });
+  } else if (corner == 'top-right') {
+    notification.css({
+      top: '10px',
+      right: '-115px',
+    });
+  } else if (corner == 'bottom-left') {
+    notification.css({
+      bottom: '90px',
+      left: '10px',
+    });
+  } else if (corner == 'bottom-right') {
+    notification.css({
+      bottom: '90px',
+      right: '90px',
+    });
+  }
+
+  notifications.push(notification);
+
+  setTimeout(function() {
+    notification.addClass('active');
+    activeNotifications++;
+
+    if (activeNotifications > 1) {
+      var top = parseInt(notification.css('top')) + ((activeNotifications - 1) * (notification.outerHeight() / 0.85));
+      notification.css('top', top + 'px');
+    }
+  }, 10);
+
+  setTimeout(function() {
+    notification.removeClass('active');
+
+    setTimeout(function() {
+      notification.remove();
+      notifications.splice(notifications.indexOf(notification), 1);
+      activeNotifications--;
+    }, 300);
+  }, lifetime);
+}
+}
+window.notificate = function(text, corner, lifetime) {
+  createNotification(text, corner, lifetime);
+};
+function playEndSound() {
+    const soundUrls = [
+        "https://cdn.discordapp.com/attachments/1177762529833914371/1220029327232729172/dieThrow3.ogg?ex=660d73da&is=65fafeda&hm=92a7cf622a39f60f4cd3921e802fa423089c5ea2bc2afcec6244db1c31d3fab4&",
+        "https://cdn.discordapp.com/attachments/1177762529833914371/1220029327631061072/dieShuffle1.ogg?ex=660d73da&is=65fafeda&hm=ba93716f1ddd9a2d69a455ee542bd303c420092de9791855c47a8588a1b92a82&",
+        "https://cdn.discordapp.com/attachments/1177762529833914371/1220029327962275961/dieShuffle2.ogg?ex=660d73da&is=65fafeda&hm=08373de2c86ec3c79ea97ffb13d3b9144ad9fe3e9c8d2712c4a98eb5eef99274&",
+        "https://cdn.discordapp.com/attachments/1177762529833914371/1220029328318926989/dieShuffle3.ogg?ex=660d73da&is=65fafeda&hm=59ef484248cc2ce17935fea9327809ac841b656a370e0b76fc240945c7b99a2b&",
+        "https://cdn.discordapp.com/attachments/1177762529833914371/1220029328666918922/dieThrow1.ogg?ex=660d73db&is=65fafedb&hm=1271e648397a858e97fbbc1b2156aa913f2103779ca0e067efcb70458005d7bb&",
+        "https://cdn.discordapp.com/attachments/1177762529833914371/1220029328956461128/dieThrow2.ogg?ex=660d73db&is=65fafedb&hm=63c1b4885de191b51caece14aa6e2f54a0d2558cb50f7d218573b3f4f06a9159&"
+    ];
+
+    const randomIndex = Math.floor(Math.random() * soundUrls.length);
+    const randomSoundUrl = soundUrls[randomIndex];
+
+    const audio = new Audio(randomSoundUrl);
+    audio.play();
+}
+function playScrollSound() {
+    const soundUrls = [
+        "https://cdn.discordapp.com/attachments/1177762529833914371/1220031124697382982/chipsStack5.ogg?ex=660d7587&is=65fb0087&hm=90ced100780cd53d789d2c9719943083d683adb7ab4bfdc58d02611bd53681e5&",
+        "https://cdn.discordapp.com/attachments/1177762529833914371/1220031125012086844/chipsStack6.ogg?ex=660d7587&is=65fb0087&hm=1c6731dd9fb2f7d49b5b4fcd4b8742a4934026b2215747dc8549ace9b129d722&",
+        "https://cdn.discordapp.com/attachments/1177762529833914371/1220031125422870638/chipsStack1.ogg?ex=660d7587&is=65fb0087&hm=a7de45c82a75d1acfd80ed2013a50eaae2343bc413312786e5a8a737358b8c54&",
+        "https://cdn.discordapp.com/attachments/1177762529833914371/1220031125964062891/chipsStack2.ogg?ex=660d7587&is=65fb0087&hm=d20e8529d3ebee9a69b3bbfa680f7939b2e1df80b872280eb4c243db5ff9e1e3&",
+        "https://cdn.discordapp.com/attachments/1177762529833914371/1220031126350069810/chipsStack3.ogg?ex=660d7587&is=65fb0087&hm=993a84ef150e4afd2a8294e037dfbe2e6c4525ca2f616f64f27639db8c77c461&",
+        "https://cdn.discordapp.com/attachments/1177762529833914371/1220031126945402961/chipsStack4.ogg?ex=660d7587&is=65fb0087&hm=e9189627075a9b0d05a6b9fabea1ccd1268f75498117dea1a9719fc2d7b88146&"
+    ];
+
+    const randomIndex = Math.floor(Math.random() * soundUrls.length);
+    const randomSoundUrl = soundUrls[randomIndex];
+
+    const audio = new Audio(randomSoundUrl);
+    audio.play();
+}
+
+function globalDecode(text,username) {
+
+salt = "yJgH)3*&yo*1Gb6*84ZYbW*2o#yS(*7W&5Z)(9SDFCXVBXVCBTD3kC6mvT29J##p#Fq1XGkNe69@Zr0G%oErQP3kBjDHFGHDFJGP~PaAkeHFxa5E*A$mQm0x613~wAxJGHJGHJFGHJP2bGALBfZLBViY4}f#LXnHyCtvz?5FJFGHJGHJ347%2rSmU*DJF3Z%kD5Yo2FJGHJFGH46796243GSFDGSDFHGF4270637942653452парапрорe59586b3d55456c615245453GFHJFGHJd4d544d7a4e32747964573DGHJGFJFGJLKYUOP572633256756332566a636d466a613256ыавы1236b4d513d3d0x6132467962%Vc%TTuo8ASрапрап53wM}R1Vw6o**0bwcRKSToBl*$pfRR2PD3}BlPrnO4342706пависмап79426e59586312312b3d55456c615245авпваи5453d4d544d7a4e327479645735726прарап3325675633256смисми6a636d466a6132566b4d513d3d챮첊챩첚챭첇챝챝|ᢥ᢬ᢙᣑᢽᢜᢥᢊᢦᢜᢝᢉᢥᣒᢱᣑᢦᣒᢩᢌᢦᣂᣃᢋᢥᢜᣄᢾᢦᣁᣋᣑᢨ᢬ᢩᣌᢥᢑрапрайукарᢛᢚᢦᢠᢌᣑᢱᢜᢾᢩᣍ᢬ᢜᢪᣀᣂрапрᢺᢪᢿᣒᢨᢩᣍᣂᢾᢩᣌ᢬рвапфыᣆᢩᣎ᢬}%JHB$Q8zZDrOnM#21hcp{rNANкеунXRdpbOR2SDTQiHeDT~6O4ujj᢬ᢩᣋᣒᢤᢪᣁᢜᢺᢪᣁ᢯ᢰᢩᣌᣒᢰᢪᣀ᢬ᣆᢪᣁᣂᢰᢪᣀᢜᣂᢪᣁᣒᢺᢩᣋᣅᢤᢩᣋ57r%yssoiwOxzbf~YxHbцукецуqffT9q*VB{~%z|0H*XtM8Wmy5oWgV{ᢜпаролопᢨᢩᣎᢊ᢬ᢪᢿᢜᢰᢩᣎᣂᢰᢩᣍᣒ᢬ᢩᣌᢜᢰᢩᣌᣂᢺᢪᣂ᢯ᢦᢻвапрвапᢦᣌᢟᢨᢥᢼᢟᢠᢦᢼᢟᢚᢥᣌᢛᢐᢦᢦᢛᢌᢦᢼᢟᢛᢦᢦᢟᢥᢦᢼᢛᣐᢥᢑᢟᢧᢲᢛᢌᢈᢤᢊᢪᣐᢦᢰᢻᢈᢲyw3iIECg6gQb4$6TuSzlCzDlW6On1YpMcJscbv%iC}A6rGA2$Y᢬ᢪᣑᢲᢠᢩᢋᢽ᢯ᢞᢉᢦᢟᣄᣄᢺᣒᢦᣏᢥᣄᣋᢋᢰ᢬ᢪᣀᢦᢋᢥᢍᢲᢜᢲᣅᢦᢟᢻᢉᢹᢜᢼᣉᢥᢊᣋᢉᢺᢜᢻᢏᢥᣁᢻᢊᢰᢜᢦᢎᢥᢋᢿᣑᢱᣒ᢮ᢊᢦᣅᢡᢋᢺᣂ᢮ᣌᢦᣁᣏᣒᢤᣂᢥᣎᢥᣂ᢭ᢊᢦᣅᢝᢊᢥMT2n?Mw7B@*jYtfeLXlIN7G5O102~zl4DlGttaPbDfVDfxo9Igᣒᢲᣃᢦᢜᢱᢊᢱ᢬ᢱᣐᢥᣒᢡᢉᢦᣂᢲᣁᢦᢟᢩᢉᢥ᢬ᢦᣃᢥᢊᢩᣏᢽᢜᢱᣐᢥᣒᢡᢈᢦᣂᢻᢍᢦᣂᢡᢈᢥᣒᢩᣑᢦᣒᢙᢊᢥᣒᢻᢍᢦᢜᢡᢊᢲ᢬᢭ᢍᢦ᢬ᢿᢊᢱᣂᢦᣃᢦ᢬᢭ᢈᢦ᢬ᢲᣂᢦᣂᢝᢉᢥᣂᢩᢉᢦᢜ᢭ᣒᢲᢜᢪᣃᢦzk47C$IEiJeIeXzif0GX9r9KH*IdYF3*b$sj%d$MB~BuTQdlrp᢬ᢩᢈᢲᢜᢼᣀᢦᢟ᢭ᣒᢥᣂᢻᢈᢦᣒᣃᢊᢦᢜ᢭ᢋᢥᣒ᢭ᢋᢥᣂᢱᣒᢥᣒyRz9$zCAnk1*TtS~cE8PV~p}htW23JHG*?5QIN8dSaHoT~5d~u6YRQXWpQE|cJA$ZMkl7~8fd3Xci??ZFb$OgoeJlr%nQ6H?KgFKᢡᢉᢦᣂᢻᢉᢦᣂᢥᣒᢥᣂ᢭ᢊᢦᣅᢝᢊᢥ57#V&x&tCo*0b752ᣒᢲᣃᢦᢜᢱᢊᢱ᢬ᢱᣐᢥᣒᢡᢉᢦᣂᢲᣁᢦᢟᢩᢉᢥ᢬ᢦᣃᢥᢊᢩᢕ"
+
+seed34 = Math.floor(Math.random() * 6969) + 1;
+function encodeToBase64(text) {
+const encoder = new TextEncoder();
+const data = encoder.encode(text);
+let base64 = '';
+const characters =
+'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
+let padding = 0;
+let position = 0;
+let buffer = 0;
+while (position < data.length) {
+buffer <<= 8;
+buffer |= data[position];
+padding += 8;
+position++;
+while (padding >= 6) {
+  padding -= 6;
+  const index = (buffer >> padding) & 0x3f;
+  base64 += characters[index];
+}
+}
+if (padding > 0) {
+buffer <<= 6 - padding;
+const index = buffer & 0x3f;
+base64 += characters[index];
+}
+while (base64.length % 4 !== 0) {
+base64 += '=';
+}
+return base64;
+}
+keyphrases = [
+username
+]
+const base64String = keyphrases.map((phrase) => encodeToBase64(phrase)).join('');
+
+const hexString = Array.from(base64String, function (char) {
+return char.charCodeAt(0).toString(16).padStart(2, '0');
+}).join('');
+const numberString = "0x" + hexString;
+
+//CONSOLE.log(numberString);
+
+
+function removeSaltFromText(text, salt, period) {
+let originalText = '';
+let saltIndex = 2;
+
+for (let i = 0; i < text.length; i++) {
+if (i % period === 0 && saltIndex < salt.length && text[i] === salt[saltIndex]) {
+  saltIndex++;
+} else {
+  originalText += text[i];
+}
+if (saltIndex === salt.length) {
+  saltIndex = 0;
+}
+}
+
+return decodeFromBase64(originalText);
+}
+
+
+//CONSOLE.log(numberString)
+var basenum = Number(numberString)
+basenum = Math.floor(basenum % 100000)
+
+//CONSOLE.log(basenum)
+function decodeFromBase64(base64Encoded) {
+const binaryData = atob(base64Encoded);
+const decodedData = new TextDecoder().decode(new Uint8Array([...binaryData].map(char => char.charCodeAt(0))));
+return decodedData;
+}
+function decodeText1(text) {
+const emojiArray = Array.from(text);
+const base64Array = emojiArray.map(emoji => String.fromCharCode(emoji.codePointAt(0) - basenum));
+const base64Url = base64Array.join('');
+const utf8Url = decodeURIComponent(escape(atob(base64Url)));
+return utf8Url;
+}
+
+function decodeText2(text, num) {
+const emojiArray = Array.from(text)
+const base64Array = emojiArray.map(emoji => String.fromCharCode(emoji.codePointAt(0) - num))
+const base64Url = base64Array.join('')
+const utf8Url = decodeURIComponent(escape(atob(base64Url)))
+return utf8Url
+}
+var encryptedText = text
+
+var parts = encryptedText.split('|')
+var firstPart = parts[0]
+var secondPart = parts[1]
+var decryptedFirstPart = decodeText1(firstPart)
+var num = parseInt(decryptedFirstPart, 10)
+var decryptedSecondPart = decodeText2(secondPart, num)
+
+var originalText = removeSaltFromText(decryptedSecondPart, salt, 1)
+//CONSOLE.log(originalText)
+return originalText
+}
+function globalEncode(text,username) {
+function encodeToBase64(text) {
+//CONSOLE.log(1)
+salt = "yJgH)3*&yo*1Gb6*84ZYbW*2o#yS(*7W&5Z)(9SDFCXVBXVCBTD3kC6mvT29J##p#Fq1XGkNe69@Zr0G%oErQP3kBjDHFGHDFJGP~PaAkeHFxa5E*A$mQm0x613~wAxJGHJGHJFGHJP2bGALBfZLBViY4}f#LXnHyCtvz?5FJFGHJGHJ347%2rSmU*DJF3Z%kD5Yo2FJGHJFGH46796243GSFDGSDFHGF4270637942653452парапрорe59586b3d55456c615245453GFHJFGHJd4d544d7a4e32747964573DGHJGFJFGJLKYUOP572633256756332566a636d466a613256ыавы1236b4d513d3d0x6132467962%Vc%TTuo8ASрапрап53wM}R1Vw6o**0bwcRKSToBl*$pfRR2PD3}BlPrnO4342706пависмап79426e59586312312b3d55456c615245авпваи5453d4d544d7a4e327479645735726прарап3325675633256смисми6a636d466a6132566b4d513d3d챮첊챩첚챭첇챝챝|ᢥ᢬ᢙᣑᢽᢜᢥᢊᢦᢜᢝᢉᢥᣒᢱᣑᢦᣒᢩᢌᢦᣂᣃᢋᢥᢜᣄᢾᢦᣁᣋᣑᢨ᢬ᢩᣌᢥᢑрапрайукарᢛᢚᢦᢠᢌᣑᢱᢜᢾᢩᣍ᢬ᢜᢪᣀᣂрапрᢺᢪᢿᣒᢨᢩᣍᣂᢾᢩᣌ᢬рвапфыᣆᢩᣎ᢬}%JHB$Q8zZDrOnM#21hcp{rNANкеунXRdpbOR2SDTQiHeDT~6O4ujj᢬ᢩᣋᣒᢤᢪᣁᢜᢺᢪᣁ᢯ᢰᢩᣌᣒᢰᢪᣀ᢬ᣆᢪᣁᣂᢰᢪᣀᢜᣂᢪᣁᣒᢺᢩᣋᣅᢤᢩᣋ57r%yssoiwOxzbf~YxHbцукецуqffT9q*VB{~%z|0H*XtM8Wmy5oWgV{ᢜпаролопᢨᢩᣎᢊ᢬ᢪᢿᢜᢰᢩᣎᣂᢰᢩᣍᣒ᢬ᢩᣌᢜᢰᢩᣌᣂᢺᢪᣂ᢯ᢦᢻвапрвапᢦᣌᢟᢨᢥᢼᢟᢠᢦᢼᢟᢚᢥᣌᢛᢐᢦᢦᢛᢌᢦᢼᢟᢛᢦᢦᢟᢥᢦᢼᢛᣐᢥᢑᢟᢧᢲᢛᢌᢈᢤᢊᢪᣐᢦᢰᢻᢈᢲyw3iIECg6gQb4$6TuSzlCzDlW6On1YpMcJscbv%iC}A6rGA2$Y᢬ᢪᣑᢲᢠᢩᢋᢽ᢯ᢞᢉᢦᢟᣄᣄᢺᣒᢦᣏᢥᣄᣋᢋᢰ᢬ᢪᣀᢦᢋᢥᢍᢲᢜᢲᣅᢦᢟᢻᢉᢹᢜᢼᣉᢥᢊᣋᢉᢺᢜᢻᢏᢥᣁᢻᢊᢰᢜᢦᢎᢥᢋᢿᣑᢱᣒ᢮ᢊᢦᣅᢡᢋᢺᣂ᢮ᣌᢦᣁᣏᣒᢤᣂᢥᣎᢥᣂ᢭ᢊᢦᣅᢝᢊᢥMT2n?Mw7B@*jYtfeLXlIN7G5O102~zl4DlGttaPbDfVDfxo9Igᣒᢲᣃᢦᢜᢱᢊᢱ᢬ᢱᣐᢥᣒᢡᢉᢦᣂᢲᣁᢦᢟᢩᢉᢥ᢬ᢦᣃᢥᢊᢩᣏᢽᢜᢱᣐᢥᣒᢡᢈᢦᣂᢻᢍᢦᣂᢡᢈᢥᣒᢩᣑᢦᣒᢙᢊᢥᣒᢻᢍᢦᢜᢡᢊᢲ᢬᢭ᢍᢦ᢬ᢿᢊᢱᣂᢦᣃᢦ᢬᢭ᢈᢦ᢬ᢲᣂᢦᣂᢝᢉᢥᣂᢩᢉᢦᢜ᢭ᣒᢲᢜᢪᣃᢦzk47C$IEiJeIeXzif0GX9r9KH*IdYF3*b$sj%d$MB~BuTQdlrp᢬ᢩᢈᢲᢜᢼᣀᢦᢟ᢭ᣒᢥᣂᢻᢈᢦᣒᣃᢊᢦᢜ᢭ᢋᢥᣒ᢭ᢋᢥᣂᢱᣒᢥᣒyRz9$zCAnk1*TtS~cE8PV~p}htW23JHG*?5QIN8dSaHoT~5d~u6YRQXWpQE|cJA$ZMkl7~8fd3Xci??ZFb$OgoeJlr%nQ6H?KgFKᢡᢉᢦᣂᢻᢉᢦᣂᢥᣒᢥᣂ᢭ᢊᢦᣅᢝᢊᢥ57#V&x&tCo*0b752ᣒᢲᣃᢦᢜᢱᢊᢱ᢬ᢱᣐᢥᣒᢡᢉᢦᣂᢲᣁᢦᢟᢩᢉᢥ᢬ᢦᣃᢥᢊᢩᢕ"
+seed34 = Math.floor(Math.random() * 6969) + 1;
+
+const encoder = new TextEncoder()
+const data = encoder.encode(text)
+let base64 = ''
+const characters =
+'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/='
+let padding = 0
+let position = 0
+let buffer = 0
+while (position < data.length) {
+buffer <<= 8
+buffer |= data[position];
+padding += 8;
+position++
+while (padding >= 6) {
+  padding -= 6
+  const index = (buffer >> padding) & 0x3f
+  base64 += characters[index]
+}
+}
+if (padding > 0) {
+buffer <<= 6 - padding
+const index = buffer & 0x3f
+base64 += characters[index]
+}
+while (base64.length % 4 !== 0) {
+base64 += '='
+}
+return base64
+}
+function encodeToBase641(data) {
+const binaryBuffer = new TextEncoder().encode(data);
+const base64Encoded = btoa(String.fromCharCode(...binaryBuffer));
+return base64Encoded;
+}
+keyphrases = [
+username
+]
+const base64String = keyphrases.map((phrase) => encodeToBase64(phrase)).join('')
+
+const hexString = Array.from(base64String, function (char) {
+return char.charCodeAt(0).toString(16).padStart(2, '0')
+}).join('');
+const numberString = "0x" + hexString
+
+//CONSOLE.log(numberString)
+
+var basenum = Number(numberString)
+basenum = Math.floor(basenum % 100000)
+
+//CONSOLE.log(basenum)
+
+var num = seed34
+var textforencode = text
+var pon = encodeText1(num) + "|" + encodeText(textforencode, salt);
+return pon;
+//CONSOLE.log(pon);
+//CONSOLE.log(num);
+
+function encodeText(text, salt) {
+text = encodeToBase641(text)
+const combinedText = interleaveTextAndSalt(text, salt, 1);
+const utf8Url = unescape(encodeURIComponent(combinedText));
+const base64Url = btoa(utf8Url);
+const emojiString = Array.from(base64Url).map(char => String.fromCodePoint(num + char.charCodeAt(0))).join('');
+return emojiString;
+}
+
+function encodeText1(text) {
+const utf8Url = unescape(encodeURIComponent(text));
+const base64Url = btoa(utf8Url);
+const emojiString = Array.from(base64Url).map(char => String.fromCodePoint(basenum + char.charCodeAt(0))).join('');
+return emojiString;
+}
+
+function interleaveTextAndSalt(text, salt, period) {
+let combinedText = '';
+let saltIndex = 2;
+
+for (let i = 0; i < text.length; i++) {
+combinedText += text[i];
+if (i % period === 0 && saltIndex < salt.length) {
+  combinedText += salt[saltIndex];
+  saltIndex++;
+}
+if (saltIndex === salt.length) {
+  saltIndex = 0;
+}
+}
+
+return combinedText;
+}
+}
+var nickname = localStorage.getItem("nickname")
+if(!localStorage.getItem("data") && localStorage.getItem("nickname")) {
+  var balance = 10000
+  localStorage.setItem("data",globalEncode(balance,nickname))
+}
+function submitNickname() {
+  const audio = new Audio("https://cdn.discordapp.com/attachments/1177762529833914371/1220033110239088701/bong_001.ogg?ex=660d7760&is=65fb0260&hm=e429243db2cd8f8e2aa96d9d944c655884380f1257a37c8f9ac9669f19f040be&");
+  audio.play();
+  var nickname = document.getElementById('nickname-input').value;
+  localStorage.setItem("nickname",nickname)
+  var balance = 10000
+  localStorage.setItem("data",globalEncode(balance,nickname))
+  var overlay = document.getElementById('overlay');
+  var nicknameBox = document.getElementById('nickname-box');
+  nicknameBox.style.animation = "fadeOutBlur 0.5s ease-in-out forwards";
+  overlay.style.animation = "fadeOutBlur 0.5s ease-in-out forwards";
+  createNotification("Добро пожаловать, "+nickname,"top-right",6500)
+  createNotification("+10000 Дублей (Подарок)","top-right",3500)
+  setTimeout(function() {
+    overlay.style.display = 'none';
+    nicknameBox.style.display = 'none';
+  }, 500);
+}
+
+
+function openNicknameWindow() {
+  var overlay = document.getElementById('overlay');
+  var nicknameBox = document.getElementById('nickname-box');
+  overlay.style.display = 'block';
+  overlay.style.opacity = '1';
+  nicknameBox.classList.add('show');
+}
+function updateUserInfo() {
+  var nickname = localStorage.getItem("nickname");
+  var balance = localStorage.getItem("data") ? Math.round(Number(globalDecode(localStorage.getItem("data"), nickname))) : 0;
+  var userNicknameElement = document.getElementById('user-nickname');
+  var userBalanceElement = document.getElementById('user-balance');
+
+  userNicknameElement.textContent = nickname || "Гость";
+  userBalanceElement.textContent = balance;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  if(!localStorage.getItem("nickname")) {
+  openNicknameWindow();
+  }
+    updateUserInfo();
+
+
+setInterval(updateUserInfo, 100);
+});
+
+if(localStorage.getItem("data")) {
+  var balance = Math.round(Number(globalDecode(localStorage.getItem("data"),nickname)))
+}
+function debitBalance(amount) {
+  var nickname = localStorage.getItem("nickname");
+  var currentBalance = localStorage.getItem("data") ? Math.round(Number(globalDecode(localStorage.getItem("data"), nickname))) : 0;
+  
+  if (currentBalance >= amount) {
+    var updatedBalance = currentBalance - amount;
+        localStorage.setItem("data", globalEncode(updatedBalance.toString(), nickname));
+    
+    updateUserInfo();
+    
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function creditBalance(amount) {
+  var nickname = localStorage.getItem("nickname");
+  var currentBalance = localStorage.getItem("data") ? Math.round(Number(globalDecode(localStorage.getItem("data"), nickname))) : 0;
+  
+  var updatedBalance = currentBalance + amount;
+  
+  localStorage.setItem("data", globalEncode(updatedBalance.toString(), nickname));
+  
+  updateUserInfo();
+}
+function startSlotMachine() {
+  const audio = new Audio("https://cdn.discordapp.com/attachments/1177762529833914371/1220033110239088701/bong_001.ogg?ex=660d7760&is=65fb0260&hm=e429243db2cd8f8e2aa96d9d944c655884380f1257a37c8f9ac9669f19f040be&");
+  audio.play();
+  var stav = Number(document.getElementById('balstavka-input').value)
+  var numstav = Number(document.getElementById('numstavka-input').value)
+  if(debitBalance(stav))  {
+    createNotification("Вы поставили "+stav,"top-right",1500)
+    setTimeout(createNotification("-"+stav,"top-right",1500), 250)
+  var time = 85
+  var resultBox = document.getElementById('bottom-box');
+  var timer = setInterval(function() {
+    var randomNumber = Math.pow(2, Math.floor(Math.random() * 70) + 0).toFixed(0).toString() + Math.pow(2, Math.floor(Math.random() * 70) + 0).toFixed(0).toString().slice(0, -Math.floor(Math.random() * 3)) + Math.pow(2, Math.floor(Math.random() * 70) + 0).toFixed(0).toString().slice(0, -Math.floor(Math.random() * 4)) + Math.pow(2, Math.floor(Math.random() * 32) + 0).toFixed(0).toString().slice(0, -Math.floor(Math.random() * 7))
+    playScrollSound()
+    resultBox.textContent = randomNumber;
+  }, time);
+  setTimeout(function() {
+    clearInterval(timer);
+    var res = resultBox.textContent
+    console.log(res)
+    var maxres = countMaxRepeatedChar(res)
+    console.log(maxres)
+    createNotification("Выпало: "+maxres,"top-right",4500)
+    if(numstav <= maxres) {
+      playEndSound()
+      var koef = 2.5 - ((maxres - numstav) * 0.575)
+      console.log("Кэф:",koef)
+      creditBalance(stav*koef);
+      console.log("Вы выйграли:",(stav*koef))
+      setTimeout(createNotification("Вы выйграли!","top-right",3500), 250)
+      setTimeout(createNotification("Коэффицент: "+Math.floor10(koef,-1),"top-right",3500), 550)
+      if((stav*koef) >0){
+      setTimeout(createNotification("+"+Math.round((stav*koef)),"top-right",3500), 850)
+      } else {
+        setTimeout(createNotification("-"+Math.round((stav*koef)),"top-right",3500), 850)
+      }
+    } else {
+      playEndSound()
+      console.log("Вы проиграли")
+      setTimeout(createNotification("Вы проиграли.","top-right",4500),250)
+    }
+  }, 3000); 
+} else {
+  console.log("Баланса недостаточно!")
+}
+}
+function countMaxRepeatedChar(str) {
+    var charCount = {};
+        for (var i = 0; i < str.length; i++) {
+        var char = str[i];
+        if (charCount[char]) {
+            charCount[char]++;
+        } else {
+            charCount[char] = 1;
+        }
+    }
+    var maxCount = 0;
+    var maxChar = '';
+        for (var char in charCount) {
+        if (charCount[char] > maxCount) {
+            maxCount = charCount[char];
+            maxChar = char;
+        }
+    }
+    
+    return maxCount;
+}
+function decimalAdjust(type, value, exp) {
+    if (typeof exp === "undefined" || +exp === 0) {
+      return Math[type](value);
+    }
+    value = +value;
+    exp = +exp;
+    if (isNaN(value) || !(typeof exp === "number" && exp % 1 === 0)) {
+      return NaN;
+    }
+    value = value.toString().split("e");
+    value = Math[type](+(value[0] + "e" + (value[1] ? +value[1] - exp : -exp)));
+    value = value.toString().split("e");
+    return +(value[0] + "e" + (value[1] ? +value[1] + exp : exp));
+  }
+if (!Math.floor10) {
+    Math.floor10 = function (value, exp) {
+      return decimalAdjust("floor", value, exp);
+    };
+  }
+
+//CONSOLE.log("Баланс:",balance)
+
+
+
+
+  </script>
+</head>
+<body>
+  <div class="wrapper"></div>
+  <div class="overlay" id="overlay"></div>
+  <div class="nickname-box" id="nickname-box"> 
+    <div class="content">
+      <h2>Введите ваш никнейм</h2>
+      <input type="text" id="nickname-input" class="input-style" placeholder="Никнейм">
+      <button class="button-72" onclick="submitNickname()">Готово</button>
+    </div>
+  </div>
+  
+  <div class="main-content">
+    <div class="user-info-box" id="user-info-box">
+      <div class="content">
+        <span id="user-nickname"></span> | <span id="user-balance"></span> Дублей
+      </div>
+    </div>
+    <div class="main-box" id="main-box">
+      <div class="content">
+        <h1>Казино на дубли</h1>
+        <input type="text" id="balstavka-input" class="input-style" placeholder="Ставка">
+        <input type="text" id="numstavka-input" class="input-style" placeholder="Какое число будет меньше кол-ва повторов самого частого числа">
+        <button class="button-72" onclick="startSlotMachine()">Начать</button>
+      </div>
+    </div>
+    <div class="bottom-box" id="bottom-box">
+      <div class="content" id="bottom-content">
+      </div>
+    </div>
+</body>
+</html>
