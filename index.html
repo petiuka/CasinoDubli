@@ -749,7 +749,7 @@ function startSlotMachine() {
   var time = 85
   var resultBox = document.getElementById('bottom-box');
   var timer = setInterval(function() {
-    var randomNumber = Math.pow(2, Math.floor(Math.random() * 70) + 0).toFixed(0).toString() + Math.pow(2, Math.floor(Math.random() * 70) + 0).toFixed(0).toString().slice(0, -Math.floor(Math.random() * 6)) + Math.pow(2, Math.floor(Math.random() * 70) + 0).toFixed(0).toString().slice(0, -Math.floor(Math.random() * 4)) + Math.pow(2, Math.floor(Math.random() * 48) + 0).toFixed(0).toString().slice(0, -Math.floor(Math.random() * 7))
+    var randomNumber = Math.pow(2, Math.floor(Math.random() * 70) + 0).toFixed(0).toString() + Math.pow(2, Math.floor(Math.random() * 25) + 0).toFixed(0).toString().slice(0, -Math.floor(Math.random() * 3)) + Math.pow(2, Math.floor(Math.random() * 64) + 0).toFixed(0).toString().slice(0, -Math.floor(Math.random() * 3)) + Math.pow(2, Math.floor(Math.random() * 70) + 0).toFixed(0).toString().slice(0, -Math.floor(Math.random() * 4)) + Math.pow(2, Math.floor(Math.random() * 48) + 0).toFixed(0).toString().slice(0, -Math.floor(Math.random() * 7))+ Math.pow(2, Math.floor(Math.random() * 64) + 0).toFixed(0).toString().slice(0, -Math.floor(Math.random() * 7))
     playScrollSound()
     resultBox.textContent = randomNumber;
   }, time);
@@ -762,7 +762,7 @@ function startSlotMachine() {
     createNotification("Выпало: "+maxres,"top-right",4500)
     if(numstav <= maxres) {
       playEndSound()
-      var koef = 2.5 - ((maxres - numstav) * 0.610)
+      var koef = Math.floor(Math.random() * 5) - ((maxres - numstav) * 0.510)
       console.log("Кэф:",koef)
       creditBalance(stav*koef);
       console.log("Вы выйграли:",(stav*koef))
@@ -853,7 +853,7 @@ document.addEventListener("DOMContentLoaded", function() {
   <div class="main-content">
     <div class="user-info-box" id="user-info-box">
       <div class="content">
-        <span id="user-nickname"></span> | <span id="user-balance"></span> Дублей
+        <span>Версия 1.3</span> | <span id="user-nickname"></span> | <span id="user-balance"></span> Дублей
         <img id="logout-icon" src="https://cdn.discordapp.com/attachments/1177762529833914371/1220046161356787743/logout.svg?ex=660d8388&is=65fb0e88&hm=76761bf662c3fb6b3b97125e3274ad60537d0521f21ded9e0456a7dae5df8714" alt="logout icon">
       </div>
     </div>
