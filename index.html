@@ -86,6 +86,12 @@ body, html {
     h2 {
       margin: 5px 0; 
     }
+    h1 {
+      margin: 5px 0; 
+    }
+    h2 {
+      margin: 1px 0; 
+    }
 
 
 .wrapper {
@@ -195,6 +201,41 @@ background-size: 800% 800%;
 .nickname-box .content {
   text-align: center;
 }
+.withdraw-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 25%;
+    height: 30%;
+    color: #ffffff;
+    background: #e2e2e218;
+    border: 2.4px solid #efefef16;
+    border-radius: 10px;
+    display: none;
+    z-index: 1001;
+    padding: 20px;
+    box-sizing: border-box;
+    backdrop-filter: blur(50px);
+    animation: fadeInOut 0.5s ease-in-out;
+  }
+
+  @keyframes fadeInOut {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+.withdraw-box.show {
+  display: block;
+}
+
+.withdraw-box .content {
+  text-align: center;
+}
 
 @keyframes fadeInOut {
   0% {
@@ -212,12 +253,12 @@ background-size: 800% 800%;
   background: #e2e2e21d;
   border: 2.4px solid #efefef16;
   border-radius: 10px;
-  padding: 3.5px 45px 3.5px 10px; /* Увеличил padding для учёта ширины иконки */
+  padding: 3.5px 80px 3.5px 10px;
   box-sizing: border-box;
   backdrop-filter: blur(10px);
   animation: fadeInOut 0.5s ease-in-out;
-  display: flex; /* Добавил display: flex для автоматического растяжения */
-  align-items: center; /* Выравнивание содержимого по центру по вертикали */
+  display: flex;
+  align-items: center;
 }
 
 #logout-icon {
@@ -225,8 +266,19 @@ background-size: 800% 800%;
   height: 30px;
   cursor: pointer;
   filter: invert(100%) sepia(0%) saturate(100%) hue-rotate(0deg) brightness(100%) contrast(100%);
-  margin-left: auto; /* Положение иконки в правом конце */
-  margin-right: 10px; /* Отступ справа */
+  margin-left: auto;
+  margin-right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  position: absolute;
+}
+#withdraw-icon {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  filter: invert(100%) sepia(0%) saturate(100%) hue-rotate(0deg) brightness(100%) contrast(100%);
+  margin-left: 7%;
+  margin-right: 45px;
   top: 50%;
   transform: translateY(-50%);
   position: absolute;
@@ -660,7 +712,9 @@ return combinedText;
 var nickname = localStorage.getItem("nickname")
 if(!localStorage.getItem("data") && localStorage.getItem("nickname")) {
   var balance = 10000
+  var withdrawed = 0
   localStorage.setItem("data",globalEncode(balance,nickname))
+  localStorage.setItem("data2",globalEncode(withdrawed,nickname))
 }
 function submitNickname() {
   const audio = new Audio("https://cdn.discordapp.com/attachments/1177762529833914371/1220033110239088701/bong_001.ogg?ex=660d7760&is=65fb0260&hm=e429243db2cd8f8e2aa96d9d944c655884380f1257a37c8f9ac9669f19f040be&");
@@ -680,7 +734,107 @@ function submitNickname() {
     nicknameBox.style.display = 'none';
   }, 500);
 }
+function submitWithdraw() {
+  const audio = new Audio("https://cdn.discordapp.com/attachments/1177762529833914371/1220033110239088701/bong_001.ogg?ex=660d7760&is=65fb0260&hm=e429243db2cd8f8e2aa96d9d944c655884380f1257a37c8f9ac9669f19f040be&");
+  audio.play();
+  var withdrawamount = Math.abs(Number(document.getElementById('withdraw-input').value));
+  var overlay = document.getElementById('overlay');
+  var withdrawBox = document.getElementById('withdraw-box');
 
+  if (withdrawBalance(withdrawamount)) {
+    audio.play();
+    setTimeout(function() {
+      var notificationText = "Успешно выведено " + withdrawamount + " Дублей";
+      createNotification(notificationText, "top-right", 4500);
+    }, 250);
+
+    withdrawBox.style.animation = "fadeOutBlur 0.5s ease-in-out forwards";
+    overlay.style.animation = "fadeOutBlur 0.5s ease-in-out forwards";
+
+    setTimeout(function() {
+      overlay.style.display = 'none';
+      overlay.style.opacity = '0'; 
+      withdrawBox.style.display = 'none';
+      withdrawBox.classList.remove('show');
+      withdrawBox.style.animation = "";
+      overlay.style.animation = "";
+      const catstier1 = [
+        "https://cdn.discordapp.com/attachments/1177762529833914371/1220672023626383370/h6Tkiynq9B8.jpg?ex=660fca69&is=65fd5569&hm=968dfa1d20a8f653c895656f549183731c4d8d44e9b79246154220b17366b975&",
+        "https://cdn.discordapp.com/attachments/1177762529833914371/1220672023978577920/2x3C3LciUF0.jpg?ex=660fca69&is=65fd5569&hm=6e521010b32b84342d308c15a6f2aa2cc74f1287edf3089e5e93a79874204d1e&",
+        "https://cdn.discordapp.com/attachments/1177762529833914371/1220672024784142348/74FlaTMs2Jk.jpg?ex=660fca69&is=65fd5569&hm=31a2ffd07851b8d370920eaddbcba6956e0ba8ff7385bd4791b8bb421317db6e&",
+        "https://cdn.discordapp.com/attachments/1177762529833914371/1220672025207635998/U-31WR8JG9g.jpg?ex=660fca69&is=65fd5569&hm=7fb2d10ad55f8d329ccabd2d0bbb3aab166398b96791b97e19bb73822f5ff6aa&",
+        "https://cdn.discordapp.com/attachments/1177762529833914371/1220672025488527431/S67qOqNtluo.jpg?ex=660fca69&is=65fd5569&hm=7bf7b9ba6441576a8c5e2659bc6ccf04730850f5a546e0ffb879817839932c74&",
+        "https://cdn.discordapp.com/attachments/1177762529833914371/1220672025790775326/4AkKE4CVOXg.jpg?ex=660fca69&is=65fd5569&hm=bb98fa733ce526c2e430d06a6460958abfa9504e58190f4c00cc0e52c1c8164b&",
+        "https://cdn.discordapp.com/attachments/1177762529833914371/1220672026109411478/na9zNh-n3-U.jpg?ex=660fca6a&is=65fd556a&hm=c05e00f86d05fb309eb3686cd9fbf5254c8f229e0496cac638e980ea673d2cbc&",
+        "https://cdn.discordapp.com/attachments/1177762529833914371/1220672026633572402/joQrnDASbfA.jpg?ex=660fca6a&is=65fd556a&hm=5ba5a5dcf44aa4b5028b3cb07e1d149a1ac56deefa465179a0962a880291c74b&",
+        "https://cdn.discordapp.com/attachments/1177762529833914371/1220672027242004520/VlJkyiAsfhw.jpg?ex=660fca6a&is=65fd556a&hm=d1b7b9e861472c4888e763434a69adcd5ec6859e67396794e3ae99747fca7ba2&",
+        "https://tenor.com/view/%D0%BF%D1%80%D0%B8%D1%87%D0%B8%D0%BD%D0%B0-%D1%82%D1%80%D1%8F%D1%81%D0%BA%D0%B8-gif-15539768718194097254",
+        "https://tenor.com/view/bleh-cat-silly-cat-cat-sticking-tongue-out-gif-12332973546502369976",
+        "https://tenor.com/view/cat-tiggle-fat-fatcat-chonk-gif-20269238"
+      ];
+      const catstier2 = [
+        "https://cdn.discordapp.com/attachments/1177762529833914371/1220672715971887144/o3_CeQSf1A.jpg?ex=660fcb0e&is=65fd560e&hm=6478a6d233bc2577a2a0e4dfd1234b288b3637df96faa6c503496ff5a8829611&",
+        "https://cdn.discordapp.com/attachments/1177762529833914371/1220672716240191550/f_pPRVr5T5Y.jpg?ex=660fcb0e&is=65fd560e&hm=0b2e456d0458a0877a40f3f6b8dd2b96010d1001633b5f73c95513539efb970a&",
+        "https://cdn.discordapp.com/attachments/1177762529833914371/1220672716537991228/ALQVDv4pHWE.jpg?ex=660fcb0e&is=65fd560e&hm=be2e67735f3bc4d7e302c1eefe73c3013259d6ffabaabaf416a177fcc585c090&",
+        "https://cdn.discordapp.com/attachments/1177762529833914371/1220672716537991228/ALQVDv4pHWE.jpg?ex=660fcb0e&is=65fd560e&hm=be2e67735f3bc4d7e302c1eefe73c3013259d6ffabaabaf416a177fcc585c090&",
+        "https://cdn.discordapp.com/attachments/1177762529833914371/1220672716781387787/MqY1VmQWQTE.jpg?ex=660fcb0e&is=65fd560e&hm=ee6e4240179bfbbbf38ce68fb438437da4b3f2a841b5d96bf2c1cf19590b1069&",
+        "https://cdn.discordapp.com/attachments/1177762529833914371/1220672717020332062/NvVY-sCeON4.jpg?ex=660fcb0e&is=65fd560e&hm=7713bf8f4d7acb69ae80c0c4c8cfd4bf74c0f19a803da5310a68b5c2c888e670&",
+        "https://cdn.discordapp.com/attachments/1177762529833914371/1220672717339103302/97Hk3-xleOY.jpg?ex=660fcb0e&is=65fd560e&hm=70222d9ae88b8f4a6d9b65fefdba1d4c103907febbd5f6978b48d1e0ca2f0c20&",
+        "https://cdn.discordapp.com/attachments/1177762529833914371/1220672717637025823/1bOiD37wHKU.jpg?ex=660fcb0e&is=65fd560e&hm=af767432b97637349289cd3542ab406d9497d2d92b09738b1d70e0a66fcac787&",
+        "https://cdn.discordapp.com/attachments/1177762529833914371/1220672717901135913/6Neu_CLroM4.jpg?ex=660fcb0e&is=65fd560e&hm=8c0e25db91f988f23addaf1e20abb71693964a62236e0cdb3bcf2c6367cf8073&",
+        "https://cdn.discordapp.com/attachments/1177762529833914371/1220672718152798298/gviqm4mghmk.jpg?ex=660fcb0f&is=65fd560f&hm=cbdd6a6f8d0992852b53b475ff4bb08aac91f784ab9f1a74688b0625561e83e6&",
+        "https://cdn.discordapp.com/attachments/1177762529833914371/1220672718375223306/JE_ZBNudPxI.jpg?ex=660fcb0f&is=65fd560f&hm=3286cac77cdce5175c3abca0b09e61cb9a3f651afc10eec0921d6105359a76b3&"
+      ];
+      const catstier3 = [
+      "https://cdn.discordapp.com/attachments/1177762529833914371/1220673253836853299/lr1qJK3j7ME.jpg?ex=660fcb8e&is=65fd568e&hm=3d63dfac1ba97d3e4c5e163976994e8c0a733d591899ac3d4a028c721d20d9ab&",
+      "https://cdn.discordapp.com/attachments/1177762529833914371/1220673254218272898/CvgWs7zRZVg.jpg?ex=660fcb8e&is=65fd568e&hm=11d567642ce580c4f39ecdf95989b2629babc0ad0407363d33b866a76405749a&",
+      "https://cdn.discordapp.com/attachments/1177762529833914371/1220673254507937842/1d020ea095a414ece05f8f28fa1edb72.jpg?ex=660fcb8e&is=65fd568e&hm=7448a81e3c7380e19a17e784796798dbff1ddcd0e96e6739342cff62780bf92d&",
+      "https://cdn.discordapp.com/attachments/1177762529833914371/1220673254885429308/0b6adf9825c3f8cfcf4764b16a6adbe2.png?ex=660fcb8e&is=65fd568e&hm=0ef2e4db186cdb95beb53a7205eff7e3504a8ac679235dcd68b63856cdf2e42f&",
+      "https://cdn.discordapp.com/attachments/1177762529833914371/1220673255287820389/68b7038400c40ce03d83249a532eaee8.jpg?ex=660fcb8f&is=65fd568f&hm=cdababa6e64f4e6c25abea93578a23f371560b58b22115735318d269d979d702&",
+      "https://cdn.discordapp.com/attachments/1177762529833914371/1220673255783006209/58QTsdsqJwI.jpg?ex=660fcb8f&is=65fd568f&hm=9cdf539073aced54b32b5016d8cd62a9ea8fd1732ce8950474a4aea0ee9f2135&",
+      "https://cdn.discordapp.com/attachments/1177762529833914371/1220673255783006209/58QTsdsqJwI.jpg?ex=660fcb8f&is=65fd568f&hm=9cdf539073aced54b32b5016d8cd62a9ea8fd1732ce8950474a4aea0ee9f2135&",
+      "https://cdn.discordapp.com/attachments/1177762529833914371/1220673256068223026/7otSZwhNu8A.jpg?ex=660fcb8f&is=65fd568f&hm=47a45378a50a63be7625b1ed684430a21e31b839c008c114410bdecb551887c4&",
+      "https://cdn.discordapp.com/attachments/1177762529833914371/1220673256357367838/PWFnm72hRLc.jpg?ex=660fcb8f&is=65fd568f&hm=15b42a6cf888035733450258cb7901aa297329aecdb9d9a8e342720bb41b174e&",
+      "https://cdn.discordapp.com/attachments/1177762529833914371/1220673256630255697/XAPR5nd7D_k.jpg?ex=660fcb8f&is=65fd568f&hm=01d014cb0188cecdd077e0e6c2355404c7ccf95b3108e821264f04135d08e7ea&"
+      ];
+      const catstier4 = [
+        "https://cdn.discordapp.com/attachments/1177762529833914371/1220673256877723658/3iqY2JK7UNU.jpg?ex=660fcb8f&is=65fd568f&hm=d4ee1e9456eeca9a6ded8e84912e4e7e052474d8c32576f921528f70fc61c6c3&"
+      ]
+      var imageUrl = "";
+      if (withdrawamount >= 0 && withdrawamount <= 1000) {
+        const randomIndex = Math.floor(Math.random() * catstier1.length);
+        imageUrl = catstier1[randomIndex];
+      } else if (withdrawamount >= 5000 && withdrawamount <= 15000) {
+        const randomIndex = Math.floor(Math.random() * catstier2.length);
+        imageUrl = catstier2[randomIndex];
+      } else if (withdrawamount >= 15000 && withdrawamount <= 50000) {
+        const randomIndex = Math.floor(Math.random() * catstier3.length);
+        imageUrl = catstier3[randomIndex];
+      } else if (withdrawamount > 50000) {
+        const randomIndex = Math.floor(Math.random() * catstier4.length);
+        imageUrl = catstier4[randomIndex];
+      }      
+      window.open(imageUrl, '_blank').focus();
+
+      document.getElementById('withdraw-input').value = "";
+    }, 500);
+  } else {
+    setTimeout(function() {
+      createNotification("Недостаточно баланса.", "top-right", 4500);
+    }, 250);
+  }
+}
+
+function openWithdrawWindow() {
+  var overlay = document.getElementById('overlay');
+  var withdrawBox = document.getElementById('withdraw-box');
+  overlay.style.display = 'block';
+  overlay.style.opacity = '1';
+  withdrawBox.style.display = 'block';
+  withdrawBox.classList.add('show');
+  withdrawBox.style.animation = "";
+  overlay.style.animation = "";
+}
 
 function openNicknameWindow() {
   var overlay = document.getElementById('overlay');
@@ -692,11 +846,14 @@ function openNicknameWindow() {
 function updateUserInfo() {
   var nickname = localStorage.getItem("nickname");
   var balance = localStorage.getItem("data") ? Math.round(Number(globalDecode(localStorage.getItem("data"), nickname))) : 0;
+  var withdrawed = localStorage.getItem("data2") ? Math.round(Number(globalDecode(localStorage.getItem("data2"), nickname))) : 0;
   var userNicknameElement = document.getElementById('user-nickname');
+  var userWithdrawBalance = document.getElementById('withdrawed');
   var userBalanceElement = document.getElementById('user-balance');
 
   userNicknameElement.textContent = nickname || "Гость";
   userBalanceElement.textContent = balance;
+  userWithdrawBalance.textContent = withdrawed;
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -727,6 +884,24 @@ function debitBalance(amount) {
     return false;
   }
 }
+function withdrawBalance(amount) {
+  var nickname = localStorage.getItem("nickname");
+  var currentBalance = localStorage.getItem("data") ? Math.round(Number(globalDecode(localStorage.getItem("data"), nickname))) : 0;
+  var currentWithdrawed = localStorage.getItem("data2") ? Math.round(Number(globalDecode(localStorage.getItem("data2"), nickname))) : 0;
+  
+  if (currentBalance >= amount) {
+    var updatedBalance = currentBalance - amount;
+    var updatedWithdrawed = currentWithdrawed + amount;
+    localStorage.setItem("data", globalEncode(updatedBalance.toString(), nickname));
+    localStorage.setItem("data2", globalEncode(updatedWithdrawed.toString(), nickname));
+    
+    updateUserInfo();
+    
+    return true;
+  } else {
+    return false;
+  }
+}
 
 function creditBalance(amount) {
   var nickname = localStorage.getItem("nickname");
@@ -749,7 +924,7 @@ function startSlotMachine() {
   var time = 85
   var resultBox = document.getElementById('bottom-box');
   var timer = setInterval(function() {
-    var randomNumber = Math.pow(2, Math.floor(Math.random() * 70) + 0).toFixed(0).toString() + Math.pow(2, Math.floor(Math.random() * 25) + 0).toFixed(0).toString().slice(0, -Math.floor(Math.random() * 3)) + Math.pow(2, Math.floor(Math.random() * 64) + 0).toFixed(0).toString().slice(0, -Math.floor(Math.random() * 3)) + Math.pow(2, Math.floor(Math.random() * 70) + 0).toFixed(0).toString().slice(0, -Math.floor(Math.random() * 4)) + Math.pow(2, Math.floor(Math.random() * 48) + 0).toFixed(0).toString().slice(0, -Math.floor(Math.random() * 7))+ Math.pow(2, Math.floor(Math.random() * 64) + 0).toFixed(0).toString().slice(0, -Math.floor(Math.random() * 7))
+    var randomNumber = Math.pow(2, Math.floor(Math.random() * 70) + 0).toFixed(0).toString() + Math.pow(2, Math.floor(Math.random() * 25) + 0).toFixed(0).toString().slice(0, -Math.floor(Math.random() * 3)) + Math.pow(2, Math.floor(Math.random() * 64) + 0).toFixed(0).toString().slice(0, -Math.floor(Math.random() * 3)) + Math.pow(2, Math.floor(Math.random() * 70) + 0).toFixed(0).toString().slice(0, -Math.floor(Math.random() * 4)) + Math.pow(4, Math.floor(Math.random() * 48) + 0).toFixed(0).toString().slice(0, -Math.floor(Math.random() * 32))+ Math.pow(2, Math.floor(Math.random() * 64) + 0).toFixed(0).toString().slice(0, -Math.floor(Math.random() * 7))
     playScrollSound()
     resultBox.textContent = randomNumber;
   }, time);
@@ -762,7 +937,13 @@ function startSlotMachine() {
     createNotification("Выпало: "+maxres,"top-right",4500)
     if(numstav <= maxres) {
       playEndSound()
+      if(Math.floor(Math.random() * 2) == 1) {
+      console.log("random 1")
       var koef = 1.75 + Math.floor(Math.random() * 2) - ((maxres - numstav) * 0.650)
+      } else {
+        console.log("random 2")
+        var koef = 2.25 - ((maxres - numstav) * 0.265)
+      }
       console.log("Кэф:",koef)
       creditBalance(stav*koef);
       console.log("Вы выйграли:",(stav*koef))
@@ -780,6 +961,7 @@ function startSlotMachine() {
     }
   }, 3000); 
 } else {
+  setTimeout(createNotification("Недостаточно баланса.","top-right",4500),250)
   console.log("Баланса недостаточно!")
 }
 }
@@ -831,7 +1013,12 @@ document.addEventListener("DOMContentLoaded", function() {
   if (logoutIcon) {
     logoutIcon.addEventListener("click", function() {
       localStorage.clear();
-      // Дополнительные действия при выходе
+    });
+  }
+  var withdraw = document.getElementById("withdraw-icon");
+  if (withdraw) {
+    withdraw.addEventListener("click", function() {
+      openWithdrawWindow()
     });
   }
 });
@@ -849,12 +1036,21 @@ document.addEventListener("DOMContentLoaded", function() {
       <button class="button-72" onclick="submitNickname()">Готово</button>
     </div>
   </div>
+  <div class="withdraw-box" id="withdraw-box"> 
+    <div class="content">
+      <h1>Вывод дублей</h1>
+      <h3>Всего выведено:<span id="withdrawed"></span> Дублей</h2>
+      <input type="text" id="withdraw-input" class="input-style" placeholder="Сумма для вывода">
+      <button class="button-72" onclick="submitWithdraw()">Вывести</button>
+    </div>
+  </div>
   
   <div class="main-content">
     <div class="user-info-box" id="user-info-box">
       <div class="content">
-        <span>Версия 1.33</span> | <span id="user-nickname"></span> | <span id="user-balance"></span> Дублей
+        <span>Версия 1.4</span> | <span id="user-nickname"></span> | <span id="user-balance"></span> Дублей
         <img id="logout-icon" src="https://cdn.discordapp.com/attachments/1177762529833914371/1220046161356787743/logout.svg?ex=660d8388&is=65fb0e88&hm=76761bf662c3fb6b3b97125e3274ad60537d0521f21ded9e0456a7dae5df8714" alt="logout icon">
+        <img id="withdraw-icon" src="https://cdn.discordapp.com/attachments/1177762529833914371/1220658044543701073/top-up-balance.svg?ex=660fbd64&is=65fd4864&hm=b64475168dea14b69b493d9d407a2b6556571e82dcd724a12d4961816aee8ee7&" alt="withdraw icon">
       </div>
     </div>
     <div class="main-box" id="main-box">
