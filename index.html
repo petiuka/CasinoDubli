@@ -113,34 +113,34 @@ body, html {
   top: 0;
   bottom: 0;
   position: absolute;
-background: linear-gradient(124deg,#5448ff, #0045d0, #6200ff,#006aff,#a600ff,#00d5ff);
-background-size: 800% 800%;
+background: linear-gradient(144deg,#6348ff, #1f00d0, #6200ff,#0044ff,#6038ff,#4c5bff,#54a1ff,#5bb8ff,#003078);
+background-size: 350% 350%;
 
--webkit-animation: rainbow 30s ease infinite;
--z-animation: rainbow 40s ease infinite;
--o-animation: rainbow 35s ease infinite;
+-webkit-animation: rainbow 25s ease infinite;
+-z-animation: rainbow 25s ease infinite;
+-o-animation: rainbow 25s ease infinite;
   animation: rainbow 25s ease infinite;
 }
 
 @-webkit-keyframes rainbow {
-    0%{background-position:0% 82%}
-    50%{background-position:100% 19%;}
-    100%{background-position:0% 82%}
+    0%{background-position:0% 70%}
+    50%{background-position:100% 30%;}
+    100%{background-position:0% 70%}
 }
 @-moz-keyframes rainbow {
-    0%{background-position:0% 82%}
-    50%{background-position:100% 19%;}
-    100%{background-position:0% 82%}
+    0%{background-position:0% 70%}
+    50%{background-position:100% 30%;}
+    100%{background-position:0% 70%}
 }
 @-o-keyframes rainbow {
-    0%{background-position:0% 82%}
-    50%{background-position:100% 19%;}
-    100%{background-position:0% 82%}
+  0%{background-position:0% 70%}
+    50%{background-position:100% 30%;}
+    100%{background-position:0% 70%}
 }
 @keyframes rainbow { 
-    0%{background-position:0% 82%}
-    50%{background-position:100% 19%; }
-    100%{background-position:0% 82%}
+  0%{background-position:0% 70%}
+    50%{background-position:100% 30%;}
+    100%{background-position:0% 70%}
 }
 
 .overlay {
@@ -153,7 +153,7 @@ background-size: 800% 800%;
   backdrop-filter: blur(5px);
   display: none;
   z-index: 1000;
-  animation: fadeInOut 0.5s ease-in-out;
+  animation: fadeInOut 1.75s ease-in-out;
 }
 
 .nickname-box {
@@ -172,7 +172,7 @@ background-size: 800% 800%;
     padding: 20px;
     box-sizing: border-box;
     backdrop-filter: blur(50px);
-    animation: fadeInOut 0.5s ease-in-out;
+    animation: fadeInOut 1.75s ease-in-out;
   }
 
   @keyframes fadeInOut {
@@ -217,17 +217,9 @@ background-size: 800% 800%;
     padding: 20px;
     box-sizing: border-box;
     backdrop-filter: blur(50px);
-    animation: fadeInOut 0.5s ease-in-out;
+    animation: fadeInOut 1.75s ease-in-out;
   }
 
-  @keyframes fadeInOut {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
 
 .withdraw-box.show {
   display: block;
@@ -240,9 +232,11 @@ background-size: 800% 800%;
 @keyframes fadeInOut {
   0% {
     opacity: 0;
+    filter: blur(12.5px);
   }
   100% {
     opacity: 1;
+    filter: blur(0px);
   }
 }
 .user-info-box {
@@ -256,7 +250,7 @@ background-size: 800% 800%;
   padding: 3.5px 80px 3.5px 10px;
   box-sizing: border-box;
   backdrop-filter: blur(10px);
-  animation: fadeInOut 0.5s ease-in-out;
+  animation: fadeInOut 1.75s ease-in-out;
   display: flex;
   align-items: center;
 }
@@ -266,8 +260,8 @@ background-size: 800% 800%;
   height: 30px;
   cursor: pointer;
   filter: invert(100%) sepia(0%) saturate(100%) hue-rotate(0deg) brightness(100%) contrast(100%);
-  margin-left: auto;
-  margin-right: 10px;
+  margin-left: 0.45%;
+  margin-right: 15px;
   top: 50%;
   transform: translateY(-50%);
   position: absolute;
@@ -277,7 +271,7 @@ background-size: 800% 800%;
   height: 30px;
   cursor: pointer;
   filter: invert(100%) sepia(0%) saturate(100%) hue-rotate(0deg) brightness(100%) contrast(100%);
-  margin-left: 7%;
+  margin-left: 9%;
   margin-right: 45px;
   top: 50%;
   transform: translateY(-50%);
@@ -305,7 +299,7 @@ background-size: 800% 800%;
   text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.5);
   box-sizing: border-box;
   backdrop-filter: blur(10px);
-  animation: fadeInOut 0.5s ease-in-out;
+  animation: fadeInOut 1.75s ease-in-out;
 }
 
 .main-box .content {
@@ -330,7 +324,7 @@ background-size: 800% 800%;
   font-size: 1.2em;
   backdrop-filter: blur(20px);
   box-shadow: -1px 1px 17px 3px rgba(0,0,0,0.49), 1px 1px 17px 12px rgba(0,0,0,0.35) inset;
-  animation: fadeInOut 0.5s ease-in-out;
+  animation: fadeInOut 1.75s ease-in-out;
 }
 
 
@@ -812,7 +806,15 @@ function submitWithdraw() {
       "https://cdn.discordapp.com/attachments/1177762529833914371/1220673256630255697/XAPR5nd7D_k.jpg?ex=660fcb8f&is=65fd568f&hm=01d014cb0188cecdd077e0e6c2355404c7ccf95b3108e821264f04135d08e7ea&"
       ];
       const catstier4 = [
-        "https://cdn.discordapp.com/attachments/1177762529833914371/1220673256877723658/3iqY2JK7UNU.jpg?ex=660fcb8f&is=65fd568f&hm=d4ee1e9456eeca9a6ded8e84912e4e7e052474d8c32576f921528f70fc61c6c3&"
+        "https://cdn.discordapp.com/attachments/1177762529833914371/1220673256877723658/3iqY2JK7UNU.jpg?ex=660fcb8f&is=65fd568f&hm=d4ee1e9456eeca9a6ded8e84912e4e7e052474d8c32576f921528f70fc61c6c3&",
+        "https://cdn.discordapp.com/attachments/1177762529833914371/1220727638629289984/3f51cf8fb239acd82f5ebdd5a59d8e7b.jpg?ex=660ffe35&is=65fd8935&hm=d03e9a606080ffe3eb08c9a173636acc4dd8b6ade45db02117ca375fee759a10&",
+        "https://cdn.discordapp.com/attachments/1177762529833914371/1220727638893658253/0045dc5ae32de4802bdedd1ef8f7d85d.png?ex=660ffe35&is=65fd8935&hm=a0fc57a4c36add94b174c235c7a602618c47b7fa28bde618781cf25780da1469&",
+        "https://cdn.discordapp.com/attachments/1177762529833914371/1220727639312957501/HzHB3ErAeI.jpg?ex=660ffe35&is=65fd8935&hm=61dd629b058d6cfad3d822ff4c5ca020a44d7c173917a7d7f99b69d69af645da&",
+        "https://cdn.discordapp.com/attachments/1177762529833914371/1220727639547842724/IFlC67Pcagw.jpg?ex=660ffe35&is=65fd8935&hm=00f7dcc17c27ac9bcc8f6e7f6f49739aa50f409fdd5a9e58b25c393c31029ac6&",
+        "https://cdn.discordapp.com/attachments/1177762529833914371/1220727639791239188/MY2860SANMQ.jpg?ex=660ffe35&is=65fd8935&hm=a6272e5af236f810c3eb23e0b3931d3af007ee4d17741a6ac1d9ec1f2a0354d7&",
+        "https://cdn.discordapp.com/attachments/1177762529833914371/1220727640046960640/C5cyVvvTIrs.jpg?ex=660ffe35&is=65fd8935&hm=3b1add672eb46648baf3f4466fbfc614e3e08694bb5113eaf7408a93ee72dd73&",
+        "https://cdn.discordapp.com/attachments/1177762529833914371/1220727640327983245/iRTHHC-qIZ8.jpg?ex=660ffe35&is=65fd8935&hm=8eae55d47a3be71bc6f1ab4b614309a5e76f174a120430786e3fba49abd30fe3&",
+        "https://cdn.discordapp.com/attachments/1177762529833914371/1220727640617517126/ozkfzU8SN3k.jpg?ex=660ffe35&is=65fd8935&hm=940a80250532735459899affbf6f849a842f52518ab0fe20dc654ba0623b63b4&"
       ]
       var imageUrl = "";
       if (withdrawamount >= 0 && withdrawamount <= 1000) {
@@ -873,6 +875,14 @@ function updateUserInfo() {
 document.addEventListener('DOMContentLoaded', function() {
   if(!localStorage.getItem("nickname")) {
   openNicknameWindow();
+  }
+  if(localStorage.getItem("nickname")) {
+    overlay.style.display = 'block';
+    overlay.style.opacity = '0.5';
+    overlay.style.animation = "fadeOutBlur 1.25s ease-in-out forwards";
+    setTimeout(function() {
+    overlay.style.display = 'none';
+  }, 1250);
   }
     updateUserInfo();
 
@@ -1048,7 +1058,7 @@ if (!Math.floor10) {
   <div class="main-content">
     <div class="user-info-box" id="user-info-box">
       <div class="content">
-        <span>Версия 1.41</span> | <span id="user-nickname"></span> | <span id="user-balance"></span> Дублей
+        <span>Версия 1.5</span> | <span id="user-nickname"></span> | <span id="user-balance"></span> Дублей
         <img id="logout-icon" src="https://cdn.discordapp.com/attachments/1177762529833914371/1220046161356787743/logout.svg?ex=660d8388&is=65fb0e88&hm=76761bf662c3fb6b3b97125e3274ad60537d0521f21ded9e0456a7dae5df8714" alt="logout icon">
         <img id="withdraw-icon" src="https://cdn.discordapp.com/attachments/1177762529833914371/1220658044543701073/top-up-balance.svg?ex=660fbd64&is=65fd4864&hm=b64475168dea14b69b493d9d407a2b6556571e82dcd724a12d4961816aee8ee7&" alt="withdraw icon">
       </div>
