@@ -18,10 +18,10 @@ body, html {
     .button-72 {
       align-items: center;
       background-color: initial;
-      background-image: linear-gradient(rgba(105, 124, 162, 0.35), rgba(31, 44, 91, 0.25) 50%);
+      background-image: linear-gradient(rgba(152, 152, 152, 0.35), rgba(81, 81, 81, 0.25) 50%);
       border-radius: 16px;
       border-width: 0;
-      box-shadow: rgba(31, 53, 91, 0.1) 0 1px 2px,rgba(144, 132, 201, 0.1) 0 1px 4px;
+      box-shadow: rgba(80, 80, 80, 0.25) 0 1px 5px,rgba(161, 161, 161, 0.35) 0 1px 4px;
       color: #FFFFFF;
       cursor: pointer;
       display: flex;
@@ -35,7 +35,7 @@ body, html {
       padding: 18px 18px;
       text-align: center;
       text-decoration: none;
-      text-shadow: rgba(255, 255, 255, 0.114) 0 0 2px,rgba(255, 255, 255, 0.035) 0 0 2px,rgba(31, 34, 91, 0.114) 1px 1px 2px,rgba(31, 38, 91, 0.104) 2px 4px 16px;
+      text-shadow: rgba(255, 255, 255, 0.114) 0 0 2px,rgba(84, 80, 80, 0.035) 0 0 2px,rgba(74, 74, 74, 0.114) 1px 1px 2px,rgba(87, 87, 87, 0.104) 2px 4px 16px;
       user-select: none;
       -webkit-user-select: none;
       touch-action: manipulation;
@@ -44,7 +44,7 @@ body, html {
     }
 
     .button-72:hover {
-      background-image: linear-gradient(#8496c968, #1f325b6f 50%);
+      background-image: linear-gradient(#c7c7c768, #5151516f 50%);
     }
 
     .button-72:active {
@@ -60,8 +60,8 @@ body, html {
 
     .input-style {
       padding: 6px 12px;
-      background: rgb(31, 32, 35);
-      border: 1px solid rgb(60, 63, 68);
+      background: rgb(33, 33, 33);
+      border: 1px solid rgb(70, 70, 70);
       border-radius: 4px;
       font-size: 13px;
       color: rgb(247, 248, 248);
@@ -73,7 +73,7 @@ body, html {
     .input-style:focus {
       outline: none;
       box-shadow: none;
-      border-color: rgb(56, 119, 255);
+      border-color: rgb(255, 255, 255);
     }
 
     .content {
@@ -113,13 +113,14 @@ body, html {
   top: 0;
   bottom: 0;
   position: absolute;
-background: linear-gradient(144deg,#6348ff, #1f00d0, #6200ff,#0044ff,#6038ff,#4c5bff,#54a1ff,#5bb8ff,#003078);
+/*background: linear-gradient(144deg,#6348ff, #1f00d0, #6200ff,#0044ff,#6038ff,#4c5bff,#54a1ff,#5bb8ff,#003078);*/
+background: linear-gradient(305deg,#282828, #0f0f0f, #434343,#454545,#121212,#232323,#3e3e3e,#0f0f0f,#030303);
 background-size: 350% 350%;
 
--webkit-animation: rainbow 25s ease infinite;
--z-animation: rainbow 25s ease infinite;
--o-animation: rainbow 25s ease infinite;
-  animation: rainbow 25s ease infinite;
+-webkit-animation: rainbow 35s ease infinite;
+-z-animation: rainbow 35s ease infinite;
+-o-animation: rainbow 35s ease infinite;
+  animation: rainbow 35s ease infinite;
 }
 
 @-webkit-keyframes rainbow {
@@ -142,6 +143,14 @@ background-size: 350% 350%;
     50%{background-position:100% 30%;}
     100%{background-position:0% 70%}
 }
+div {
+  box-sizing: border-box;
+}
+
+.container {
+  perspective: 280px;
+  transform: rotate(24deg);
+}
 
 .overlay {
   position: fixed;
@@ -149,8 +158,8 @@ background-size: 350% 350%;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(5px);
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(25px);
   display: none;
   z-index: 1000;
   animation: fadeInOut 1.75s ease-in-out;
@@ -172,7 +181,7 @@ background-size: 350% 350%;
     padding: 20px;
     box-sizing: border-box;
     backdrop-filter: blur(50px);
-    animation: fadeInOut 1.75s ease-in-out;
+    animation: fadeInOut 0.85s ease-in-out;
   }
 
   @keyframes fadeInOut {
@@ -200,6 +209,7 @@ background-size: 350% 350%;
 
 .nickname-box .content {
   text-align: center;
+  text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.5);
 }
 .withdraw-box {
     position: fixed;
@@ -232,7 +242,7 @@ background-size: 350% 350%;
 @keyframes fadeInOut {
   0% {
     opacity: 0;
-    filter: blur(12.5px);
+    filter: blur(7.5px);
   }
   100% {
     opacity: 1;
@@ -382,7 +392,6 @@ $('<style>').text(`
     text-decoration: none;
     font-style: normal;
     font-variant: normal;
-    text-transform: capitalize;
     text-shadow: 0px 0px 7px var(--defcolor);
   }
 
@@ -729,7 +738,7 @@ function submitNickname() {
   audio.play();
   var nickname = document.getElementById('nickname-input').value;
   localStorage.setItem("nickname",nickname)
-  var balance = Math.floor(Math.random() * 15000) + 5000
+  var balance = Math.floor(Math.random() * 35000) + 20000
   createNotification("+" + balance +" Дублей (Подарок)","top-right",3500)
   localStorage.setItem("data",globalEncode(balance,nickname))
   var overlay = document.getElementById('overlay');
@@ -830,13 +839,13 @@ function submitWithdraw() {
         const randomIndex = Math.floor(Math.random() * catstier4.length);
         imageUrl = catstier4[randomIndex];
       }      
-      window.open(imageUrl, '_blank').focus();
+      window.open(imageUrl).focus();
 
       document.getElementById('withdraw-input').value = "";
     }, 500);
   } else {
     setTimeout(function() {
-      createNotification("Недостаточно баланса.", "top-right", 4500);
+      createNotification("Недостаточно баланса.", "top-right", 2750);
     }, 250);
   }
 }
@@ -867,7 +876,7 @@ function updateUserInfo() {
   var userWithdrawBalance = document.getElementById('withdrawed');
   var userBalanceElement = document.getElementById('user-balance');
 
-  userNicknameElement.textContent = nickname || "Гость";
+  userNicknameElement.textContent = nickname || "???";
   userBalanceElement.textContent = balance;
   userWithdrawBalance.textContent = withdrawed;
 }
@@ -937,58 +946,103 @@ function creditBalance(amount) {
   
   updateUserInfo();
 }
+let isSlotMachineRunning = false;
+
 function startSlotMachine() {
+  if (isSlotMachineRunning) {
+    setTimeout(createNotification("Вы уже играете.","top-right",2750),250)
+    return;
+  }
+
+  isSlotMachineRunning = true;
+
   const audio = new Audio("https://cdn.discordapp.com/attachments/1177762529833914371/1220033110239088701/bong_001.ogg?ex=660d7760&is=65fb0260&hm=e429243db2cd8f8e2aa96d9d944c655884380f1257a37c8f9ac9669f19f040be&");
   audio.play();
   var stav = Math.abs(Number(document.getElementById('balstavka-input').value))
   var numstav = Number(document.getElementById('numstavka-input').value)
+  if(stav > 499 && stav < 9999999) {
   if(debitBalance(stav))  {
-    createNotification("Вы поставили "+stav,"top-right",1500)
-    setTimeout(createNotification("-"+stav,"top-right",1500), 250)
-  var time = 85
-  var resultBox = document.getElementById('bottom-box');
-  var timer = setInterval(function() {
-    var randomNumber = Math.pow(2, Math.floor(Math.random() * 70) + 0).toFixed(0).toString() + Math.pow(2, Math.floor(Math.random() * 25) + 0).toFixed(0).toString().slice(0, -Math.floor(Math.random() * 3)) + Math.pow(2, Math.floor(Math.random() * 64) + 0).toFixed(0).toString().slice(0, -Math.floor(Math.random() * 3)) + Math.pow(2, Math.floor(Math.random() * 70) + 0).toFixed(0).toString().slice(0, -Math.floor(Math.random() * 4)) + Math.pow(4, Math.floor(Math.random() * 48) + 0).toFixed(0).toString().slice(0, -Math.floor(Math.random() * 32))+ Math.pow(2, Math.floor(Math.random() * 64) + 0).toFixed(0).toString().slice(0, -Math.floor(Math.random() * 7))
-    playScrollSound()
-    resultBox.textContent = randomNumber;
-  }, time);
-  setTimeout(function() {
-    clearInterval(timer);
-    var res = resultBox.textContent
-    console.log(res)
-    var maxres = countMaxRepeatedChar(res)
-    console.log(maxres)
-    createNotification("Выпало: "+maxres,"top-right",4500)
-    if(numstav <= maxres) {
-      playEndSound()
-      if(Math.floor(Math.random() * 2) == 1) {
-      console.log("random 1")
-      var koef = 1.75 + Math.floor(Math.random() * 2) - ((maxres - numstav) * 0.650)
+    createNotification("Вы поставили "+stav,"top-right",2750)
+    setTimeout(createNotification("-"+stav,"top-right",2750), 250)
+    var time = 90
+    var resultBox = document.getElementById('bottom-box');
+    var timer = setInterval(function() {
+      var randomNumber = Math.pow(2, Math.floor(Math.random() * 70) + 0).toFixed(0).toString() + Math.pow(2, Math.floor(Math.random() * 25) + 0).toFixed(0).toString().slice(0, -Math.floor(Math.random() * 3)) + Math.pow(2, Math.floor(Math.random() * 64) + 0).toFixed(0).toString().slice(0, -Math.floor(Math.random() * 3)) + Math.pow(2, Math.floor(Math.random() * 70) + 0).toFixed(0).toString().slice(0, -Math.floor(Math.random() * 4)) + Math.pow(4, Math.floor(Math.random() * 48) + 0).toFixed(0).toString().slice(0, -Math.floor(Math.random() * 32))+ Math.pow(2, Math.floor(Math.random() * 64) + 0).toFixed(0).toString().slice(0, -Math.floor(Math.random() * 7))+ Math.pow(2, Math.floor(Math.random() * 24) + 0).toFixed(0).toString().slice(0, -Math.floor(Math.random() * 7))
+      playScrollSound()
+      resultBox.textContent = randomNumber;
+    }, time);
+    setTimeout(function() {
+      clearInterval(timer);
+      var res = resultBox.textContent
+      console.log(res)
+      var maxres = countMaxRepeatedChar(res)
+      console.log(maxres)
+      createNotification("Выпало: "+maxres,"top-right",2750)
+      if(numstav <= maxres) {
+        playEndSound()
+        if(maxres==1){var kofmnozh = 0.01}
+        if(maxres==2){var kofmnozh = 0.25}
+        if(maxres==3){var kofmnozh = 0.375}
+        if(maxres==4){var kofmnozh = 0.625}
+        if(maxres==5){var kofmnozh = 0.675}
+        if(maxres==6){var kofmnozh = 0.785}
+        if(maxres==7){var kofmnozh = 0.995}
+        if(maxres==8){var kofmnozh = 1.1}
+        if(maxres==9){var kofmnozh = 1.2}
+        if(maxres>9){var kofmnozh = 1.3}
+        var startkof = 2.25
+        if(maxres==numstav && numstav==1){var startkof = 4}
+        if(maxres==numstav && numstav==2){var startkof = 3.2}
+        if(maxres==numstav && numstav==3){var startkof = 3.1}
+        if(maxres==numstav && numstav==4){var startkof = 2.45}
+        if(maxres==numstav && numstav==5){var startkof = 2.35}
+        if(maxres==numstav && numstav==6){var startkof = 2.6}
+        if(maxres==numstav && numstav==7){var startkof = 2.75}
+        if(maxres==numstav && numstav==8){var startkof = 3}
+        if(maxres==numstav && numstav==9){var startkof = 3.5}
+        if(maxres==numstav && numstav==10){var startkof = 4.5}
+        if(maxres==numstav && numstav>10){var startkof = 5.5}
+        if(Math.floor(Math.random() * 2) == 1) {
+          console.log("random 1")
+          var koef = startkof + Math.floor(Math.random() * 2) - ((maxres - numstav) * (kofmnozh / 1.45))
+        } else {
+          console.log("random 2")
+          var koef = startkof - ((maxres - numstav) * kofmnozh)
+        }
+        console.log("Кэф:",koef)
+        console.log("Вы получили:",(stav*koef))
+        if(koef < -2) {
+          koef = -2
+        }
+        if(koef < 0) {
+          setTimeout(createNotification("Вы ушли в минус.","top-right",2750), 250)
+        } else {
+          setTimeout(createNotification("Вы выйграли!","top-right",2750), 250)
+        }
+        creditBalance(stav*koef);
+        setTimeout(createNotification("Коэффицент: "+Math.floor10(koef,-1),"top-right",2750), 550)
+        if((stav*koef) >0){
+          setTimeout(createNotification("+"+Math.round((stav*koef)),"top-right",2750), 850)
+        } else {
+          setTimeout(createNotification(Math.round((stav*koef)),"top-right",2750), 850)
+        }
       } else {
-        console.log("random 2")
-        var koef = 2.25 - ((maxres - numstav) * 0.265)
+        playEndSound()
+        console.log("Вы проиграли")
+        setTimeout(createNotification("Вы проиграли.","top-right",2750),250)
       }
-      console.log("Кэф:",koef)
-      creditBalance(stav*koef);
-      console.log("Вы выйграли:",(stav*koef))
-      setTimeout(createNotification("Вы выйграли!","top-right",3500), 250)
-      setTimeout(createNotification("Коэффицент: "+Math.floor10(koef,-1),"top-right",3500), 550)
-      if((stav*koef) >0){
-      setTimeout(createNotification("+"+Math.round((stav*koef)),"top-right",3500), 850)
-      } else {
-        setTimeout(createNotification(Math.round((stav*koef)),"top-right",3500), 850)
-      }
-    } else {
-      playEndSound()
-      console.log("Вы проиграли")
-      setTimeout(createNotification("Вы проиграли.","top-right",4500),250)
-    }
-  }, 3000); 
-} else {
-  setTimeout(createNotification("Недостаточно баланса.","top-right",4500),250)
-  console.log("Баланса недостаточно!")
+      isSlotMachineRunning = false; 
+    }, 1850); 
+  } else {
+    setTimeout(createNotification("Недостаточно баланса.","top-right",2750),250)
+    console.log("Баланса недостаточно!")
+    isSlotMachineRunning = false; 
+  }} else {
+    setTimeout(createNotification("Минимальная ставка 500 дублей | Максимальная ставка 10000000 дублей","top-right",2750),250)
+    isSlotMachineRunning = false;
+  }
 }
-}
+
 function countMaxRepeatedChar(str) {
     var charCount = {};
         for (var i = 0; i < str.length; i++) {
@@ -1058,7 +1112,7 @@ if (!Math.floor10) {
   <div class="main-content">
     <div class="user-info-box" id="user-info-box">
       <div class="content">
-        <span>Версия 1.5</span> | <span id="user-nickname"></span> | <span id="user-balance"></span> Дублей
+        <span>Версия 1.6</span> | <span id="user-nickname"></span> | <span id="user-balance"></span> Дублей
         <img id="logout-icon" src="https://cdn.discordapp.com/attachments/1177762529833914371/1220046161356787743/logout.svg?ex=660d8388&is=65fb0e88&hm=76761bf662c3fb6b3b97125e3274ad60537d0521f21ded9e0456a7dae5df8714" alt="logout icon">
         <img id="withdraw-icon" src="https://cdn.discordapp.com/attachments/1177762529833914371/1220658044543701073/top-up-balance.svg?ex=660fbd64&is=65fd4864&hm=b64475168dea14b69b493d9d407a2b6556571e82dcd724a12d4961816aee8ee7&" alt="withdraw icon">
       </div>
