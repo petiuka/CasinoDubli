@@ -80,7 +80,7 @@ body, html {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 10px; 
+      gap: 15px; 
       margin: 10px 0; 
     }
     h2 {
@@ -103,7 +103,10 @@ body, html {
   bottom: 0;
   position: absolute;
 }
-
+html {
+  scrollbar-color: #ffffff10 #e0e0e000;
+  scrollbar-width: thin;
+}
 .wrapper:before { 
   content: "";
   height: 100%;
@@ -114,34 +117,16 @@ body, html {
   bottom: 0;
   position: absolute;
 /*background: linear-gradient(144deg,#6348ff, #1f00d0, #6200ff,#0044ff,#6038ff,#4c5bff,#54a1ff,#5bb8ff,#003078);*/
-background: linear-gradient(305deg,#282828, #0f0f0f, #434343,#454545,#121212,#232323,#3e3e3e,#0f0f0f,#030303);
-background-size: 350% 350%;
+background: linear-gradient(305deg,#282828, #0f0f0f, #434343,#454545,#121212,#232323,#3e3e3e,#1d1d1d,#1b1b1b,#1f1f1f,#161616,#1e1e1e,#202020);
+background-size: 450% 450%;
 
--webkit-animation: rainbow 35s ease infinite;
--z-animation: rainbow 35s ease infinite;
--o-animation: rainbow 35s ease infinite;
   animation: rainbow 35s ease infinite;
 }
 
-@-webkit-keyframes rainbow {
-    0%{background-position:0% 70%}
-    50%{background-position:100% 30%;}
-    100%{background-position:0% 70%}
-}
-@-moz-keyframes rainbow {
-    0%{background-position:0% 70%}
-    50%{background-position:100% 30%;}
-    100%{background-position:0% 70%}
-}
-@-o-keyframes rainbow {
-  0%{background-position:0% 70%}
-    50%{background-position:100% 30%;}
-    100%{background-position:0% 70%}
-}
 @keyframes rainbow { 
-  0%{background-position:0% 70%}
-    50%{background-position:100% 30%;}
-    100%{background-position:0% 70%}
+  0%{background-position:0% 70%;background-size: 450% 450%;}
+    50%{background-position:100% 30%;background-size: 950% 950%;}
+    100%{background-position:0% 70%;background-size: 450% 450%;}
 }
 div {
   box-sizing: border-box;
@@ -158,14 +143,19 @@ div {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.65);
-  backdrop-filter: blur(25px);
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(20px);
   display: none;
   z-index: 1000;
-  animation: fadeInOut 1.75s ease-in-out;
+  animation: fadeInBlur 1.25s ease-in-out;
 }
 
 .nickname-box {
+    display: none;
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    gap: 1%; 
     position: fixed;
     top: 50%;
     left: 50%;
@@ -176,13 +166,18 @@ div {
     background: #e2e2e218;
     border: 2.4px solid #efefef16;
     border-radius: 10px;
-    display: none;
-    z-index: 1001;
     padding: 20px;
+    z-index: 1001;
     box-sizing: border-box;
     backdrop-filter: blur(50px);
     animation: fadeInOut 0.85s ease-in-out;
   }
+
+
+  .nickname-box > * {
+    margin: 1% 0; 
+  }
+
 
   @keyframes fadeInOut {
     0% {
@@ -203,15 +198,30 @@ div {
       filter: blur(10px);
     }
   }
-.nickname-box.show {
-  display: block;
-}
+  @keyframes fadeInBlur {
+    0% {
+      opacity: 0;
+      filter: blur(10px);
+    }
+    100% {
+      opacity: 1;
+      filter: blur(0px);
+    }
+  }
 
 .nickname-box .content {
   text-align: center;
   text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.5);
 }
+.nickname-box.show {
+  display: flex;
+}
 .withdraw-box {
+  display: none;
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    gap: 1%; 
     position: fixed;
     top: 50%;
     left: 50%;
@@ -222,21 +232,55 @@ div {
     background: #e2e2e218;
     border: 2.4px solid #efefef16;
     border-radius: 10px;
-    display: none;
-    z-index: 1001;
     padding: 20px;
+    z-index: 1001;
     box-sizing: border-box;
     backdrop-filter: blur(50px);
-    animation: fadeInOut 1.75s ease-in-out;
+    animation: fadeInOut 0.25s ease-in-out;
+  }
+  .withdraw-box > * {
+    margin: 1% 0;
   }
 
-
 .withdraw-box.show {
-  display: block;
+  display: flex;
 }
 
 .withdraw-box .content {
-  text-align: center;
+  text-align: center;   
+}
+.profile-box {
+  display: none;
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    gap: 1%; 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 25%;
+    height: 30%;
+    color: #ffffff;
+    background: #e2e2e218;
+    border: 2.4px solid #efefef16;
+    border-radius: 10px;
+    padding: 20px;
+    z-index: 1001;
+    box-sizing: border-box;
+    backdrop-filter: blur(50px);
+    animation: fadeInOut 0.25s ease-in-out;
+  }
+  .profile-box > * {
+    margin: 1% 0;
+  }
+
+.profile-box.show {
+  display: flex;
+}
+
+.profile-box .content {
+  text-align: center;   
 }
 
 @keyframes fadeInOut {
@@ -249,6 +293,31 @@ div {
     filter: blur(0px);
   }
 }
+.mode-box {
+  position: absolute;
+  top: 1%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  color: white;
+  background: #e2e2e21d;
+  border: 2.4px solid #efefef16;
+  border-radius: 10px;
+  padding: 3.5px 10px 1.5px 10px;
+  box-sizing: border-box;
+  backdrop-filter: blur(10px);
+  animation: fadeInOut 0.25s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.mode-box .content {
+  display: inline-block;
+  white-space: nowrap;
+  font-size: 1.5em;
+  text-align: center;
+  justify-content: center;
+  text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.5);
+}
 .user-info-box {
   position: fixed;
   top: 1%;
@@ -260,33 +329,26 @@ div {
   padding: 3.5px 80px 3.5px 10px;
   box-sizing: border-box;
   backdrop-filter: blur(10px);
-  animation: fadeInOut 1.75s ease-in-out;
+  animation: fadeInOut 0.25s ease-in-out;
   display: flex;
   align-items: center;
+  justify-content: space-between; 
+  padding-right: 15px; 
 }
-
-#logout-icon {
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-  filter: invert(100%) sepia(0%) saturate(100%) hue-rotate(0deg) brightness(100%) contrast(100%);
-  margin-left: 0.45%;
-  margin-right: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  position: absolute;
-}
-#withdraw-icon {
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-  filter: invert(100%) sepia(0%) saturate(100%) hue-rotate(0deg) brightness(100%) contrast(100%);
-  margin-left: 9%;
-  margin-right: 45px;
-  top: 50%;
-  transform: translateY(-50%);
-  position: absolute;
-}
+  #logout-icon, #withdraw-icon, #profile-icon, #dice-icon, #case-icon {
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+      filter: invert(100%) sepia(0%) saturate(100%) hue-rotate(0deg) brightness(100%) contrast(100%) drop-shadow(0px 0px 3px rgba(255, 255, 255, 0.4));
+      margin: 0 5px;
+    }
+  #dice-icon, #case-icon {
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+      filter: invert(100%) sepia(0%) saturate(100%) hue-rotate(0deg) brightness(100%) contrast(100%) drop-shadow(0px 0px 3px rgba(255, 255, 255, 0.4));
+      margin: 0 15px;
+    }
 
 .user-info-box .content {
   display: inline-block;
@@ -309,7 +371,50 @@ div {
   text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.5);
   box-sizing: border-box;
   backdrop-filter: blur(10px);
-  animation: fadeInOut 1.75s ease-in-out;
+  animation: fadeInOut 0.25s ease-in-out;
+}
+.maincase-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  height: 75%;
+  background: #e2e2e218;
+  border: 2.4px solid #efefef16;
+  border-radius: 10px;
+  padding: 10px;
+  color: #FFFFFF;
+  text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.5);
+  box-sizing: border-box;
+  backdrop-filter: blur(10px);
+  animation: fadeInBlur 0.35s ease-in-out forwards;
+  display: none;
+}
+.incase-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  height: 90%;
+  background: #e2e2e218;
+  border: 2.4px solid #efefef16;
+  border-radius: 10px;
+  padding: 10px;
+  color: #FFFFFF;
+  text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.5);
+  box-sizing: border-box;
+  backdrop-filter: blur(10px);
+  animation: fadeInBlur 0.35s ease-in-out forwards;
+  z-index: 1111;
+  display: none;
+}
+.maincase-box .content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 .main-box .content {
@@ -323,7 +428,7 @@ div {
   bottom: 5%;
   left: 50%;
   transform: translateX(-50%);
-  width: 45%;
+  width: 55%;
   background: #333333b2;
   border: 2px solid #1f1f1f4b;
   border-radius: 10px;
@@ -334,26 +439,87 @@ div {
   font-size: 1.2em;
   backdrop-filter: blur(20px);
   box-shadow: -1px 1px 17px 3px rgba(0,0,0,0.49), 1px 1px 17px 12px rgba(0,0,0,0.35) inset;
-  animation: fadeInOut 1.75s ease-in-out;
+  animation: fadeInOut 0.25s ease-in-out;
 }
+.close-icon {
+      position: absolute;
+      top: 2%;
+      right: 2%;
+      filter: invert(100%) sepia(0%) saturate(100%) hue-rotate(0deg) brightness(100%) contrast(100%);
+      cursor: pointer;
+      width: 24px; 
+      height: 24px; 
+      fill: white; 
+    }
+.cases-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; 
+  gap: 25px; 
+  padding: 25px;
+  height: 90%; 
+  width: 100%; 
+  overflow-y: auto; 
+  overflow-x: hidden; 
+}
+
+
+.case-box {
+  width: 30%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 15px;
+  border-radius: 10px;
+  background: #e2e2e200;
+  border: 2.4px solid #efefef16;
+  backdrop-filter: blur(50px);
+  transition: all 1000ms cubic-bezier(0.420, 0.000, 0.580, 1.000)
+}
+.case-box:hover {
+  transition-duration: 150ms;
+  background: #e2e2e20c;
+  box-shadow: 0 5px 20px 10px #0000001e;
+}
+
+.case-name, .case-price {
+  font-weight: bold;
+  font-size: 24px;
+  text-align: center;
+  width: 100%;
+}
+
+.case-image {
+  width: 70%; 
+  height: 50%;
+}
+
+
+@keyframes scrollSkins {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+
+
+
+
 
 
   </style>
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
-  var logoutIcon = document.getElementById("logout-icon");
-  if (logoutIcon) {
-    logoutIcon.addEventListener("click", function() {
-      localStorage.clear();
-    });
-  }
+function logout() {
+  localStorage.clear();
+  window.location.reload();
+}
   var withdraw = document.getElementById("withdraw-icon");
   if (withdraw) {
     withdraw.addEventListener("click", function() {
       openWithdrawWindow()
     });
   }
-});
     var defcolor = "#ffffff"
 function loadJQueryAndThenContent() {
     var jqueryScript = document.createElement('script');
@@ -492,12 +658,25 @@ window.notificate = function(text, corner, lifetime) {
 };
 function playEndSound() {
     const soundUrls = [
-        "https://cdn.discordapp.com/attachments/1177762529833914371/1220029327232729172/dieThrow3.ogg?ex=660d73da&is=65fafeda&hm=92a7cf622a39f60f4cd3921e802fa423089c5ea2bc2afcec6244db1c31d3fab4&",
-        "https://cdn.discordapp.com/attachments/1177762529833914371/1220029327631061072/dieShuffle1.ogg?ex=660d73da&is=65fafeda&hm=ba93716f1ddd9a2d69a455ee542bd303c420092de9791855c47a8588a1b92a82&",
-        "https://cdn.discordapp.com/attachments/1177762529833914371/1220029327962275961/dieShuffle2.ogg?ex=660d73da&is=65fafeda&hm=08373de2c86ec3c79ea97ffb13d3b9144ad9fe3e9c8d2712c4a98eb5eef99274&",
-        "https://cdn.discordapp.com/attachments/1177762529833914371/1220029328318926989/dieShuffle3.ogg?ex=660d73da&is=65fafeda&hm=59ef484248cc2ce17935fea9327809ac841b656a370e0b76fc240945c7b99a2b&",
-        "https://cdn.discordapp.com/attachments/1177762529833914371/1220029328666918922/dieThrow1.ogg?ex=660d73db&is=65fafedb&hm=1271e648397a858e97fbbc1b2156aa913f2103779ca0e067efcb70458005d7bb&",
-        "https://cdn.discordapp.com/attachments/1177762529833914371/1220029328956461128/dieThrow2.ogg?ex=660d73db&is=65fafedb&hm=63c1b4885de191b51caece14aa6e2f54a0d2558cb50f7d218573b3f4f06a9159&"
+        "dieThrow3.ogg",
+        "dieShuffle1.ogg",
+        "dieShuffle2.ogg",
+        "dieShuffle3.ogg",
+        "dieThrow1.ogg",
+        "dieThrow2.ogg"
+    ];
+
+    const randomIndex = Math.floor(Math.random() * soundUrls.length);
+    const randomSoundUrl = soundUrls[randomIndex];
+
+    const audio = new Audio(randomSoundUrl);
+    audio.play();
+}
+function playCaseSound() {
+    const soundUrls = [
+        "drop_001.ogg",
+        "drop_002.ogg",
+        "drop_003.ogg"
     ];
 
     const randomIndex = Math.floor(Math.random() * soundUrls.length);
@@ -508,12 +687,12 @@ function playEndSound() {
 }
 function playScrollSound() {
     const soundUrls = [
-        "https://cdn.discordapp.com/attachments/1177762529833914371/1220031124697382982/chipsStack5.ogg?ex=660d7587&is=65fb0087&hm=90ced100780cd53d789d2c9719943083d683adb7ab4bfdc58d02611bd53681e5&",
-        "https://cdn.discordapp.com/attachments/1177762529833914371/1220031125012086844/chipsStack6.ogg?ex=660d7587&is=65fb0087&hm=1c6731dd9fb2f7d49b5b4fcd4b8742a4934026b2215747dc8549ace9b129d722&",
-        "https://cdn.discordapp.com/attachments/1177762529833914371/1220031125422870638/chipsStack1.ogg?ex=660d7587&is=65fb0087&hm=a7de45c82a75d1acfd80ed2013a50eaae2343bc413312786e5a8a737358b8c54&",
-        "https://cdn.discordapp.com/attachments/1177762529833914371/1220031125964062891/chipsStack2.ogg?ex=660d7587&is=65fb0087&hm=d20e8529d3ebee9a69b3bbfa680f7939b2e1df80b872280eb4c243db5ff9e1e3&",
-        "https://cdn.discordapp.com/attachments/1177762529833914371/1220031126350069810/chipsStack3.ogg?ex=660d7587&is=65fb0087&hm=993a84ef150e4afd2a8294e037dfbe2e6c4525ca2f616f64f27639db8c77c461&",
-        "https://cdn.discordapp.com/attachments/1177762529833914371/1220031126945402961/chipsStack4.ogg?ex=660d7587&is=65fb0087&hm=e9189627075a9b0d05a6b9fabea1ccd1268f75498117dea1a9719fc2d7b88146&"
+        "chipsStack5.ogg",
+        "chipsStack6.ogg",
+        "chipsStack1.ogg",
+        "chipsStack2.ogg",
+        "chipsStack3.ogg",
+        "chipsStack4.ogg"
     ];
 
     const randomIndex = Math.floor(Math.random() * soundUrls.length);
@@ -733,9 +912,467 @@ if(!localStorage.getItem("data") && localStorage.getItem("nickname")) {
   localStorage.setItem("data",globalEncode(balance,nickname))
   localStorage.setItem("data2",globalEncode(withdrawed,nickname))
 }
-function submitNickname() {
-  const audio = new Audio("https://cdn.discordapp.com/attachments/1177762529833914371/1220033110239088701/bong_001.ogg?ex=660d7760&is=65fb0260&hm=e429243db2cd8f8e2aa96d9d944c655884380f1257a37c8f9ac9669f19f040be&");
+function closeWithdrawBox() {
+      var withdrawBox = document.getElementById('withdraw-box');
+      withdrawBox.style.animation = "fadeOutBlur 0.75s ease-in-out forwards";
+      overlay.style.animation = "fadeOutBlur 0.75s ease-in-out forwards";
+      setTimeout(function() {
+        overlay.style.display = 'none';
+        document.querySelector('.withdraw-box').style.display = 'none';
+      }, 750)
+    }
+function closeIncaseBox() {
+      var incaseBox = document.getElementById('incase-box');
+      incaseBox.style.animation = "fadeOutBlur 0.75s ease-in-out forwards";
+      overlay.style.animation = "fadeOutBlur 0.75s ease-in-out forwards";
+      setTimeout(function() {
+        overlay.style.display = 'none';
+        document.querySelector('.incase-box').style.display = 'none';
+      }, 750)
+    }
+
+    function closeProfileBox() {
+      var profileBox = document.getElementById('profile-box');
+      profileBox.style.animation = "fadeOutBlur 0.75s ease-in-out forwards";
+      overlay.style.animation = "fadeOutBlur 0.75s ease-in-out forwards";
+      setTimeout(function() {
+        overlay.style.display = 'none';
+        document.querySelector('.profile-box').style.display = 'none';
+      }, 750)
+    }
+    var csopen = false
+    function closeMainbox() {
+      var mainbox = document.getElementById('main-box');
+      var bottombox = document.getElementById("bottom-box");
+      var maincasebox = document.getElementById("maincase-box")
+      mainbox.style.animation = "fadeOutBlur 0.35s ease-in-out forwards";
+      bottombox.style.animation = "fadeOutBlur 0.35s ease-in-out forwards";
+      maincasebox.style.animation = "fadeInBlur 0.35s ease-in-out forwards";
+      document.querySelector('.maincase-box').style.display = 'block';
+            setTimeout(function() {
+              document.querySelector('.main-box').style.display = 'none';
+              document.querySelector('.bottom-box').style.display = 'none';
+      }, 350)
+      csopen = true
+    }
+    function openMainbox() {
+      if(csopen == true) {
+      var mainbox = document.getElementById('main-box');
+      var bottombox = document.getElementById("bottom-box");
+      var maincasebox = document.getElementById("maincase-box")
+
+      document.querySelector('.main-box').style.display = 'block';
+      document.querySelector('.bottom-box').style.display = 'block';
+      mainbox.style.animation = "fadeInBlur 0.35s ease-in-out forwards";
+      bottombox.style.animation = "fadeInBlur 0.35s ease-in-out forwards";
+      maincasebox.style.animation = "fadeOutBlur 0.35s ease-in-out forwards";
+      document.querySelector('.maincase-box').style.display = 'block';
+            setTimeout(function() {
+              document.querySelector('.maincase-box').style.display = 'none';
+      }, 350)
+    }
+    csopen = false
+    }
+    function addNewCase(id, name, price, imageUrl,skins) {
+  const container = document.querySelector('.cases-container');
+  const caseEl = document.createElement('div');
+  caseEl.className = 'case-box';
+  caseEl.innerHTML = `
+    <div class="case-name">${name}</div>
+    <img src="${imageUrl}" alt="${name}" class="case-image">
+    <div class="case-price">${price} Дублей</div>
+    <button class="button-72" onclick="logCaseData('${id}', '${name}', '${price}', '${imageUrl}');boop()">Открыть</button>
+  `;
+  
+  container.appendChild(caseEl);
+}
+
+function logCaseData(id, name, price, imageUrl, skins) {
+  console.log(`ID: ${id}, Name: ${name}, Price: ${price}, Image: ${imageUrl}`);
+  displayCaseSkins(id)
+}
+document.addEventListener('DOMContentLoaded', () => {
+  addNewCase(1,'Баксы', 1337, 'case1.png');
+  addNewCase(2,'Смауг', 10000, 'case.png');
+  addNewCase(3,'Shopogolic', 100000, 'case3.png');
+});
+const cases = {
+  '1': {
+    id: 1,
+    name: 'Баксы',
+    price: 1337,
+    imageUrl: 'case.png',
+    skins: [
+      { name: "Дубль", imageUrl: "duble.png", price: 125000, chance: 1.25, rare: "Contraband" },
+      { name: "Бакс", imageUrl: "dollar.png", price: 31000, chance: 2.25, rare: "Secret" },
+      { name: "Евро", imageUrl: "euro.png", price: 37500, chance: 2.5, rare: "Secret" },
+      { name: "Польские злоты", imageUrl: "zlota.png", price: 5000, chance: 7.95, rare: "Classified" },
+      { name: "Турецкая лира", imageUrl: "lira.png", price: 10000, chance: 7.95, rare: "Classified" },
+      { name: "Рубль", imageUrl: "ruble.png", price: 2000, chance: 17, rare: "Prohibited" },
+      { name: "Тенге", imageUrl: "tenge.png", price: 1000, chance: 17, rare: "Prohibited" },
+      { name: "Кириешки", imageUrl: "suhar2.png", price: 100, chance: 31.5, rare: "Army quality" },
+      { name: "Сухарики", imageUrl: "suhar1.png", price: 50, chance: 31.5, rare: "Army quality" },
+    ]
+  },
+  '2': {
+    id: 2,
+    name: 'Смауг',
+    price: 10000,
+    imageUrl: 'case2.png',
+    skins: [
+      { name: "Сперма", imageUrl: "cum.png", price: 25000, chance: 4.5, rare: "Contraband" },
+      { name: "Моча", imageUrl: "urine.png", price: 15000, chance: 10, rare: "Secret" },
+      { name: "Говно", imageUrl: "poop.png", price: 2500, chance: 12.5, rare: "Classified" },
+      { name: "Яйко", imageUrl: "egg.png", price: 1000, chance: 25, rare: "Prohibited" },
+    ]
+  },
+  '3': {
+    id: 3,
+    name: 'Shopogolic',
+    price: 100000,
+    imageUrl: 'case3.png',
+    skins: [
+      { name: "Тюрьма", imageUrl: "jail.png", price: -1000000, chance: 2.5, rare: "Contraband" },
+      { name: "Диван NewRock", imageUrl: "divan.png", price: 4000000, chance: 2.5, rare: "Contraband" },
+      { name: "Рюкзак NewRock", imageUrl: "backpack.png", price: 1500000, chance: 5.5, rare: "Secret" },
+      { name: "Башмаки NewRock", imageUrl: "bashmak.png", price: 400000, chance: 8, rare: "Classified" },
+      { name: "Сандали NewRock", imageUrl: "sandals.png", price: 500000, chance: 8, rare: "Classified" },
+      { name: "N Dog Plush", imageUrl: "ndog.png", price: 150000, chance: 15, rare: "Prohibited" },
+      { name: "Гавайка BadDragons", imageUrl: "bdhawai.png", price: 140000, chance: 15, rare: "Prohibited" },
+      { name: "Крестик NewRock", imageUrl: "newrocknecklace.png", price: 10000, chance: 33, rare: "Army quality" },
+      { name: "Деп FarmSkins", imageUrl: "zlota.png", price: 7000, chance: 33, rare: "Army quality" },
+      { name: "Карты BadDragons", imageUrl: "BDcard.png", price: 10000, chance: 33, rare: "Army quality" },
+    ]
+  },
+};
+function generateSkinsLine(skins) {
+  let skinsPool = [];
+  skins.forEach(skin => {
+    for (let i = 0; i < skin.chance; i++) {
+      skinsPool.push(skin);
+    }
+  });
+  skinsPool.sort(() => Math.random() - 0.5);
+
+  return skinsPool;
+}
+function generateRandomNumber(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+function displayCaseSkins(caseId) {
+  const selectedCase = cases[caseId];
+  if (!selectedCase || !Array.isArray(selectedCase.skins)) {
+    console.error('Кейс не найден или skins не является массивом');
+    return;
+  }  
+  console.log(selectedCase)
+  var overlay = document.getElementById('overlay');
+  overlay.style.display = 'block';
+  overlay.style.opacity = '1';
+  overlay.style.animation = "fadeInBlur 0.35s ease-in-out forwards";
+  var incaseBox = document.querySelector('.incase-box');  
+  incaseBox.innerHTML = '<img src="cross.svg" class="close-icon" onclick="closeIncaseBox()" />';
+  incaseBox.style.display = 'flex';
+  incaseBox.style.opacity = '1';
+  incaseBox.style.animation = "fadeInBlur 0.35s ease-in-out forwards";
+  incaseBox.style.flexFlow = 'wrap';
+  incaseBox.style.placeContent = 'flex-end center';
+  incaseBox.style.alignContent = 'flex-start';
+  incaseBox.style.alignItems = 'center';
+  incaseBox.style.justifyContent = 'center';
+  incaseBox.style.flexWrap = 'wrap';
+  incaseBox.style.gap = '10px';
+  incaseBox.style.paddingBottom = '10px';
+
+
+  const caseName = document.createElement('div');
+  caseName.textContent = selectedCase.name;
+  caseName.style.width = '100%';
+  caseName.style.textAlign = 'center';
+  caseName.style.margin = '30px';
+  caseName.style.fontSize = '32px';
+  caseName.style.fontWeight = 'bold';
+  incaseBox.prepend(caseName);
+
+  const skinsshowBox = document.createElement('div');
+  skinsshowBox.style.width = '90%';
+  skinsshowBox.style.height = '25%';
+  skinsshowBox.style.border = '2.4px solid #efefef16';
+  skinsshowBox.style.borderRadius = '15px';
+  skinsshowBox.style.textAlign = 'center';
+  skinsshowBox.style.display = 'flex';
+  skinsshowBox.style.opacity = '1';
+  skinsshowBox.style.animation = "fadeInBlur 0.35s ease-in-out forwards";
+  skinsshowBox.style.flexFlow = 'wrap-reverse';
+  skinsshowBox.style.alignContent = 'center';
+  skinsshowBox.style.alignItems = 'center';
+  skinsshowBox.style.justifyContent = 'center';
+  skinsshowBox.style.flexWrap = 'wrap';
+  skinsshowBox.style.gap = '10px';
+  skinsshowBox.style.background = '#e2e2e200';
+  skinsshowBox.style.backdropFilter = 'blur(50px)';
+  skinsshowBox.style.padding = '10px';
+  skinsshowBox.style.marginBottom = '30px';
+  incaseBox.appendChild(skinsshowBox);
+
+  const line = document.createElement('div');
+  line.style.position = 'absolute';
+  line.style.left = '50%';
+  line.style.top = '0';
+  line.style.bottom = '0';
+  line.style.width = '2px';
+  line.style.filter = "blur(3px)";
+  line.style.backgroundColor = 'rgba(255,255,255,1)';
+  line.zIndex = "111111"
+  skinsshowBox.appendChild(line);
+
+  const openCaseButton = document.createElement('button');
+  openCaseButton.textContent = `Открыть за ${selectedCase.price} Дублей`;
+  openCaseButton.className = 'button-72';
+  openCaseButton.style.marginBottom = '30px';
+  incaseBox.appendChild(openCaseButton);
+
+  const showBox = document.createElement('div');
+  showBox.style.width = '97.5%';
+  showBox.style.border = '2.4px solid #efefef16';
+  showBox.style.borderRadius = '15px';
+  showBox.style.textAlign = 'center';
+  showBox.style.display = 'flex';
+  showBox.style.opacity = '1';
+  showBox.style.animation = "fadeInBlur 0.35s ease-in-out forwards";
+  showBox.style.flexFlow = 'wrap-reverse';
+  showBox.style.alignContent = 'flex-end';
+  showBox.style.alignItems = 'center';
+  showBox.style.justifyContent = 'center';
+  showBox.style.flexWrap = 'wrap';
+  showBox.style.gap = '10px';
+  showBox.style.background = '#e2e2e200';
+  showBox.style.backdropFilter = 'blur(50px)';
+  showBox.style.padding = '10px';
+  showBox.style.marginBottom = '30px';
+  incaseBox.appendChild(showBox);
+
+
+
+  selectedCase.skins.forEach(skin => {
+    const skinBox = document.createElement('div');
+    skinBox.className = 'skin-box';
+    skinBox.style.width = '175px';
+    skinBox.style.height = '165px';
+    skinBox.style.margin = '10px 0'; 
+    skinBox.style.padding = '10px'; 
+    skinBox.style.border = '2.4px solid #efefef16';
+    skinBox.style.borderRadius = '15px';
+    skinBox.style.alignItems = 'center';
+    skinBox.style.textAlign = 'center';
+    skinBox.style.fontSize = '20px';
+    skinBox.style.fontWeight = 'medium';
+    skinBox.style.background = '#e2e2e200';
+    skinBox.style.backdropFilter = 'blur(50px)';
+    skinBox.style.zIndex = "111110"
+    const rareColors = {
+      'Contraband': '#FFD700',
+      'Secret': '#FF0000',
+      'Classified': '#ee00ff',
+      'Prohibited': '#6a00ff',
+      'Army quality': '#005eff'
+    };
+    const borderColor = rareColors[skin.rare] || '#efefef16';
+    skinBox.style.borderBottom = `4px solid ${borderColor}`;
+
+    
+    const skinImage = document.createElement('img');
+    skinImage.src = skin.imageUrl;
+    skinImage.alt = skin.name;
+    skinImage.style.width = '70%';
+    skinImage.style.margin = '0 auto';
+
+    skinBox.innerHTML = `
+      <div>${skin.name}</div>
+    `;
+    skinBox.appendChild(skinImage);
+
+    showBox.appendChild(skinBox);
+  });
+  const skinsshowBox1 = document.createElement('div');
+  skinsshowBox1.style.width = '100%';
+  skinsshowBox1.style.height = '100%';
+  skinsshowBox1.innerHTML = '';
+  skinsshowBox1.style.display = 'flex';
+  skinsshowBox1.style.flexDirection = 'column';
+  skinsshowBox1.style.alignItems = 'center';
+  skinsshowBox1.style.flexWrap = 'wrap';
+  skinsshowBox1.style.overflow = 'hidden';
+  skinsshowBox1.style.borderRadius = '15px';
+  skinsshowBox1.style.textAlign = 'center';
+  skinsshowBox1.style.opacity = '1';
+  skinsshowBox1.style.background = 'rgba(226, 226, 226, 0)';
+  skinsshowBox1.style.justifyContent = 'center';
+  skinsshowBox.appendChild(skinsshowBox1);
+  
+  
+  let isCaseRunning = false;
+
+
+
+  openCaseButton.addEventListener('click', function() {
+    boop()
+    if (isCaseRunning) {
+    setTimeout(createNotification("Вы уже играете.","top-right",2750),250)
+    return;
+    }
+    isCaseRunning = true;
+
+    if(debitBalance(selectedCase.price)) {
+      setTimeout(createNotification(`-`+selectedCase.price,"top-right",2750), 150)
+  skinsshowBox1.innerHTML = '';
+  const totalChances = selectedCase.skins.reduce((acc, skin) => acc + skin.chance, 0);
+  let skinsArray = [];
+
+  for (let i = 0; i < 10; i++) { 
+    selectedCase.skins.forEach(skin => {
+      const proportion = Math.round((skin.chance / totalChances) * 100);
+      for (let j = 0; j < proportion; j++) {
+        skinsArray.push(skin);
+      }
+    });
+  }
+
+  skinsArray = skinsArray.sort(() => 0.5 - Math.random()); 
+
+  let randomIndex = Math.floor(Math.random() * skinsArray.length);
+  let selectedSkin = skinsArray[randomIndex];
+
+  skinsArray.forEach((skin, index) => {
+    const skinBox = document.createElement('div');
+    skinBox.style.display = 'flex';
+    skinBox.style.flexDirection = 'column';
+    skinBox.style.alignItems = 'center';
+    skinBox.style.width = '150px';
+    skinBox.style.height = '99.5%';
+
+    const skinImage = document.createElement('img');
+    skinImage.src = skin.imageUrl;
+    skinImage.alt = skin.name;
+    skinImage.style.width = '85%';
+    skinImage.style.height = '75%';
+
+    const skinName = document.createElement('div');
+    skinName.textContent = skin.name;
+    skinName.style.fontSize = '15px';
+    skinName.style.marginTop = '15px';
+    skinName.style.marginBottom = '5px';
+    skinName.style.color = '#fff';
+
+    const rareLine = document.createElement('div');
+    rareLine.style.width = '100%';
+    rareLine.style.height = '3px';
+    rareLine.style.filter = 'blur(1.5px)';
+    const rareColors = {
+      'Contraband': '#FFD700',
+      'Secret': '#FF0000',
+      'Classified': '#ee00ff',
+      'Prohibited': '#6a00ff',
+      'Army quality': '#005eff'
+    };
+    rareLine.style.backgroundColor = rareColors[skin.rare];
+
+    skinBox.appendChild(skinImage);
+    skinBox.appendChild(skinName);
+    skinBox.appendChild(rareLine);
+    skinsshowBox1.appendChild(skinBox);
+  });
+var type = Math.floor(Math.random() * 4)
+if(type == 1) {var casesroll = Math.floor(generateRandomNumber(45, 55));var duration = Math.floor(generateRandomNumber(4000, 12000)); }
+if(type == 2) {var casesroll = Math.floor(generateRandomNumber(35, 60));var duration = Math.floor(generateRandomNumber(5000, 13000)); }
+if(type == 3) {var casesroll = Math.floor(generateRandomNumber(35, 70));var duration = Math.floor(generateRandomNumber(7000, 12000)); }
+if(type == 4) {var casesroll = Math.floor(generateRandomNumber(45, 130));var duration = Math.floor(generateRandomNumber(7500, 11000)); }
+if(type == 0) {var casesroll = Math.floor(generateRandomNumber(35, 90));var duration = Math.floor(generateRandomNumber(3500, 12000)); }
+  let startScrollX = randomIndex * 150 - ((150 * 4) + (150 * casesroll)); 
+  let endScrollX = startScrollX + (150 * casesroll) + Math.floor(generateRandomNumber(35, 135)); 
+
+  let startTime = null;
+
+function easeInOutCubic(progress,ran,ran2) {
+  return progress < 0.5
+    ? ran * progress * progress * progress
+    : 1 - Math.pow(-2 * progress + 2, 4) / ran2;
+}
+var ran = Math.floor(generateRandomNumber(5, 9))
+var ran2 = Math.floor(generateRandomNumber(4, 12))
+function animate(time) {
+  if (!startTime) startTime = time;
+  const timeElapsed = time - startTime;
+  let progress = timeElapsed / duration;
+
+  if (progress > 1) progress = 1;
+
+  const easing = easeInOutCubic(progress,ran,ran2);
+  const currentScrollX = startScrollX + easing * (endScrollX - startScrollX);
+
+  skinsshowBox1.scrollLeft = currentScrollX;
+
+  if (progress < 1) {
+    requestAnimationFrame(animate);
+  } else {
+    var a = Math.floor(generateRandomNumber(1, 10))
+    if(a > 7) {
+      setTimeout(createNotification(`Вы выиграли невъебенный™ ${selectedSkin.name}`,"top-right",2750), 50)
+      var sellprice = Math.floor(selectedSkin.price * generateRandomNumber(1.25, 4.65))
+    } else if(a <= 2) {
+    setTimeout(createNotification(`Вы выиграли хуёвый™ ${selectedSkin.name}`,"top-right",2750), 50)
+    var sellprice = Math.floor(selectedSkin.price * generateRandomNumber(0.05, 0.35))
+    } else {
+    setTimeout(createNotification(`Вы выиграли ${selectedSkin.name}`,"top-right",2750), 50)
+    var sellprice = Math.floor(selectedSkin.price * generateRandomNumber(0.55, 1.65))
+    }
+    setTimeout(createNotification(`Продан за `+sellprice+" Дублей","top-right",2750), 650)
+    setTimeout(createNotification(`+`+sellprice,"top-right",2750), 1250)
+    creditBalance(sellprice)
+    playCaseSound()
+    isCaseRunning = false;
+  }
+}
+
+requestAnimationFrame(animate);
+} else setTimeout(createNotification(`Недостаточно средств`,"top-right",2750), 150)
+});
+
+
+
+
+
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function boop() {
+  const audio = new Audio("bong_001.ogg");
   audio.play();
+}
+
+
+
+var zati4ka = 0
+function submitNickname() {
+  if(document.getElementById('nickname-input').value !== null && zati4ka == 0) {
+  zati4ka = 1
+boop()
   var nickname = document.getElementById('nickname-input').value;
   localStorage.setItem("nickname",nickname)
   var balance = Math.floor(Math.random() * 35000) + 20000
@@ -743,17 +1380,16 @@ function submitNickname() {
   localStorage.setItem("data",globalEncode(balance,nickname))
   var overlay = document.getElementById('overlay');
   var nicknameBox = document.getElementById('nickname-box');
-  nicknameBox.style.animation = "fadeOutBlur 0.5s ease-in-out forwards";
-  overlay.style.animation = "fadeOutBlur 0.5s ease-in-out forwards";
+  nicknameBox.style.animation = "fadeOutBlur 0.25s ease-in-out forwards";
+  overlay.style.animation = "fadeOutBlur 0.25s ease-in-out forwards";
   createNotification("Добро пожаловать, "+nickname,"top-right",6500)
   setTimeout(function() {
     overlay.style.display = 'none';
     nicknameBox.style.display = 'none';
   }, 500);
-}
+}}
 function submitWithdraw() {
-  const audio = new Audio("https://cdn.discordapp.com/attachments/1177762529833914371/1220033110239088701/bong_001.ogg?ex=660d7760&is=65fb0260&hm=e429243db2cd8f8e2aa96d9d944c655884380f1257a37c8f9ac9669f19f040be&");
-  audio.play();
+boop()
   var withdrawamount = Math.abs(Number(document.getElementById('withdraw-input').value));
   var overlay = document.getElementById('overlay');
   var withdrawBox = document.getElementById('withdraw-box');
@@ -765,8 +1401,8 @@ function submitWithdraw() {
       createNotification(notificationText, "top-right", 4500);
     }, 250);
 
-    withdrawBox.style.animation = "fadeOutBlur 0.5s ease-in-out forwards";
-    overlay.style.animation = "fadeOutBlur 0.5s ease-in-out forwards";
+    withdrawBox.style.animation = "fadeOutBlur 0.25s ease-in-out forwards";
+    overlay.style.animation = "fadeOutBlur 0.25s ease-in-out forwards";
 
     setTimeout(function() {
       overlay.style.display = 'none';
@@ -855,9 +1491,20 @@ function openWithdrawWindow() {
   var withdrawBox = document.getElementById('withdraw-box');
   overlay.style.display = 'block';
   overlay.style.opacity = '1';
-  withdrawBox.style.display = 'block';
+  withdrawBox.style.display = 'flex';
   withdrawBox.classList.add('show');
   withdrawBox.style.animation = "";
+  overlay.style.animation = "";
+}
+
+function openProfileWindow() {
+  var overlay = document.getElementById('overlay');
+  var profileBox = document.getElementById('profile-box');
+  overlay.style.display = 'block';
+  overlay.style.opacity = '1';
+  profileBox.style.display = 'flex';
+  profileBox.classList.add('show');
+  profileBox.style.animation = "";
   overlay.style.animation = "";
 }
 
@@ -865,6 +1512,7 @@ function openNicknameWindow() {
   var overlay = document.getElementById('overlay');
   var nicknameBox = document.getElementById('nickname-box');
   overlay.style.display = 'block';
+  nicknameBox.style.diplay = "flex"
   overlay.style.opacity = '1';
   nicknameBox.classList.add('show');
 }
@@ -873,10 +1521,12 @@ function updateUserInfo() {
   var balance = localStorage.getItem("data") ? Math.round(Number(globalDecode(localStorage.getItem("data"), nickname))) : 0;
   var withdrawed = localStorage.getItem("data2") ? Math.round(Number(globalDecode(localStorage.getItem("data2"), nickname))) : 0;
   var userNicknameElement = document.getElementById('user-nickname');
+  var userNicknameElement2 = document.getElementById('user-nickname2');
   var userWithdrawBalance = document.getElementById('withdrawed');
   var userBalanceElement = document.getElementById('user-balance');
 
   userNicknameElement.textContent = nickname || "???";
+  userNicknameElement2.textContent = nickname || "???";
   userBalanceElement.textContent = balance;
   userWithdrawBalance.textContent = withdrawed;
 }
@@ -888,10 +1538,10 @@ document.addEventListener('DOMContentLoaded', function() {
   if(localStorage.getItem("nickname")) {
     overlay.style.display = 'block';
     overlay.style.opacity = '0.5';
-    overlay.style.animation = "fadeOutBlur 1.25s ease-in-out forwards";
+    overlay.style.animation = "fadeOutBlur 1.55s ease-in-out forwards";
     setTimeout(function() {
     overlay.style.display = 'none';
-  }, 1250);
+  }, 1550);
   }
     updateUserInfo();
 
@@ -956,8 +1606,7 @@ function startSlotMachine() {
 
   isSlotMachineRunning = true;
 
-  const audio = new Audio("https://cdn.discordapp.com/attachments/1177762529833914371/1220033110239088701/bong_001.ogg?ex=660d7760&is=65fb0260&hm=e429243db2cd8f8e2aa96d9d944c655884380f1257a37c8f9ac9669f19f040be&");
-  audio.play();
+boop()
   var stav = Math.abs(Number(document.getElementById('balstavka-input').value))
   var numstav = Number(document.getElementById('numstavka-input').value)
   if(stav > 499 && stav < 9999999) {
@@ -967,7 +1616,7 @@ function startSlotMachine() {
     var time = 90
     var resultBox = document.getElementById('bottom-box');
     var timer = setInterval(function() {
-      var randomNumber = Math.pow(2, Math.floor(Math.random() * 70) + 0).toFixed(0).toString() + Math.pow(2, Math.floor(Math.random() * 25) + 0).toFixed(0).toString().slice(0, -Math.floor(Math.random() * 3)) + Math.pow(2, Math.floor(Math.random() * 64) + 0).toFixed(0).toString().slice(0, -Math.floor(Math.random() * 3)) + Math.pow(2, Math.floor(Math.random() * 70) + 0).toFixed(0).toString().slice(0, -Math.floor(Math.random() * 4)) + Math.pow(4, Math.floor(Math.random() * 48) + 0).toFixed(0).toString().slice(0, -Math.floor(Math.random() * 32))+ Math.pow(2, Math.floor(Math.random() * 64) + 0).toFixed(0).toString().slice(0, -Math.floor(Math.random() * 7))+ Math.pow(2, Math.floor(Math.random() * 24) + 0).toFixed(0).toString().slice(0, -Math.floor(Math.random() * 7))
+      var randomNumber = Math.pow(2, Math.floor(Math.random() * 70) + 0).toFixed(0).toString() + Math.pow(2, Math.floor(Math.random() * 55) + 0).toFixed(0).toString().slice(0, -Math.floor(Math.random() * 5)) + Math.pow(2, Math.floor(Math.random() * 64) + 0).toFixed(0).toString().slice(0, -Math.floor(Math.random() * 3)) + Math.pow(2, Math.floor(Math.random() * 70) + 0).toFixed(0).toString().slice(0, -Math.floor(Math.random() * 4)) + Math.pow(4, Math.floor(Math.random() * 48) + 0).toFixed(0).toString().slice(0, -Math.floor(Math.random() * 32))+ Math.pow(2, Math.floor(Math.random() * 64) + 0).toFixed(0).toString().slice(0, -Math.floor(Math.random() * 7))+ Math.pow(2, Math.floor(Math.random() * 24) + 0).toFixed(0).toString().slice(0, -Math.floor(Math.random() * 7))
       playScrollSound()
       resultBox.textContent = randomNumber;
     }, time);
@@ -990,17 +1639,17 @@ function startSlotMachine() {
         if(maxres==8){var kofmnozh = 1.1}
         if(maxres==9){var kofmnozh = 1.2}
         if(maxres>9){var kofmnozh = 1.3}
-        var startkof = 2.25
+        var startkof = 2.865
         if(maxres==numstav && numstav==1){var startkof = 4}
         if(maxres==numstav && numstav==2){var startkof = 3.2}
         if(maxres==numstav && numstav==3){var startkof = 3.1}
         if(maxres==numstav && numstav==4){var startkof = 2.45}
-        if(maxres==numstav && numstav==5){var startkof = 2.35}
-        if(maxres==numstav && numstav==6){var startkof = 2.6}
-        if(maxres==numstav && numstav==7){var startkof = 2.75}
-        if(maxres==numstav && numstav==8){var startkof = 3}
-        if(maxres==numstav && numstav==9){var startkof = 3.5}
-        if(maxres==numstav && numstav==10){var startkof = 4.5}
+        if(maxres==numstav && numstav==5){var startkof = 2.15}
+        if(maxres==numstav && numstav==6){var startkof = 2.25}
+        if(maxres==numstav && numstav==7){var startkof = 2.85}
+        if(maxres==numstav && numstav==8){var startkof = 3.5}
+        if(maxres==numstav && numstav==9){var startkof = 4.35}
+        if(maxres==numstav && numstav==10){var startkof = 4.75}
         if(maxres==numstav && numstav>10){var startkof = 5.5}
         if(Math.floor(Math.random() * 2) == 1) {
           console.log("random 1")
@@ -1011,8 +1660,8 @@ function startSlotMachine() {
         }
         console.log("Кэф:",koef)
         console.log("Вы получили:",(stav*koef))
-        if(koef < -2) {
-          koef = -2
+        if(koef < -1.25) {
+          koef = -1.25
         }
         if(koef < 0) {
           setTimeout(createNotification("Вы ушли в минус.","top-right",2750), 250)
@@ -1084,7 +1733,6 @@ if (!Math.floor10) {
     };
   }
 
-//CONSOLE.log("Баланс:",balance)
 
 
 
@@ -1101,21 +1749,39 @@ if (!Math.floor10) {
     </div>
   </div>
   <div class="withdraw-box" id="withdraw-box"> 
+    <img src="cross.svg" class="close-icon" onclick="closeWithdrawBox()" />
+
     <div class="content">
       <h1>Вывод дублей</h1>
-      <h3>Всего выведено:<span id="withdrawed"></span> Дублей</h2>
       <input type="text" id="withdraw-input" class="input-style" placeholder="Сумма для вывода">
       <button class="button-72" onclick="submitWithdraw()">Вывести</button>
     </div>
   </div>
-  
+  <div class="profile-box" id="profile-box"> 
+    <img src="cross.svg" class="close-icon" onclick="closeProfileBox()" />
+
+    <div class="content">
+      <h1>Профиль <span id="user-nickname2">Nickname</span></h1>
+      <h3>Всего выведено:<span id="withdrawed"></span> Дублей</h2>
+      <button class="button-72" onclick="logout()">Выйти из аккаунта</button>
+    </div>
+  </div>
   <div class="main-content">
-    <div class="user-info-box" id="user-info-box">
+    <div class="mode-box">
+      <img id="dice-icon" src="dice.svg" onclick="openMainbox();boop()">
       <div class="content">
-        <span>Версия 1.6</span> | <span id="user-nickname"></span> | <span id="user-balance"></span> Дублей
-        <img id="logout-icon" src="https://cdn.discordapp.com/attachments/1177762529833914371/1220046161356787743/logout.svg?ex=661ff888&is=660d8388&hm=45b0bab694d3c4f95243ddd4b2f179419c702d7520e385d80edd2981572e8b44&" alt="logout icon">
-        <img id="withdraw-icon" src="https://cdn.discordapp.com/attachments/1177762529833914371/1220658044543701073/top-up-balance.svg?ex=660fbd64&is=65fd4864&hm=b64475168dea14b69b493d9d407a2b6556571e82dcd724a12d4961816aee8ee7&" alt="withdraw icon">
+        <span>/</span>
+    </div>
+    <img id="case-icon" src="case.svg" onclick="closeMainbox();boop()">
+    </div>
+    <div class="user-info-box">
+      <img id="logout-icon" src="profile_icon.svg" onclick="openProfileWindow()">
+      <div class="content">
+        <span id="user-nickname">Nickname</span> | Версия:1.7 | Баланс:<span id="user-balance">0</span> Дублей
       </div>
+      <img id="withdraw-icon" src="withdraw_icon.svg" onclick="openWithdrawWindow()">
+    </div>
+    </div>
     </div>
     <div class="main-box" id="main-box">
       <div class="content">
@@ -1123,6 +1789,15 @@ if (!Math.floor10) {
         <input type="text" id="balstavka-input" class="input-style" placeholder="Ставка">
         <input type="text" id="numstavka-input" class="input-style" placeholder="Какое число будет меньше кол-ва повторов самого частого числа">
         <button class="button-72" onclick="startSlotMachine()">Начать</button>
+      </div>
+    </div>
+    <div class="incase-box" id="incase-box">
+      <img src="cross.svg" class="close-icon" onclick="closeIncaseBox()" />
+    </div>
+    <div class="maincase-box" id="maincase-box">
+      <div class="content">
+        <h1>Кейсы</h1>
+        <div class="cases-container"></div>
       </div>
     </div>
     <div class="bottom-box" id="bottom-box">
