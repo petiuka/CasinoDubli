@@ -1036,9 +1036,9 @@ const cases = {
       { name: "Сандали NewRock", imageUrl: "sandals.png", price: 500000, chance: 8.5, rare: "Classified" },
       { name: "N Dog Plush", imageUrl: "ndog.png", price: 110000, chance: 16, rare: "Prohibited" },
       { name: "Гавайка BadDragons", imageUrl: "bdhawai.png", price: 90000, chance: 16, rare: "Prohibited" },
-      { name: "Крестик NewRock", imageUrl: "newrocknecklace.png", price: 10000, chance: 35, rare: "Army quality" },
-      { name: "Деп FarmSkins", imageUrl: "zlota.png", price: 7000, chance: 35, rare: "Army quality" },
-      { name: "Карты BadDragons", imageUrl: "BDcard.png", price: 10000, chance: 35, rare: "Army quality" },
+      { name: "Крестик NewRock", imageUrl: "newrocknecklace.png", price: 10000, chance: 34, rare: "Army quality" },
+      { name: "Деп FarmSkins", imageUrl: "zlota.png", price: 7000, chance: 34, rare: "Army quality" },
+      { name: "Карты BadDragons", imageUrl: "BDcard.png", price: 10000, chance: 34, rare: "Army quality" },
     ]
   },
 };
@@ -1325,7 +1325,7 @@ function animate(time) {
     if(a > 7) {
       setTimeout(createNotification(`Вы выиграли невъебенный™ ${selectedSkin.name}`,"top-right",2750), 50)
       var sellprice = Math.floor(selectedSkin.price * generateRandomNumber(1.45, 6.65))
-    } else if(a <= 2) {
+    } else if(a == 1) {
     setTimeout(createNotification(`Вы выиграли хуёвый™ ${selectedSkin.name}`,"top-right",2750), 50)
     var sellprice = Math.floor(selectedSkin.price * generateRandomNumber(0.05, 0.45))
     } else {
@@ -1782,7 +1782,7 @@ if (!Math.floor10) {
     <div class="user-info-box">
       <img id="logout-icon" src="profile_icon.svg" onclick="openProfileWindow()">
       <div class="content">
-        <span id="user-nickname">Nickname</span> | Версия:1.72 | Баланс:<span id="user-balance">0</span> Дублей
+        <span id="user-nickname">Nickname</span> | Версия:1.73 | Баланс:<span id="user-balance">0</span> Дублей
       </div>
       <img id="withdraw-icon" src="withdraw_icon.svg" onclick="openWithdrawWindow()">
     </div>
