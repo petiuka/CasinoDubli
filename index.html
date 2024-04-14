@@ -394,7 +394,7 @@ div {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 70%;
-  height: 90%;
+  height: 95%;
   background: #e2e2e218;
   border: 2.4px solid #efefef16;
   border-radius: 10px;
@@ -992,6 +992,7 @@ document.addEventListener('DOMContentLoaded', () => {
   addNewCase(2,'Смауг', 10000, 'case.png');
   addNewCase(3,'Shopogolic', 125000, 'case3.png');
   addNewCase(4,'Платёжки', 1000000, 'paymentcase/preview.png');
+  addNewCase(5,'MIX №1', 25000, 'mixpreview.png');
 });
 const cases = {
   '1': {
@@ -1048,14 +1049,32 @@ const cases = {
     imageUrl: 'paymentcase/preview.png',
     skins: [
       { name: "Brain Tree", imageUrl: "paymentcase/b3.png", price: 19000000, chance: 2, rare: "Contraband" },
-      { name: "Adyen", imageUrl: "paymentcase/adyen.png", price: 9000000, chance: 5.5, rare: "Secret" },
-      { name: "ZEN", imageUrl: "paymentcase/zen.png", price: 2800000, chance: 8.5, rare: "Classified" },
-      { name: "Stripe", imageUrl: "paymentcase/stripe.png", price: 2500000, chance: 8.5, rare: "Classified" },
-      { name: "Shopify", imageUrl: "paymentcase/shop.png", price: 500000, chance: 16, rare: "Prohibited" },
-      { name: "GMPays", imageUrl: "paymentcase/gm.png", price: 170000, chance: 16, rare: "Prohibited" },
-      { name: "Пэйпалыч", imageUrl: "paymentcase/pp.png", price: 50000, chance: 31, rare: "Army quality" },
-      { name: "NicePay", imageUrl: "paymentcase/nicepay.png", price: -10000, chance: 31, rare: "Army quality" },
-      { name: "СБП", imageUrl: "paymentcase/sbp.png", price: 60000, chance: 31, rare: "Army quality" },
+      { name: "Adyen", imageUrl: "paymentcase/adyen.png", price: 9000000, chance: 4.75, rare: "Secret" },
+      { name: "ZEN", imageUrl: "paymentcase/zen.png", price: 1600000, chance: 8, rare: "Classified" },
+      { name: "Stripe", imageUrl: "paymentcase/stripe.png", price: 2000000, chance: 8, rare: "Classified" },
+      { name: "Shopify", imageUrl: "paymentcase/shop.png", price: 500000, chance: 18, rare: "Prohibited" },
+      { name: "Пэйпалыч", imageUrl: "paymentcase/pp.png", price: 170000, chance: 18, rare: "Prohibited" },
+      { name: "GMPays", imageUrl: "paymentcase/gm.png", price: 50000, chance: 31, rare: "Army quality" },
+      { name: "NicePay", imageUrl: "paymentcase/nicepay.png", price: -10000, chance: 30.5, rare: "Army quality" },
+      { name: "СБП", imageUrl: "paymentcase/sbp.png", price: 60000, chance: 30.5, rare: "Army quality" },
+    ]
+  },
+  '5': {
+    id: 5,
+    name: 'MIX №1',
+    price: 25000,
+    imageUrl: 'mixpreview.png',
+    skins: [
+      { name: "Сперма", imageUrl: "cum.png", price: 25000, chance: 5, rare: "Contraband" },
+      { name: "Brain Tree", imageUrl: "paymentcase/b3.png", price: 19000000, chance: 0.75, rare: "Contraband" },
+      { name: "Бакс", imageUrl: "dollar.png", price: 31000, chance: 8.75, rare: "Secret" },
+      { name: "Говно", imageUrl: "poop.png", price: 2500, chance: 35.5, rare: "Classified" },
+      { name: "Турецкая лира", imageUrl: "lira.png", price: 3000, chance: 15.95, rare: "Classified" },
+      { name: "Гавайка BadDragons", imageUrl: "bdhawai.png", price: 90000, chance: 16, rare: "Prohibited" },
+      { name: "Яйко", imageUrl: "egg.png", price: 1000, chance: 35, rare: "Prohibited" },
+      { name: "GMPays", imageUrl: "paymentcase/gm.png", price: 50000, chance: 25, rare: "Army quality" },
+      { name: "NicePay", imageUrl: "paymentcase/nicepay.png", price: -10000, chance: 52, rare: "Army quality" },
+      { name: "Сухарики", imageUrl: "suhar1.png", price: 13, chance: 39.5, rare: "Army quality" },
     ]
   },
 };
@@ -1277,13 +1296,11 @@ incaseBox.appendChild(openCaseButton);
     const skinImage = document.createElement('img');
     skinImage.src = skin.imageUrl;
     skinImage.alt = skin.name;
-    skinImage.style.width = '85%';
+    skinImage.style.width = '80%';
 
     const skinName = document.createElement('div');
     skinName.textContent = skin.name;
     skinName.style.fontSize = '15px';
-    skinName.style.marginTop = '15px';
-    skinName.style.marginBottom = '5px';
     skinName.style.color = '#fff';
 
     const rareLine = document.createElement('div');
@@ -1311,7 +1328,7 @@ if(type == 3) {var casesroll = Math.floor(generateRandomNumber(45, 80));var dura
 if(type == 4) {var casesroll = Math.floor(generateRandomNumber(45, 130));var duration = Math.floor(generateRandomNumber(7500, 15000)); }
 if(type == 0) {var casesroll = Math.floor(generateRandomNumber(45, 190));var duration = Math.floor(generateRandomNumber(5500, 17000)); }
   let startScrollX = randomIndex * 150 - ((150 * 3) + (150 * casesroll)); 
-  let endScrollX = startScrollX + (150 * casesroll) + Math.floor(generateRandomNumber(46, 135)); 
+  let endScrollX = startScrollX + (150 * casesroll) + Math.floor(generateRandomNumber(55, 135)); 
 
   let startTime = null;
 
@@ -1338,7 +1355,7 @@ function animate(time) {
     requestAnimationFrame(animate);
   } else {
     var a = Math.floor(generateRandomNumber(1, 10))
-    if(a > 7) {
+    if(a > 8) {
       setTimeout(createNotification(`Вы выиграли невъебенный™ ${selectedSkin.name}`,"top-right",2750), 50)
       var sellprice = Math.floor(selectedSkin.price * generateRandomNumber(1.45, 6.65))
     } else if(a == 1) {
@@ -1348,8 +1365,12 @@ function animate(time) {
     setTimeout(createNotification(`Вы выиграли ${selectedSkin.name}`,"top-right",2750), 50)
     var sellprice = Math.floor(selectedSkin.price * generateRandomNumber(0.35, 2.1))
     }
-    setTimeout(createNotification(`Продан за `+sellprice+" Дублей","top-right",2750), 650)
-    setTimeout(createNotification(`+`+sellprice,"top-right",2750), 1250)
+    if((sellprice) >0){
+      setTimeout(createNotification(`Продан за `+sellprice+" Дублей","top-right",2750), 1650)
+      setTimeout(createNotification(`+`+sellprice,"top-right",2750), 2250)
+        } else {
+          setTimeout(createNotification(sellprice,"top-right",2750), 2250)
+        }
     creditBalance(sellprice)
     playCaseSound()
     isCaseRunning = false;
@@ -1390,7 +1411,7 @@ function boop() {
 
 
 var zati4ka = 0
-var version = "1.8"
+var version = "1.9"
 function submitNickname() {
   if(document.getElementById('nickname-input').value !== null && zati4ka == 0) {
   zati4ka = 1
@@ -1792,7 +1813,7 @@ if (!Math.floor10) {
     <div class="user-info-box">
       <img id="logout-icon" src="profile_icon.svg" onclick="openProfileWindow()">
       <div class="content">
-        <span id="user-nickname">Nickname</span> | Версия:1.8 | Баланс:<span id="user-balance">0</span> Дублей
+        <span id="user-nickname">Nickname</span> | Версия:1.9 | Баланс:<span id="user-balance">0</span> Дублей
       </div>
       <img id="withdraw-icon" src="withdraw_icon.svg" onclick="openWithdrawWindow()">
     </div>
