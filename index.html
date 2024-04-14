@@ -991,6 +991,7 @@ document.addEventListener('DOMContentLoaded', () => {
   addNewCase(1,'Баксы', 1337, 'case1.png');
   addNewCase(2,'Смауг', 10000, 'case.png');
   addNewCase(3,'Shopogolic', 125000, 'case3.png');
+  addNewCase(4,'Платёжки', 1000000, 'paymentcase/preview.png');
 });
 const cases = {
   '1': {
@@ -1038,6 +1039,23 @@ const cases = {
       { name: "Крестик NewRock", imageUrl: "newrocknecklace.png", price: 10000, chance: 34, rare: "Army quality" },
       { name: "Деп FarmSkins", imageUrl: "zlota.png", price: 7000, chance: 34, rare: "Army quality" },
       { name: "Карты BadDragons", imageUrl: "BDcard.png", price: 10000, chance: 34, rare: "Army quality" },
+    ]
+  },
+  '4': {
+    id: 4,
+    name: 'Платёжки',
+    price: 1000000,
+    imageUrl: 'paymentcase/preview.png',
+    skins: [
+      { name: "Brain Tree", imageUrl: "paymentcase/b3.png", price: 19000000, chance: 2, rare: "Contraband" },
+      { name: "Adyen", imageUrl: "paymentcase/adyen.png", price: 9000000, chance: 5.5, rare: "Secret" },
+      { name: "ZEN", imageUrl: "paymentcase/zen.png", price: 2800000, chance: 8.5, rare: "Classified" },
+      { name: "Stripe", imageUrl: "paymentcase/stripe.png", price: 2500000, chance: 8.5, rare: "Classified" },
+      { name: "Shopify", imageUrl: "paymentcase/shop.png", price: 500000, chance: 16, rare: "Prohibited" },
+      { name: "GMPays", imageUrl: "paymentcase/gm.png", price: 170000, chance: 16, rare: "Prohibited" },
+      { name: "Пэйпалыч", imageUrl: "paymentcase/pp.png", price: 50000, chance: 31, rare: "Army quality" },
+      { name: "NicePay", imageUrl: "paymentcase/nicepay.png", price: -10000, chance: 31, rare: "Army quality" },
+      { name: "СБП", imageUrl: "paymentcase/sbp.png", price: 60000, chance: 31, rare: "Army quality" },
     ]
   },
 };
@@ -1372,7 +1390,7 @@ function boop() {
 
 
 var zati4ka = 0
-var version = "1.74"
+var version = "1.8"
 function submitNickname() {
   if(document.getElementById('nickname-input').value !== null && zati4ka == 0) {
   zati4ka = 1
@@ -1774,7 +1792,7 @@ if (!Math.floor10) {
     <div class="user-info-box">
       <img id="logout-icon" src="profile_icon.svg" onclick="openProfileWindow()">
       <div class="content">
-        <span id="user-nickname">Nickname</span> | Версия:1.74 | Баланс:<span id="user-balance">0</span> Дублей
+        <span id="user-nickname">Nickname</span> | Версия:1.8 | Баланс:<span id="user-balance">0</span> Дублей
       </div>
       <img id="withdraw-icon" src="withdraw_icon.svg" onclick="openWithdrawWindow()">
     </div>
