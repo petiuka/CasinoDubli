@@ -19,20 +19,20 @@ body, html {
       align-items: center;
       background-color: initial;
       background-image: linear-gradient(rgba(152, 152, 152, 0.35), rgba(81, 81, 81, 0.25) 50%);
-      border-radius: 16px;
+      border-radius: 0.46cm;
       border-width: 0;
       box-shadow: rgba(80, 80, 80, 0.25) 0 1px 5px,rgba(161, 161, 161, 0.35) 0 1px 4px;
       color: #FFFFFF;
       cursor: pointer;
       display: flex;
       font-family: Quicksand,sans-serif;
-      font-size: 18px;
+      font-size: calc(0.2em + 1vw);
       font-weight: 700;
       justify-content: center;
       letter-spacing: .04em;
-      line-height: 8px;
+      min-height: 8px;
       margin: 0;
-      padding: 18px 18px;
+      padding: 7px 12px;
       text-align: center;
       text-decoration: none;
       text-shadow: rgba(255, 255, 255, 0.114) 0 0 2px,rgba(84, 80, 80, 0.035) 0 0 2px,rgba(74, 74, 74, 0.114) 1px 1px 2px,rgba(87, 87, 87, 0.104) 2px 4px 16px;
@@ -51,12 +51,6 @@ body, html {
       transform: translateY(1px);
     }
 
-    @media (min-width: 768px) {
-      .button-72 {
-        font-size: 21px;
-        padding: 18px 34px;
-      }
-    }
 
     .input-style {
       padding: 6px 12px;
@@ -83,14 +77,17 @@ body, html {
       gap: 15px; 
       margin: 10px 0; 
     }
+    h3 {
+      font-size: calc(0.2em + 1vw);
+      margin: 5px 0; 
+    } 
     h2 {
+      font-size: calc(0.2em + 1.1vw);
       margin: 5px 0; 
     }
     h1 {
+      font-size: calc(0.2em + 1.2vw);
       margin: 5px 0; 
-    }
-    h2 {
-      margin: 1px 0; 
     }
 
 
@@ -1003,15 +1000,15 @@ const cases = {
     price: 1337,
     imageUrl: 'case.png',
     skins: [
-      { name: "Дубль", imageUrl: "duble.png", price: 125000, chance: 1.25, rare: "Contraband" },
+      { name: "Дубль", imageUrl: "duble.png", price: 125000, chance: 0.65, rare: "Contraband" },
       { name: "Бакс", imageUrl: "dollar.png", price: 31000, chance: 2.25, rare: "Secret" },
-      { name: "Евро", imageUrl: "euro.png", price: 37500, chance: 2.5, rare: "Secret" },
-      { name: "Польские злоты", imageUrl: "zlota.png", price: 5000, chance: 7.95, rare: "Classified" },
-      { name: "Турецкая лира", imageUrl: "lira.png", price: 10000, chance: 7.95, rare: "Classified" },
-      { name: "Рубль", imageUrl: "ruble.png", price: 2000, chance: 17, rare: "Prohibited" },
-      { name: "Тенге", imageUrl: "tenge.png", price: 1000, chance: 17, rare: "Prohibited" },
-      { name: "Кириешки", imageUrl: "suhar2.png", price: 100, chance: 31.5, rare: "Army quality" },
-      { name: "Сухарики", imageUrl: "suhar1.png", price: 50, chance: 31.5, rare: "Army quality" },
+      { name: "Евро", imageUrl: "euro.png", price: 27500, chance: 2.25, rare: "Secret" },
+      { name: "Польские злоты", imageUrl: "zlota.png", price: 4000, chance: 7.95, rare: "Classified" },
+      { name: "Турецкая лира", imageUrl: "lira.png", price: 3000, chance: 7.95, rare: "Classified" },
+      { name: "Рубль", imageUrl: "ruble.png", price: 1111, chance: 17, rare: "Prohibited" },
+      { name: "Тенге", imageUrl: "tenge.png", price: 500, chance: 17, rare: "Prohibited" },
+      { name: "Кириешки", imageUrl: "suhar2.png", price: 34, chance: 33.5, rare: "Army quality" },
+      { name: "Сухарики", imageUrl: "suhar1.png", price: 13, chance: 33.5, rare: "Army quality" },
     ]
   },
   '2': {
@@ -1023,25 +1020,25 @@ const cases = {
       { name: "Сперма", imageUrl: "cum.png", price: 25000, chance: 4.5, rare: "Contraband" },
       { name: "Моча", imageUrl: "urine.png", price: 15000, chance: 10, rare: "Secret" },
       { name: "Говно", imageUrl: "poop.png", price: 2500, chance: 12.5, rare: "Classified" },
-      { name: "Яйко", imageUrl: "egg.png", price: 1000, chance: 25, rare: "Prohibited" },
+      { name: "Яйко", imageUrl: "egg.png", price: 1000, chance: 32.5, rare: "Prohibited" },
     ]
   },
   '3': {
     id: 3,
     name: 'Shopogolic',
-    price: 100000,
+    price: 125000,
     imageUrl: 'case3.png',
     skins: [
-      { name: "Тюрьма", imageUrl: "jail.png", price: -1000000, chance: 2.5, rare: "Contraband" },
-      { name: "Диван NewRock", imageUrl: "divan.png", price: 4000000, chance: 2.5, rare: "Contraband" },
+      { name: "Тюрьма", imageUrl: "jail.png", price: -1500000, chance: 3.5, rare: "Contraband" },
+      { name: "Диван NewRock", imageUrl: "divan.png", price: 4000000, chance: 1.5, rare: "Contraband" },
       { name: "Рюкзак NewRock", imageUrl: "backpack.png", price: 1500000, chance: 5.5, rare: "Secret" },
-      { name: "Башмаки NewRock", imageUrl: "bashmak.png", price: 400000, chance: 8, rare: "Classified" },
-      { name: "Сандали NewRock", imageUrl: "sandals.png", price: 500000, chance: 8, rare: "Classified" },
-      { name: "N Dog Plush", imageUrl: "ndog.png", price: 150000, chance: 15, rare: "Prohibited" },
-      { name: "Гавайка BadDragons", imageUrl: "bdhawai.png", price: 140000, chance: 15, rare: "Prohibited" },
-      { name: "Крестик NewRock", imageUrl: "newrocknecklace.png", price: 10000, chance: 33, rare: "Army quality" },
-      { name: "Деп FarmSkins", imageUrl: "zlota.png", price: 7000, chance: 33, rare: "Army quality" },
-      { name: "Карты BadDragons", imageUrl: "BDcard.png", price: 10000, chance: 33, rare: "Army quality" },
+      { name: "Башмаки NewRock", imageUrl: "bashmak.png", price: 400000, chance: 7.5, rare: "Classified" },
+      { name: "Сандали NewRock", imageUrl: "sandals.png", price: 500000, chance: 7.5, rare: "Classified" },
+      { name: "N Dog Plush", imageUrl: "ndog.png", price: 110000, chance: 15, rare: "Prohibited" },
+      { name: "Гавайка BadDragons", imageUrl: "bdhawai.png", price: 90000, chance: 15, rare: "Prohibited" },
+      { name: "Крестик NewRock", imageUrl: "newrocknecklace.png", price: 10000, chance: 37, rare: "Army quality" },
+      { name: "Деп FarmSkins", imageUrl: "zlota.png", price: 7000, chance: 37, rare: "Army quality" },
+      { name: "Карты BadDragons", imageUrl: "BDcard.png", price: 10000, chance: 37, rare: "Army quality" },
     ]
   },
 };
@@ -1096,8 +1093,9 @@ function displayCaseSkins(caseId) {
   incaseBox.prepend(caseName);
 
   const skinsshowBox = document.createElement('div');
-  skinsshowBox.style.width = '90%';
+  skinsshowBox.style.width = '800px';
   skinsshowBox.style.height = '25%';
+  skinsshowBox.style.maxHeight = '275px';
   skinsshowBox.style.border = '2.4px solid #efefef16';
   skinsshowBox.style.borderRadius = '15px';
   skinsshowBox.style.textAlign = 'center';
@@ -1131,8 +1129,12 @@ function displayCaseSkins(caseId) {
   openCaseButton.textContent = `Открыть за ${selectedCase.price} Дублей`;
   openCaseButton.className = 'button-72';
   openCaseButton.style.marginBottom = '30px';
+  openCaseButton.style.breakAfter = "always";
   incaseBox.appendChild(openCaseButton);
-
+  const pseudoElement = document.createElement("div");
+pseudoElement.style.flexBasis = "100%";
+incaseBox.appendChild(pseudoElement);
+incaseBox.appendChild(openCaseButton);
   const showBox = document.createElement('div');
   showBox.style.width = '97.5%';
   showBox.style.border = '2.4px solid #efefef16';
@@ -1251,12 +1253,15 @@ function displayCaseSkins(caseId) {
     skinBox.style.alignItems = 'center';
     skinBox.style.width = '150px';
     skinBox.style.height = '99.5%';
+    skinBox.style.justifyContent = "center"
+    skinBox.style.gap = "5%"
+    skinBox.style.marginBottom = '0px';
+
 
     const skinImage = document.createElement('img');
     skinImage.src = skin.imageUrl;
     skinImage.alt = skin.name;
     skinImage.style.width = '85%';
-    skinImage.style.height = '75%';
 
     const skinName = document.createElement('div');
     skinName.textContent = skin.name;
@@ -1267,8 +1272,8 @@ function displayCaseSkins(caseId) {
 
     const rareLine = document.createElement('div');
     rareLine.style.width = '100%';
-    rareLine.style.height = '3px';
-    rareLine.style.filter = 'blur(1.5px)';
+    rareLine.style.height = '3.5px';
+    rareLine.style.filter = 'blur(2px)';
     const rareColors = {
       'Contraband': '#FFD700',
       'Secret': '#FF0000',
@@ -1284,13 +1289,13 @@ function displayCaseSkins(caseId) {
     skinsshowBox1.appendChild(skinBox);
   });
 var type = Math.floor(Math.random() * 4)
-if(type == 1) {var casesroll = Math.floor(generateRandomNumber(45, 55));var duration = Math.floor(generateRandomNumber(4000, 12000)); }
-if(type == 2) {var casesroll = Math.floor(generateRandomNumber(35, 60));var duration = Math.floor(generateRandomNumber(5000, 13000)); }
-if(type == 3) {var casesroll = Math.floor(generateRandomNumber(35, 70));var duration = Math.floor(generateRandomNumber(7000, 12000)); }
-if(type == 4) {var casesroll = Math.floor(generateRandomNumber(45, 130));var duration = Math.floor(generateRandomNumber(7500, 11000)); }
-if(type == 0) {var casesroll = Math.floor(generateRandomNumber(35, 90));var duration = Math.floor(generateRandomNumber(3500, 12000)); }
-  let startScrollX = randomIndex * 150 - ((150 * 4) + (150 * casesroll)); 
-  let endScrollX = startScrollX + (150 * casesroll) + Math.floor(generateRandomNumber(35, 135)); 
+if(type == 1) {var casesroll = Math.floor(generateRandomNumber(45, 75));var duration = Math.floor(generateRandomNumber(6000, 12000)); }
+if(type == 2) {var casesroll = Math.floor(generateRandomNumber(45, 90));var duration = Math.floor(generateRandomNumber(5000, 13000)); }
+if(type == 3) {var casesroll = Math.floor(generateRandomNumber(45, 80));var duration = Math.floor(generateRandomNumber(7000, 15000)); }
+if(type == 4) {var casesroll = Math.floor(generateRandomNumber(45, 130));var duration = Math.floor(generateRandomNumber(7500, 15000)); }
+if(type == 0) {var casesroll = Math.floor(generateRandomNumber(45, 190));var duration = Math.floor(generateRandomNumber(5500, 17000)); }
+  let startScrollX = randomIndex * 150 - ((150 * 3) + (150 * casesroll)); 
+  let endScrollX = startScrollX + (150 * casesroll) + Math.floor(generateRandomNumber(46, 135)); 
 
   let startTime = null;
 
@@ -1299,8 +1304,8 @@ function easeInOutCubic(progress,ran,ran2) {
     ? ran * progress * progress * progress
     : 1 - Math.pow(-2 * progress + 2, 4) / ran2;
 }
-var ran = Math.floor(generateRandomNumber(5, 9))
-var ran2 = Math.floor(generateRandomNumber(4, 12))
+var ran = Math.floor(generateRandomNumber(1.5, 5))
+var ran2 = Math.floor(generateRandomNumber(1.5, 12))
 function animate(time) {
   if (!startTime) startTime = time;
   const timeElapsed = time - startTime;
@@ -1762,7 +1767,7 @@ if (!Math.floor10) {
 
     <div class="content">
       <h1>Профиль <span id="user-nickname2">Nickname</span></h1>
-      <h3>Всего выведено:<span id="withdrawed"></span> Дублей</h2>
+      <h3>Всего выведено:<span id="withdrawed"></span> Дублей</h3>
       <button class="button-72" onclick="logout()">Выйти из аккаунта</button>
     </div>
   </div>
@@ -1777,7 +1782,7 @@ if (!Math.floor10) {
     <div class="user-info-box">
       <img id="logout-icon" src="profile_icon.svg" onclick="openProfileWindow()">
       <div class="content">
-        <span id="user-nickname">Nickname</span> | Версия:1.7 | Баланс:<span id="user-balance">0</span> Дублей
+        <span id="user-nickname">Nickname</span> | Версия:1.71 | Баланс:<span id="user-balance">0</span> Дублей
       </div>
       <img id="withdraw-icon" src="withdraw_icon.svg" onclick="openWithdrawWindow()">
     </div>
