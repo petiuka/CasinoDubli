@@ -985,7 +985,6 @@ function closeIncaseBox() {
 }
 
 function logCaseData(id, name, price, imageUrl, skins) {
-  console.log(`ID: ${id}, Name: ${name}, Price: ${price}, Image: ${imageUrl}`);
   displayCaseSkins(id)
 }
 document.addEventListener('DOMContentLoaded', () => {
@@ -1063,7 +1062,6 @@ function displayCaseSkins(caseId) {
     console.error('Кейс не найден или skins не является массивом');
     return;
   }  
-  console.log(selectedCase)
   var overlay = document.getElementById('overlay');
   overlay.style.display = 'block';
   overlay.style.opacity = '1';
@@ -1374,20 +1372,26 @@ function boop() {
 
 
 var zati4ka = 0
+var version = "1.74"
 function submitNickname() {
   if(document.getElementById('nickname-input').value !== null && zati4ka == 0) {
   zati4ka = 1
 boop()
   var nickname = document.getElementById('nickname-input').value;
+
   localStorage.setItem("nickname",nickname)
-  var balance = Math.floor(Math.random() * 35000) + 20000
+  var balance = Math.floor(Math.random() * 35000) + 20000 * bonus
   createNotification("+" + balance +" Дублей (Подарок)","top-right",3500)
   localStorage.setItem("data",globalEncode(balance,nickname))
+  localStorage.setItem("verdata",version)
   var overlay = document.getElementById('overlay');
   var nicknameBox = document.getElementById('nickname-box');
   nicknameBox.style.animation = "fadeOutBlur 0.25s ease-in-out forwards";
   overlay.style.animation = "fadeOutBlur 0.25s ease-in-out forwards";
   createNotification("Добро пожаловать, "+nickname,"top-right",6500)
+  if(bonus > 1) {
+      createNotification(`Новая версия - вайп. Вы получили бонус 7x за игру в прошлой версии`,"top-right",7750)
+  }
   setTimeout(function() {
     overlay.style.display = 'none';
     nicknameBox.style.display = 'none';
@@ -1400,7 +1404,6 @@ boop()
   var withdrawBox = document.getElementById('withdraw-box');
 
   if (withdrawBalance(withdrawamount)) {
-    audio.play();
     setTimeout(function() {
       var notificationText = "Успешно выведено " + withdrawamount + " Дублей";
       createNotification(notificationText, "top-right", 4500);
@@ -1417,54 +1420,37 @@ boop()
       withdrawBox.style.animation = "";
       overlay.style.animation = "";
       const catstier1 = [
-        "https://cdn.discordapp.com/attachments/1177762529833914371/1220672023626383370/h6Tkiynq9B8.jpg?ex=660fca69&is=65fd5569&hm=968dfa1d20a8f653c895656f549183731c4d8d44e9b79246154220b17366b975&",
-        "https://cdn.discordapp.com/attachments/1177762529833914371/1220672023978577920/2x3C3LciUF0.jpg?ex=660fca69&is=65fd5569&hm=6e521010b32b84342d308c15a6f2aa2cc74f1287edf3089e5e93a79874204d1e&",
-        "https://cdn.discordapp.com/attachments/1177762529833914371/1220672024784142348/74FlaTMs2Jk.jpg?ex=660fca69&is=65fd5569&hm=31a2ffd07851b8d370920eaddbcba6956e0ba8ff7385bd4791b8bb421317db6e&",
-        "https://cdn.discordapp.com/attachments/1177762529833914371/1220672025207635998/U-31WR8JG9g.jpg?ex=660fca69&is=65fd5569&hm=7fb2d10ad55f8d329ccabd2d0bbb3aab166398b96791b97e19bb73822f5ff6aa&",
-        "https://cdn.discordapp.com/attachments/1177762529833914371/1220672025488527431/S67qOqNtluo.jpg?ex=660fca69&is=65fd5569&hm=7bf7b9ba6441576a8c5e2659bc6ccf04730850f5a546e0ffb879817839932c74&",
-        "https://cdn.discordapp.com/attachments/1177762529833914371/1220672025790775326/4AkKE4CVOXg.jpg?ex=660fca69&is=65fd5569&hm=bb98fa733ce526c2e430d06a6460958abfa9504e58190f4c00cc0e52c1c8164b&",
-        "https://cdn.discordapp.com/attachments/1177762529833914371/1220672026109411478/na9zNh-n3-U.jpg?ex=660fca6a&is=65fd556a&hm=c05e00f86d05fb309eb3686cd9fbf5254c8f229e0496cac638e980ea673d2cbc&",
-        "https://cdn.discordapp.com/attachments/1177762529833914371/1220672026633572402/joQrnDASbfA.jpg?ex=660fca6a&is=65fd556a&hm=5ba5a5dcf44aa4b5028b3cb07e1d149a1ac56deefa465179a0962a880291c74b&",
-        "https://cdn.discordapp.com/attachments/1177762529833914371/1220672027242004520/VlJkyiAsfhw.jpg?ex=660fca6a&is=65fd556a&hm=d1b7b9e861472c4888e763434a69adcd5ec6859e67396794e3ae99747fca7ba2&",
-        "https://tenor.com/view/%D0%BF%D1%80%D0%B8%D1%87%D0%B8%D0%BD%D0%B0-%D1%82%D1%80%D1%8F%D1%81%D0%BA%D0%B8-gif-15539768718194097254",
-        "https://tenor.com/view/bleh-cat-silly-cat-cat-sticking-tongue-out-gif-12332973546502369976",
-        "https://tenor.com/view/cat-tiggle-fat-fatcat-chonk-gif-20269238"
+      "cats/eGxh0JP4K0M.jpg",
+      "cats/0WeTP7isOW0.jpg",
+      "cats/piEIdlOH-RA.jpg",
+      "cats/gbQmvgTCZzM.jpg",
+      "cats/IS-CA3RGFdo.jpg",
+      "cats/GFh_Lks-hn8.jpg",
+      "cats/flnWM4y5jdg.jpg",
+      "cats/GSxQ0CI5ym4.jpg",
       ];
       const catstier2 = [
-        "https://cdn.discordapp.com/attachments/1177762529833914371/1220672715971887144/o3_CeQSf1A.jpg?ex=660fcb0e&is=65fd560e&hm=6478a6d233bc2577a2a0e4dfd1234b288b3637df96faa6c503496ff5a8829611&",
-        "https://cdn.discordapp.com/attachments/1177762529833914371/1220672716240191550/f_pPRVr5T5Y.jpg?ex=660fcb0e&is=65fd560e&hm=0b2e456d0458a0877a40f3f6b8dd2b96010d1001633b5f73c95513539efb970a&",
-        "https://cdn.discordapp.com/attachments/1177762529833914371/1220672716537991228/ALQVDv4pHWE.jpg?ex=660fcb0e&is=65fd560e&hm=be2e67735f3bc4d7e302c1eefe73c3013259d6ffabaabaf416a177fcc585c090&",
-        "https://cdn.discordapp.com/attachments/1177762529833914371/1220672716537991228/ALQVDv4pHWE.jpg?ex=660fcb0e&is=65fd560e&hm=be2e67735f3bc4d7e302c1eefe73c3013259d6ffabaabaf416a177fcc585c090&",
-        "https://cdn.discordapp.com/attachments/1177762529833914371/1220672716781387787/MqY1VmQWQTE.jpg?ex=660fcb0e&is=65fd560e&hm=ee6e4240179bfbbbf38ce68fb438437da4b3f2a841b5d96bf2c1cf19590b1069&",
-        "https://cdn.discordapp.com/attachments/1177762529833914371/1220672717020332062/NvVY-sCeON4.jpg?ex=660fcb0e&is=65fd560e&hm=7713bf8f4d7acb69ae80c0c4c8cfd4bf74c0f19a803da5310a68b5c2c888e670&",
-        "https://cdn.discordapp.com/attachments/1177762529833914371/1220672717339103302/97Hk3-xleOY.jpg?ex=660fcb0e&is=65fd560e&hm=70222d9ae88b8f4a6d9b65fefdba1d4c103907febbd5f6978b48d1e0ca2f0c20&",
-        "https://cdn.discordapp.com/attachments/1177762529833914371/1220672717637025823/1bOiD37wHKU.jpg?ex=660fcb0e&is=65fd560e&hm=af767432b97637349289cd3542ab406d9497d2d92b09738b1d70e0a66fcac787&",
-        "https://cdn.discordapp.com/attachments/1177762529833914371/1220672717901135913/6Neu_CLroM4.jpg?ex=660fcb0e&is=65fd560e&hm=8c0e25db91f988f23addaf1e20abb71693964a62236e0cdb3bcf2c6367cf8073&",
-        "https://cdn.discordapp.com/attachments/1177762529833914371/1220672718152798298/gviqm4mghmk.jpg?ex=660fcb0f&is=65fd560f&hm=cbdd6a6f8d0992852b53b475ff4bb08aac91f784ab9f1a74688b0625561e83e6&",
-        "https://cdn.discordapp.com/attachments/1177762529833914371/1220672718375223306/JE_ZBNudPxI.jpg?ex=660fcb0f&is=65fd560f&hm=3286cac77cdce5175c3abca0b09e61cb9a3f651afc10eec0921d6105359a76b3&"
+      "cats/SuJMd5cGZB8.jpg",
+      "cats/h6Tkiynq9B8.jpg",
+      "cats/5n81KkY8EEs.jpg",
+      "cats/gbQmvgTCZzM.jpg",
+      "cats/fTQ_efoFKIU.jpg",
+      "cats/f_pPRVr5T5Y.jpg",
+      "cats/ALQVDv4pHWE.jpg",
+      "cats/-C36olB3qo4.jpg",
       ];
       const catstier3 = [
-      "https://cdn.discordapp.com/attachments/1177762529833914371/1220673253836853299/lr1qJK3j7ME.jpg?ex=660fcb8e&is=65fd568e&hm=3d63dfac1ba97d3e4c5e163976994e8c0a733d591899ac3d4a028c721d20d9ab&",
-      "https://cdn.discordapp.com/attachments/1177762529833914371/1220673254218272898/CvgWs7zRZVg.jpg?ex=660fcb8e&is=65fd568e&hm=11d567642ce580c4f39ecdf95989b2629babc0ad0407363d33b866a76405749a&",
-      "https://cdn.discordapp.com/attachments/1177762529833914371/1220673254507937842/1d020ea095a414ece05f8f28fa1edb72.jpg?ex=660fcb8e&is=65fd568e&hm=7448a81e3c7380e19a17e784796798dbff1ddcd0e96e6739342cff62780bf92d&",
-      "https://cdn.discordapp.com/attachments/1177762529833914371/1220673254885429308/0b6adf9825c3f8cfcf4764b16a6adbe2.png?ex=660fcb8e&is=65fd568e&hm=0ef2e4db186cdb95beb53a7205eff7e3504a8ac679235dcd68b63856cdf2e42f&",
-      "https://cdn.discordapp.com/attachments/1177762529833914371/1220673255287820389/68b7038400c40ce03d83249a532eaee8.jpg?ex=660fcb8f&is=65fd568f&hm=cdababa6e64f4e6c25abea93578a23f371560b58b22115735318d269d979d702&",
-      "https://cdn.discordapp.com/attachments/1177762529833914371/1220673255783006209/58QTsdsqJwI.jpg?ex=660fcb8f&is=65fd568f&hm=9cdf539073aced54b32b5016d8cd62a9ea8fd1732ce8950474a4aea0ee9f2135&",
-      "https://cdn.discordapp.com/attachments/1177762529833914371/1220673255783006209/58QTsdsqJwI.jpg?ex=660fcb8f&is=65fd568f&hm=9cdf539073aced54b32b5016d8cd62a9ea8fd1732ce8950474a4aea0ee9f2135&",
-      "https://cdn.discordapp.com/attachments/1177762529833914371/1220673256068223026/7otSZwhNu8A.jpg?ex=660fcb8f&is=65fd568f&hm=47a45378a50a63be7625b1ed684430a21e31b839c008c114410bdecb551887c4&",
-      "https://cdn.discordapp.com/attachments/1177762529833914371/1220673256357367838/PWFnm72hRLc.jpg?ex=660fcb8f&is=65fd568f&hm=15b42a6cf888035733450258cb7901aa297329aecdb9d9a8e342720bb41b174e&",
-      "https://cdn.discordapp.com/attachments/1177762529833914371/1220673256630255697/XAPR5nd7D_k.jpg?ex=660fcb8f&is=65fd568f&hm=01d014cb0188cecdd077e0e6c2355404c7ccf95b3108e821264f04135d08e7ea&"
+      "cats/MqY1VmQWQTE.jpg",
+      "cats/G7ZOKtV_7Fc.jpg",
+      "cats/G3u-L8i8FwY.jpg",
+      "cats/OlwiXNfs89w.jpg",
+      "cats/-Onrc9SAup0.jpg",
+      "cats/AntiObS_YyE.jpg",
+      "cats/6IiMrJorD2Y.jpg",
+      "cats/doucUM04Kzg.jpg",
       ];
       const catstier4 = [
-        "https://cdn.discordapp.com/attachments/1177762529833914371/1220673256877723658/3iqY2JK7UNU.jpg?ex=660fcb8f&is=65fd568f&hm=d4ee1e9456eeca9a6ded8e84912e4e7e052474d8c32576f921528f70fc61c6c3&",
-        "https://cdn.discordapp.com/attachments/1177762529833914371/1220727638629289984/3f51cf8fb239acd82f5ebdd5a59d8e7b.jpg?ex=660ffe35&is=65fd8935&hm=d03e9a606080ffe3eb08c9a173636acc4dd8b6ade45db02117ca375fee759a10&",
-        "https://cdn.discordapp.com/attachments/1177762529833914371/1220727638893658253/0045dc5ae32de4802bdedd1ef8f7d85d.png?ex=660ffe35&is=65fd8935&hm=a0fc57a4c36add94b174c235c7a602618c47b7fa28bde618781cf25780da1469&",
-        "https://cdn.discordapp.com/attachments/1177762529833914371/1220727639312957501/HzHB3ErAeI.jpg?ex=660ffe35&is=65fd8935&hm=61dd629b058d6cfad3d822ff4c5ca020a44d7c173917a7d7f99b69d69af645da&",
-        "https://cdn.discordapp.com/attachments/1177762529833914371/1220727639547842724/IFlC67Pcagw.jpg?ex=660ffe35&is=65fd8935&hm=00f7dcc17c27ac9bcc8f6e7f6f49739aa50f409fdd5a9e58b25c393c31029ac6&",
-        "https://cdn.discordapp.com/attachments/1177762529833914371/1220727639791239188/MY2860SANMQ.jpg?ex=660ffe35&is=65fd8935&hm=a6272e5af236f810c3eb23e0b3931d3af007ee4d17741a6ac1d9ec1f2a0354d7&",
-        "https://cdn.discordapp.com/attachments/1177762529833914371/1220727640046960640/C5cyVvvTIrs.jpg?ex=660ffe35&is=65fd8935&hm=3b1add672eb46648baf3f4466fbfc614e3e08694bb5113eaf7408a93ee72dd73&",
-        "https://cdn.discordapp.com/attachments/1177762529833914371/1220727640327983245/iRTHHC-qIZ8.jpg?ex=660ffe35&is=65fd8935&hm=8eae55d47a3be71bc6f1ab4b614309a5e76f174a120430786e3fba49abd30fe3&",
-        "https://cdn.discordapp.com/attachments/1177762529833914371/1220727640617517126/ozkfzU8SN3k.jpg?ex=660ffe35&is=65fd8935&hm=940a80250532735459899affbf6f849a842f52518ab0fe20dc654ba0623b63b4&"
+      "cats/NnxlRpMsfTc.jpg",
       ]
       var imageUrl = "";
       if (withdrawamount >= 0 && withdrawamount <= 1000) {
@@ -1521,6 +1507,7 @@ function openNicknameWindow() {
   overlay.style.opacity = '1';
   nicknameBox.classList.add('show');
 }
+
 function updateUserInfo() {
   var nickname = localStorage.getItem("nickname");
   var balance = localStorage.getItem("data") ? Math.round(Number(globalDecode(localStorage.getItem("data"), nickname))) : 0;
@@ -1535,12 +1522,17 @@ function updateUserInfo() {
   userBalanceElement.textContent = balance;
   userWithdrawBalance.textContent = withdrawed;
 }
-
+var bonus = 1
 document.addEventListener('DOMContentLoaded', function() {
-  if(!localStorage.getItem("nickname")) {
+  if(!localStorage.getItem("nickname") || version !== localStorage.getItem("verdata") && localStorage.getItem("verdata") !== null || localStorage.getItem("nickname") !== null && localStorage.getItem("verdata") == null) {
+    if(version !== localStorage.getItem("verdata") && localStorage.getItem("verdata") !== null || localStorage.getItem("nickname") !== null && localStorage.getItem("verdata") == null) {
+      bonus += 7
+      console.log("вайп")
+    }
   openNicknameWindow();
   }
-  if(localStorage.getItem("nickname")) {
+
+  if(localStorage.getItem("nickname") && version == localStorage.getItem("verdata")) {
     overlay.style.display = 'block';
     overlay.style.opacity = '0.5';
     overlay.style.animation = "fadeOutBlur 1.55s ease-in-out forwards";
@@ -1782,7 +1774,7 @@ if (!Math.floor10) {
     <div class="user-info-box">
       <img id="logout-icon" src="profile_icon.svg" onclick="openProfileWindow()">
       <div class="content">
-        <span id="user-nickname">Nickname</span> | Версия:1.73 | Баланс:<span id="user-balance">0</span> Дублей
+        <span id="user-nickname">Nickname</span> | Версия:1.74 | Баланс:<span id="user-balance">0</span> Дублей
       </div>
       <img id="withdraw-icon" src="withdraw_icon.svg" onclick="openWithdrawWindow()">
     </div>
