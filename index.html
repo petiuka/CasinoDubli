@@ -993,6 +993,7 @@ document.addEventListener('DOMContentLoaded', () => {
   addNewCase(3,'Shopogolic', 125000, 'case3.png');
   addNewCase(4,'Платёжки', 1000000, 'paymentcase/preview.png');
   addNewCase(5,'MIX №1', 25000, 'mixpreview.png');
+  addNewCase(6,'Farfetch', 5000, 'farfetch/preview.png');
 });
 const cases = {
   '1': {
@@ -1075,6 +1076,23 @@ const cases = {
       { name: "GMPays", imageUrl: "paymentcase/gm.png", price: 50000, chance: 25, rare: "Army quality" },
       { name: "NicePay", imageUrl: "paymentcase/nicepay.png", price: -10000, chance: 50, rare: "Army quality" },
       { name: "Сухарики", imageUrl: "suhar1.png", price: 13, chance: 37, rare: "Army quality" },
+    ]
+  },
+  '6': {
+    id: 6,
+    name: 'Farfetch',
+    price: 5000,
+    imageUrl: 'farfetch/preview.png',
+    skins: [
+      { name: "Private", imageUrl: "farfetch/private.png", price: 210000, chance: 2.5, rare: "Contraband" },
+      { name: "Platinum", imageUrl: "farfetch/platinum.png", price: 70000, chance: 4.25, rare: "Secret" },
+      { name: "Gold", imageUrl: "farfetch/gold.png", price: 55000, chance: 4.25, rare: "Secret" },
+      { name: "Silver", imageUrl: "farfetch/silver.png", price: 24000, chance: 12.5, rare: "Classified" },
+      { name: "Bronze", imageUrl: "farfetch/bronze.png", price: 16000, chance: 12.5, rare: "Classified" },
+      { name: "Bronze / Хуёвый гео", imageUrl: "farfetch/bronze.png", price: 6000, chance: 25, rare: "Prohibited" },
+      { name: "Bronze / Без ордеров", imageUrl: "farfetch/bronze.png", price: 4500, chance: 25, rare: "Prohibited" },
+      { name: "Фрод", imageUrl: "farfetch/fraud.png", price: 100, chance: 44, rare: "Army quality" },
+      { name: "Невалид", imageUrl: "farfetch/invalid.png", price: 500, chance: 44, rare: "Army quality" },
     ]
   },
 };
@@ -1267,7 +1285,7 @@ incaseBox.appendChild(openCaseButton);
   const totalChances = selectedCase.skins.reduce((acc, skin) => acc + skin.chance, 0);
   let skinsArray = [];
 
-  for (let i = 0; i < 10; i++) { 
+  for (let i = 0; i < 2; i++) { 
     selectedCase.skins.forEach(skin => {
       const proportion = Math.round((skin.chance / totalChances) * 100);
       for (let j = 0; j < proportion; j++) {
@@ -1322,23 +1340,23 @@ incaseBox.appendChild(openCaseButton);
     skinsshowBox1.appendChild(skinBox);
   });
 var type = Math.floor(Math.random() * 4)
-if(type == 1) {var casesroll = Math.floor(generateRandomNumber(45, 75));var duration = Math.floor(generateRandomNumber(6000, 12000)); }
-if(type == 2) {var casesroll = Math.floor(generateRandomNumber(45, 90));var duration = Math.floor(generateRandomNumber(5000, 13000)); }
-if(type == 3) {var casesroll = Math.floor(generateRandomNumber(45, 80));var duration = Math.floor(generateRandomNumber(7000, 15000)); }
-if(type == 4) {var casesroll = Math.floor(generateRandomNumber(45, 130));var duration = Math.floor(generateRandomNumber(7500, 15000)); }
-if(type == 0) {var casesroll = Math.floor(generateRandomNumber(45, 190));var duration = Math.floor(generateRandomNumber(5500, 17000)); }
+if(type == 1) {var casesroll = Math.floor(generateRandomNumber(25, 75));var duration = Math.floor(generateRandomNumber(8000, 12000)); }
+if(type == 2) {var casesroll = Math.floor(generateRandomNumber(25, 60));var duration = Math.floor(generateRandomNumber(8000, 13000)); }
+if(type == 3) {var casesroll = Math.floor(generateRandomNumber(25, 80));var duration = Math.floor(generateRandomNumber(7000, 15000)); }
+if(type == 4) {var casesroll = Math.floor(generateRandomNumber(25, 70));var duration = Math.floor(generateRandomNumber(7500, 15000)); }
+if(type == 0) {var casesroll = Math.floor(generateRandomNumber(25, 70));var duration = Math.floor(generateRandomNumber(9000, 17000)); }
   let startScrollX = randomIndex * 150 - ((150 * 3) + (150 * casesroll)); 
   let endScrollX = startScrollX + (150 * casesroll) + Math.floor(generateRandomNumber(55, 135)); 
 
   let startTime = null;
-
+  var ran = Math.floor(generateRandomNumber(1.5, 5))
+var ran2 = Math.floor(generateRandomNumber(1.5, 12))
 function easeInOutCubic(progress,ran,ran2) {
   return progress < 0.5
-    ? ran * progress * progress * progress
-    : 1 - Math.pow(-2 * progress + 2, 4) / ran2;
+    ? ran * progress * progress * progress + 0.155
+    : 1 - Math.pow(-2 * progress + 2, 3) / ran2;
 }
-var ran = Math.floor(generateRandomNumber(1.5, 5))
-var ran2 = Math.floor(generateRandomNumber(1.5, 12))
+
 function animate(time) {
   if (!startTime) startTime = time;
   const timeElapsed = time - startTime;
@@ -1355,15 +1373,21 @@ function animate(time) {
     requestAnimationFrame(animate);
   } else {
     var a = Math.floor(generateRandomNumber(1, 10))
+    var standartmul = generateRandomNumber(0.45, 2.1)
+    var huymul = generateRandomNumber(0.05, 0.95)
+    var nevmul = generateRandomNumber(1.45, 6.65)
     if(a > 8) {
       setTimeout(createNotification(`Вы выиграли невъебенный™ ${selectedSkin.name}`,"top-right",2750), 50)
-      var sellprice = Math.floor(selectedSkin.price * generateRandomNumber(1.45, 6.65))
+      var sellprice = Math.floor(selectedSkin.price * standartmul * nevmul)
+      console.log("цена скина * стандартный множитель * невъебенный множитель | " + selectedSkin.price + " * " + standartmul + " * " + nevmul + " = " + sellprice)
     } else if(a == 1) {
     setTimeout(createNotification(`Вы выиграли хуёвый™ ${selectedSkin.name}`,"top-right",2750), 50)
-    var sellprice = Math.floor(selectedSkin.price * generateRandomNumber(0.05, 0.45))
+    var sellprice = Math.floor(selectedSkin.price * standartmul * huymul)
+    console.log("цена скина * стандартный множитель * хуёвый множитель | " + selectedSkin.price + " * " + standartmul + " * " + huymul + " = " + sellprice)
     } else {
     setTimeout(createNotification(`Вы выиграли ${selectedSkin.name}`,"top-right",2750), 50)
-    var sellprice = Math.floor(selectedSkin.price * generateRandomNumber(0.35, 2.1))
+    var sellprice = Math.floor(selectedSkin.price * standartmul)
+    console.log("цена скина * стандартный множитель | " + selectedSkin.price + " * " + standartmul + " = " + sellprice)
     }
     if((sellprice) >0){
       setTimeout(createNotification(`Продан за `+sellprice+" Дублей","top-right",2750), 1650)
@@ -1411,7 +1435,7 @@ function boop() {
 
 
 var zati4ka = 0
-var version = "1.91"
+var version = "1.92"
 function submitNickname() {
   if(document.getElementById('nickname-input').value !== null && zati4ka == 0) {
   zati4ka = 1
@@ -1813,7 +1837,7 @@ if (!Math.floor10) {
     <div class="user-info-box">
       <img id="logout-icon" src="profile_icon.svg" onclick="openProfileWindow()">
       <div class="content">
-        <span id="user-nickname">Nickname</span> | Версия:1.91 | Баланс:<span id="user-balance">0</span> Дублей
+        <span id="user-nickname">Nickname</span> | Версия:1.92 | Баланс:<span id="user-balance">0</span> Дублей
       </div>
       <img id="withdraw-icon" src="withdraw_icon.svg" onclick="openWithdrawWindow()">
     </div>
