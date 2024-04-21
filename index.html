@@ -1421,7 +1421,7 @@ function createSkinUpgradeBox(skin, index) {
     window.selectedSkinForUpgrade = skin;
     console.log("Выбран скин для апгрейда:", skin);
     displayPossibleUpgradeOptions(skin);
-    if(window.selectedSkinForUpgrade.price && window.selectedUpgradeTarget.price) {
+    if(window.selectedSkinForUpgrade && window.selectedUpgradeTarget) {
   const successChance = window.selectedSkinForUpgrade.price / window.selectedUpgradeTarget.price * 100;
   const upgradeChanceDisplay = document.getElementById('upgrade-chance-display');
   upgradeChanceDisplay.textContent = "Шанс: " + successChance.toFixed(2) + "%";
@@ -1494,7 +1494,7 @@ function createSkinUpgrade2Box(skin, index) {
   skinBox.addEventListener('click', () => {
     window.selectedUpgradeTarget = skin;
     console.log("Выбран скин для получения в апгрейде:", skin);
-    if(window.selectedSkinForUpgrade.price && window.selectedUpgradeTarget.price) {
+    if(window.selectedSkinForUpgrade && window.selectedUpgradeTarget) {
   const successChance = window.selectedSkinForUpgrade.price / window.selectedUpgradeTarget.price * 100;
   const upgradeChanceDisplay = document.getElementById('upgrade-chance-display');
   upgradeChanceDisplay.textContent = "Шанс: " + successChance.toFixed(2) + "%";
@@ -1536,7 +1536,7 @@ function createSkinUpgrade2Box(skin, index) {
 var isUpgrading = false
 function performUpgrade() {
   if (isUpgrading) {
-    setTimeout(createNotification("Вы уже играете.","top-right",2750),250)
+    setTimeout(createNotification("Вы уже играете.", "top-right", 2750), 250);
     return;
   }
 
@@ -1552,21 +1552,25 @@ function performUpgrade() {
     createNotification("Наёба.нет", "top-right", 2750);
     return;
   }
-  if(window.selectedSkinForUpgrade.price && window.selectedUpgradeTarget.price) {
-  var successChance = window.selectedSkinForUpgrade.price / window.selectedUpgradeTarget.price * 100;
-  var upgradeChanceDisplay = document.getElementById('upgrade-chance-display');
-  upgradeChanceDisplay.textContent = "Шанс: " + successChance.toFixed(2) + "%";
-  var size = 24 * successChance / 100 + 16
-  upgradeChanceDisplay.style.fontSize = `${size}px`;
+
+  if (window.selectedSkinForUpgrade && window.selectedUpgradeTarget) {
+    var successChance = window.selectedSkinForUpgrade.price / window.selectedUpgradeTarget.price * 100;
+    var upgradeChanceDisplay = document.getElementById('upgrade-chance-display');
+    upgradeChanceDisplay.textContent = "Шанс: " + successChance.toFixed(2) + "%";
+    var size = 24 * successChance / 100 + 16;
+    upgradeChanceDisplay.style.fontSize = `${size}px`;
+  } else {
+    console.log("фак ошибся")
   }
+
   const isUpgradeSuccessful = Math.random() * 100 <= successChance;
-  var rantime = Math.floor(generateRandomNumber(4,10))
-  animateUpgrade(isUpgradeSuccessful,rantime);
+  var runtime = Math.floor(generateRandomNumber(4, 10));
+  animateUpgrade(isUpgradeSuccessful, runtime);
   inventory.splice(upgradeIndex, 1);
   localStorage.setItem('inventory', JSON.stringify(inventory));
+  displayInventoryUpgradeSkins();
   setTimeout(() => {
     if (isUpgradeSuccessful) {
-      inventory.splice(upgradeIndex, 1);
       inventory.push(window.selectedUpgradeTarget);
       localStorage.setItem('inventory', JSON.stringify(inventory));
       console.log("Апгрейд успешен:", window.selectedUpgradeTarget);
@@ -1576,9 +1580,10 @@ function performUpgrade() {
       createNotification("Апгрейд не успешен", "top-right", 2750);
     }
     isUpgrading = false;
-    displayInventoryUpgradeSkins()
-  }, rantime*1000);
+    displayInventoryUpgradeSkins();
+  }, runtime * 1000);
 }
+
 function displayPossibleUpgradeOptions(selectedSkin) {
   const upgradeContainer = document.querySelector('.upgrade-choose');
   upgradeContainer.innerHTML = '';
@@ -1977,8 +1982,8 @@ incaseBox.appendChild(openInputMult);
     return;
   }
 
-  if (numberOfOpenings < 1 || numberOfOpenings > 5) {
-    createNotification("Введите число открытий от 1 до 5.", "top-right", 2750);
+  if (numberOfOpenings < 1 || numberOfOpenings > 50) {
+    createNotification("Введите число открытий от 1 до 50.", "top-right", 2750);
     return;
   }
   const runCaseOpening = (index) => {
@@ -2156,7 +2161,7 @@ function boop() {
 
 
 var zati4ka = 0
-var version = "2.0"
+var version = "2.01"
 function submitNickname() {
   if(document.getElementById('nickname-input').value !== null && zati4ka == 0) {
   zati4ka = 1
@@ -2565,7 +2570,7 @@ if (!Math.floor10) {
     <div class="user-info-box">
       <img id="logout-icon" src="profile_icon.svg" onclick="openProfileWindow();displayInventorySkins()">
       <div class="content">
-        <span id="user-nickname">Nickname</span> | Версия:2.0 | Баланс:<span id="user-balance">0</span> Дублей
+        <span id="user-nickname">Nickname</span> | Версия:2.01 | Баланс:<span id="user-balance">0</span> Дублей
       </div>
       <img id="withdraw-icon" src="withdraw_icon.svg" onclick="openWithdrawWindow()">
     </div>
