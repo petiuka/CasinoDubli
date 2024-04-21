@@ -644,7 +644,7 @@ div {
   }
   30% {
     opacity: 0.3;
-    height: 0%;
+    height: 30%;
     background: linear-gradient(to top, transparent, limegreen);
   }
   90% {
@@ -654,6 +654,7 @@ div {
   }
   100% {
     opacity: 0;
+    height: 0%;
     background: linear-gradient(to top, transparent, limegreen);
   }
 }
@@ -1574,9 +1575,6 @@ function performUpgrade() {
       console.log("Апгрейд не успешен");
       createNotification("Апгрейд не успешен", "top-right", 2750);
     }
-    isUpgrading = false;
-    displayInventoryUpgradeSkins();
-    window.selectedSkinForUpgrade = null
   }, rantime*1000);
 }
 function displayPossibleUpgradeOptions(selectedSkin) {
@@ -1650,7 +1648,7 @@ function animateUpgrade(isSuccessful, rantime) {
         0% { height: 0%; background: linear-gradient(to top, transparent, limegreen); opacity: 0; }
         30% { height: 30%; background: linear-gradient(to top, transparent, limegreen); opacity: 0.3; }
         ${failPoint2}% { height: ${failPoint}%; background: linear-gradient(to top, transparent, limegreen); opacity: 0.5; }
-        100% { height: ${failPoint}%; background: linear-gradient(to top, transparent, limegreen); opacity: 0; }
+        100% { height: 0%; background: linear-gradient(to top, transparent, limegreen); opacity: 0; }
       }
     `, document.styleSheets[0].cssRules.length);
 
