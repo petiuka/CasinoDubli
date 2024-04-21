@@ -1575,6 +1575,7 @@ function performUpgrade() {
       console.log("Апгрейд не успешен");
       createNotification("Апгрейд не успешен", "top-right", 2750);
     }
+    isUpgrading = false;
   }, rantime*1000);
 }
 function displayPossibleUpgradeOptions(selectedSkin) {
