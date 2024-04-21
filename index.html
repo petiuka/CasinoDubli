@@ -15,7 +15,7 @@ body, html {
 }
 
 
-    .button-72 {
+.button-72 {
       align-items: center;
       background-color: initial;
       background-image: linear-gradient(rgba(152, 152, 152, 0.35), rgba(81, 81, 81, 0.25) 50%);
@@ -43,11 +43,46 @@ body, html {
       transition: background-color 0.3s ease;
     }
 
-    .button-72:hover {
+    .button-62:hover {
       background-image: linear-gradient(#c7c7c768, #5151516f 50%);
     }
 
-    .button-72:active {
+    .button-62:active {
+      transform: translateY(1px);
+    }
+    .button-62 {
+      align-items: center;
+      background-color: initial;
+      background-image: linear-gradient(rgba(152, 152, 152, 0.35), rgba(81, 81, 81, 0.25) 50%);
+      border-radius: 0.46cm;
+      border-width: 0;
+      box-shadow: rgba(80, 80, 80, 0.25) 0 1px 5px,rgba(161, 161, 161, 0.35) 0 1px 4px;
+      color: #FFFFFF;
+      cursor: pointer;
+      display: flex;
+      font-family: Quicksand,sans-serif;
+      font-size: calc(0.1em + 0.5vw);
+      font-weight: 700;
+      justify-content: center;
+      letter-spacing: .04em;
+      min-height: 8px;
+      margin: 0;
+      padding: 7px 12px;
+      text-align: center;
+      text-decoration: none;
+      text-shadow: rgba(255, 255, 255, 0.114) 0 0 2px,rgba(84, 80, 80, 0.035) 0 0 2px,rgba(74, 74, 74, 0.114) 1px 1px 2px,rgba(87, 87, 87, 0.104) 2px 4px 16px;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      vertical-align: baseline;
+      transition: background-color 0.3s ease;
+    }
+
+    .button-62:hover {
+      background-image: linear-gradient(#c7c7c768, #5151516f 50%);
+    }
+
+    .button-62:active {
       transform: translateY(1px);
     }
 
@@ -79,14 +114,17 @@ body, html {
     }
     h3 {
       font-size: calc(0.2em + 1vw);
+      text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.5);
       margin: 5px 0; 
     } 
     h2 {
       font-size: calc(0.2em + 1.1vw);
+      text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.5);
       margin: 5px 0; 
     }
     h1 {
       font-size: calc(0.2em + 1.2vw);
+      text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.5);
       margin: 5px 0; 
     }
 
@@ -256,8 +294,7 @@ div {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 25%;
-    height: 30%;
+    justify-content: space-between;
     color: #ffffff;
     background: #e2e2e218;
     border: 2.4px solid #efefef16;
@@ -267,6 +304,22 @@ div {
     box-sizing: border-box;
     backdrop-filter: blur(50px);
     animation: fadeInOut 0.25s ease-in-out;
+  }
+  .profile-inv {
+    justify-content: center;
+    max-height: 600px;
+    overflow-y: auto;
+    color: #ffffff;
+    background: #e2e2e209;
+    border: 2.4px solid #efefef16;
+    gap: 10px;
+    backdrop-filter: blur(50px);
+    padding: 10px;
+    display: flex;
+    border-radius: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+
   }
   .profile-box > * {
     margin: 1% 0;
@@ -388,6 +441,87 @@ div {
   animation: fadeInBlur 0.35s ease-in-out forwards;
   display: none;
 }
+.upgrade-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 75%;
+  height: 75%;
+  background: #e2e2e218;
+  border: 2.4px solid #efefef16;
+  border-radius: 10px;
+  padding: 15px;
+  color: #FFFFFF;
+  text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.5);
+  box-sizing: border-box;
+  backdrop-filter: blur(10px);
+  animation: fadeInBlur 0.35s ease-in-out forwards;
+  display: none;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+}
+.upgrade-inv {
+    justify-content: center;
+    height: 90%;
+    width: 30%;
+    overflow-y: auto;
+    color: #ffffff;
+    background: #e2e2e203;
+    border: 2.4px solid #efefef16;
+    gap: 10px;
+    backdrop-filter: blur(50px);
+    padding: 10px;
+    display: flex;
+    border-radius: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+    transition: all 1000ms cubic-bezier(0.420, 0.000, 0.580, 1.000);
+
+  }
+  .upgrade-play {
+    justify-content: center;
+    height: 60%;
+    width: 30%;
+    align-content: center;
+    overflow-y: auto;
+    color: #ffffff;
+    background: #e2e2e203;
+    border: 2.4px solid #efefef16;
+    gap: 10px;
+    backdrop-filter: blur(50px);
+    padding: 10px;
+    display: flex;
+    border-radius: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+    transition: all 1000ms cubic-bezier(0.420, 0.000, 0.580, 1.000);
+
+  }
+  .upgrade-choose {
+    justify-content: center;
+    height: 90%;
+    width: 30%;
+    overflow-y: auto;
+    color: #ffffff;
+    background: #e2e2e203;
+    border: 2.4px solid #efefef16;
+    gap: 10px;
+    backdrop-filter: blur(50px);
+    padding: 10px;
+    display: flex;
+    border-radius: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+    transition: all 1000ms cubic-bezier(0.420, 0.000, 0.580, 1.000);
+
+  }
+  .upgrade-inv,.upgrade-choose,.upgrade-play:hover {
+  transition-duration: 150ms;
+  background: #e2e2e20c;
+  box-shadow: 0 5px 20px 10px #0000001e;
+}
 .incase-box {
   position: absolute;
   top: 50%;
@@ -502,7 +636,42 @@ div {
 
 
 
+@keyframes fillUpgradeSuccess {
+  0% {
+    opacity: 0;
+    height: 0%;
+    background: linear-gradient(to top, transparent, limegreen);
+  }
+  30% {
+    opacity: 0.3;
+    height: 0%;
+    background: linear-gradient(to top, transparent, limegreen);
+  }
+  90% {
+    opacity: 0.5;
+    height: 100%;
+    background: linear-gradient(to top, transparent, limegreen);
+  }
+  100% {
+    opacity: 0;
+    background: linear-gradient(to top, transparent, limegreen);
+  }
+}
 
+
+
+.upgrade-fill {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0%;
+  background: transparent;
+  transition: opacity 5s ease-out;
+}
+.pseudo-element {
+  flex-basis: 100%;
+}
 
 
   </style>
@@ -653,6 +822,19 @@ $('<style>').text(`
 window.notificate = function(text, corner, lifetime) {
   createNotification(text, corner, lifetime);
 };
+function playSellSound() {
+  const soundUrls = [
+        "dieShuffle1.ogg",
+        "dieShuffle2.ogg",
+        "dieShuffle3.ogg",
+    ];
+
+    const randomIndex = Math.floor(Math.random() * soundUrls.length);
+    const randomSoundUrl = soundUrls[randomIndex];
+
+    const audio = new Audio(randomSoundUrl);
+    audio.play();
+}
 function playEndSound() {
     const soundUrls = [
         "dieThrow3.ogg",
@@ -938,38 +1120,76 @@ function closeIncaseBox() {
       }, 750)
     }
     var csopen = false
-    function closeMainbox() {
-      var mainbox = document.getElementById('main-box');
-      var bottombox = document.getElementById("bottom-box");
-      var maincasebox = document.getElementById("maincase-box")
-      mainbox.style.animation = "fadeOutBlur 0.35s ease-in-out forwards";
-      bottombox.style.animation = "fadeOutBlur 0.35s ease-in-out forwards";
-      maincasebox.style.animation = "fadeInBlur 0.35s ease-in-out forwards";
-      document.querySelector('.maincase-box').style.display = 'block';
-            setTimeout(function() {
-              document.querySelector('.main-box').style.display = 'none';
-              document.querySelector('.bottom-box').style.display = 'none';
-      }, 350)
-      csopen = true
-    }
-    function openMainbox() {
-      if(csopen == true) {
-      var mainbox = document.getElementById('main-box');
-      var bottombox = document.getElementById("bottom-box");
-      var maincasebox = document.getElementById("maincase-box")
+    function openUpgradeBox() {
+  var upgradeBox = document.getElementById('upgrade-box');
+  var mainBox = document.getElementById('main-box');
+  var bottomBox = document.getElementById('bottom-box');
+  var mainCaseBox = document.getElementById('maincase-box');
+  bottomBox.style.animation = "fadeOutBlur 0.35s ease-in-out forwards";
+  mainCaseBox.style.animation = "fadeInBlur 0.35s ease-in-out forwards";
+  upgradeBox.style.animation = "fadeOutBlur 0.35s ease-in-out forwards";
 
-      document.querySelector('.main-box').style.display = 'block';
-      document.querySelector('.bottom-box').style.display = 'block';
-      mainbox.style.animation = "fadeInBlur 0.35s ease-in-out forwards";
-      bottombox.style.animation = "fadeInBlur 0.35s ease-in-out forwards";
-      maincasebox.style.animation = "fadeOutBlur 0.35s ease-in-out forwards";
-      document.querySelector('.maincase-box').style.display = 'block';
-            setTimeout(function() {
-              document.querySelector('.maincase-box').style.display = 'none';
-      }, 350)
-    }
-    csopen = false
-    }
+  if (mainBox.style.display !== 'none') {
+    setTimeout(function() {mainBox.style.display = 'none';},350)
+    mainBox.style.animation = "fadeOutBlur 0.35s ease-in-out forwards";
+  }
+  if (bottomBox.style.display !== 'none') {
+    setTimeout(function() {bottomBox.style.display = 'none'},350)
+    bottomBox.style.animation = "fadeOutBlur 0.35s ease-in-out forwards";
+  }
+  if (mainCaseBox.style.display !== 'none') {
+    setTimeout(function() {mainCaseBox.style.display = 'none';},350)
+    mainCaseBox.style.animation = "fadeOutBlur 0.35s ease-in-out forwards";
+  }
+
+  upgradeBox.style.display = 'flex';
+  upgradeBox.style.animation = "fadeInBlur 0.35s ease-in-out forwards";
+  csopen = true;
+}
+function closeMainbox() {
+  var upgradeBox = document.getElementById('upgrade-box');
+  var mainBox = document.getElementById('main-box');
+  var bottomBox = document.getElementById('bottom-box');
+  var mainCaseBox = document.getElementById('maincase-box');
+
+  mainBox.style.animation = "fadeOutBlur 0.35s ease-in-out forwards";
+  bottomBox.style.animation = "fadeOutBlur 0.35s ease-in-out forwards";
+  mainCaseBox.style.animation = "fadeInBlur 0.35s ease-in-out forwards";
+  upgradeBox.style.animation = "fadeOutBlur 0.35s ease-in-out forwards";
+
+  setTimeout(function() {
+    upgradeBox.style.display = 'none';
+    mainBox.style.display = 'none';
+    bottomBox.style.display = 'none';
+  }, 350);
+
+  document.querySelector('.maincase-box').style.display = 'block';
+  csopen = true;
+}
+function openMainbox() {
+  if (csopen) {
+    var mainBox = document.getElementById('main-box');
+    var bottomBox = document.getElementById('bottom-box');
+    var mainCaseBox = document.getElementById('maincase-box');
+    var upgradeBox = document.getElementById('upgrade-box');
+
+
+    mainBox.style.display = 'block';
+    bottomBox.style.display = 'block';
+    mainBox.style.animation = "fadeInBlur 0.35s ease-in-out forwards";
+    bottomBox.style.animation = "fadeInBlur 0.35s ease-in-out forwards";
+    mainCaseBox.style.animation = "fadeOutBlur 0.35s ease-in-out forwards";
+    upgradeBox.style.animation = "fadeOutBlur 0.35s ease-in-out forwards";
+
+    setTimeout(function() {
+      mainCaseBox.style.display = 'none';
+      upgradeBox.style.display = 'none';
+    }, 350);
+
+    csopen = false;
+  }
+}
+    
     function addNewCase(id, name, price, imageUrl,skins) {
   const container = document.querySelector('.cases-container');
   const caseEl = document.createElement('div');
@@ -995,6 +1215,17 @@ document.addEventListener('DOMContentLoaded', () => {
   addNewCase(5,'MIX №1', 25000, 'mixpreview.png');
   addNewCase(6,'Farfetch', 5000, 'farfetch/preview.png');
 });
+function addSkinToInventory(skin,price) {
+  let inventory = localStorage.getItem('inventory');
+  inventory = inventory ? JSON.parse(inventory) : [];
+  inventory.push({
+    name: skin.name,
+    imageUrl: skin.imageUrl,
+    price: price,
+    rare: skin.rare
+  });
+  localStorage.setItem('inventory', JSON.stringify(inventory));
+}
 const cases = {
   '1': {
     id: 1,
@@ -1002,15 +1233,15 @@ const cases = {
     price: 1337,
     imageUrl: 'case.png',
     skins: [
-      { name: "Дубль", imageUrl: "duble.png", price: 125000, chance: 0.65, rare: "Contraband" },
-      { name: "Бакс", imageUrl: "dollar.png", price: 34000, chance: 2.25, rare: "Secret" },
-      { name: "Евро", imageUrl: "euro.png", price: 28500, chance: 2.25, rare: "Secret" },
-      { name: "Польские злоты", imageUrl: "zlota.png", price: 7000, chance: 7.95, rare: "Classified" },
-      { name: "Турецкая лира", imageUrl: "lira.png", price: 5000, chance: 7.95, rare: "Classified" },
-      { name: "Рубль", imageUrl: "ruble.png", price: 1111, chance: 17, rare: "Prohibited" },
-      { name: "Тенге", imageUrl: "tenge.png", price: 900, chance: 17, rare: "Prohibited" },
-      { name: "Кириешки", imageUrl: "suhar2.png", price: 34, chance: 30.5, rare: "Army quality" },
-      { name: "Сухарики", imageUrl: "suhar1.png", price: 13, chance: 30.5, rare: "Army quality" },
+      { name: "Дубль", imageUrl: "duble.png", price: 125000, chance: 0.35, rare: "Contraband" },
+      { name: "Бакс", imageUrl: "dollar.png", price: 49000, chance: 1.65, rare: "Secret" },
+      { name: "Евро", imageUrl: "euro.png", price: 32500, chance: 1.65, rare: "Secret" },
+      { name: "Польские злоты", imageUrl: "zlota.png", price: 7000, chance: 6.95, rare: "Classified" },
+      { name: "Турецкая лира", imageUrl: "lira.png", price: 5000, chance: 6.95, rare: "Classified" },
+      { name: "Рубль", imageUrl: "ruble.png", price: 1111, chance: 15, rare: "Prohibited" },
+      { name: "Тенге", imageUrl: "tenge.png", price: 900, chance: 15, rare: "Prohibited" },
+      { name: "Кириешки", imageUrl: "suhar2.png", price: 34, chance: 34, rare: "Army quality" },
+      { name: "Сухарики", imageUrl: "suhar1.png", price: 13, chance: 34, rare: "Army quality" },
     ]
   },
   '2': {
@@ -1022,7 +1253,7 @@ const cases = {
       { name: "Сперма", imageUrl: "cum.png", price: 25000, chance: 5, rare: "Contraband" },
       { name: "Моча", imageUrl: "urine.png", price: 15000, chance: 12, rare: "Secret" },
       { name: "Говно", imageUrl: "poop.png", price: 2500, chance: 12.5, rare: "Classified" },
-      { name: "Яйко", imageUrl: "egg.png", price: 1000, chance: 30.5, rare: "Prohibited" },
+      { name: "Яйко", imageUrl: "egg.png", price: 1000, chance: 27.5, rare: "Prohibited" },
     ]
   },
   '3': {
@@ -1039,8 +1270,9 @@ const cases = {
       { name: "N Dog Plush", imageUrl: "ndog.png", price: 110000, chance: 16, rare: "Prohibited" },
       { name: "Гавайка BadDragons", imageUrl: "bdhawai.png", price: 90000, chance: 16, rare: "Prohibited" },
       { name: "Крестик NewRock", imageUrl: "newrocknecklace.png", price: 10000, chance: 32, rare: "Army quality" },
-      { name: "Деп FarmSkins", imageUrl: "zlota.png", price: 7000, chance: 32, rare: "Army quality" },
-      { name: "Карты BadDragons", imageUrl: "BDcard.png", price: 10000, chance: 32, rare: "Army quality" },
+      { name: "Деп FarmSkins", imageUrl: "zlota.png", price: 7000, chance: 31, rare: "Army quality" },
+      { name: "Карты BadDragons", imageUrl: "BDcard.png", price: 10000, chance: 31, rare: "Army quality" },
+      
     ]
   },
   '4': {
@@ -1055,9 +1287,9 @@ const cases = {
       { name: "Stripe", imageUrl: "paymentcase/stripe.png", price: 2000000, chance: 8, rare: "Classified" },
       { name: "Shopify", imageUrl: "paymentcase/shop.png", price: 500000, chance: 18, rare: "Prohibited" },
       { name: "Пэйпалыч", imageUrl: "paymentcase/pp.png", price: 170000, chance: 18, rare: "Prohibited" },
-      { name: "GMPays", imageUrl: "paymentcase/gm.png", price: 50000, chance: 31, rare: "Army quality" },
-      { name: "NicePay", imageUrl: "paymentcase/nicepay.png", price: -10000, chance: 30.5, rare: "Army quality" },
-      { name: "СБП", imageUrl: "paymentcase/sbp.png", price: 60000, chance: 30.5, rare: "Army quality" },
+      { name: "GMPays", imageUrl: "paymentcase/gm.png", price: 50000, chance: 28.5, rare: "Army quality" },
+      { name: "NicePay", imageUrl: "paymentcase/nicepay.png", price: -10000, chance: 28.5, rare: "Army quality" },
+      { name: "СБП", imageUrl: "paymentcase/sbp.png", price: 60000, chance: 28.5, rare: "Army quality" },
     ]
   },
   '5': {
@@ -1074,8 +1306,8 @@ const cases = {
       { name: "Гавайка BadDragons", imageUrl: "bdhawai.png", price: 90000, chance: 16, rare: "Prohibited" },
       { name: "Яйко", imageUrl: "egg.png", price: 1000, chance: 35, rare: "Prohibited" },
       { name: "GMPays", imageUrl: "paymentcase/gm.png", price: 50000, chance: 25, rare: "Army quality" },
-      { name: "NicePay", imageUrl: "paymentcase/nicepay.png", price: -10000, chance: 50, rare: "Army quality" },
-      { name: "Сухарики", imageUrl: "suhar1.png", price: 13, chance: 37, rare: "Army quality" },
+      { name: "NicePay", imageUrl: "paymentcase/nicepay.png", price: -10000, chance: 40, rare: "Army quality" },
+      { name: "Сухарики", imageUrl: "suhar1.png", price: 13, chance: 33, rare: "Army quality" },
     ]
   },
   '6': {
@@ -1089,13 +1321,14 @@ const cases = {
       { name: "Gold", imageUrl: "farfetch/gold.png", price: 55000, chance: 4.25, rare: "Secret" },
       { name: "Silver", imageUrl: "farfetch/silver.png", price: 24000, chance: 12.5, rare: "Classified" },
       { name: "Bronze", imageUrl: "farfetch/bronze.png", price: 16000, chance: 12.5, rare: "Classified" },
-      { name: "Bronze / Хуёвый гео", imageUrl: "farfetch/bronze.png", price: 6000, chance: 25, rare: "Prohibited" },
-      { name: "Bronze / Без ордеров", imageUrl: "farfetch/bronze.png", price: 4500, chance: 25, rare: "Prohibited" },
-      { name: "Фрод", imageUrl: "farfetch/fraud.png", price: 100, chance: 44, rare: "Army quality" },
-      { name: "Невалид", imageUrl: "farfetch/invalid.png", price: 500, chance: 44, rare: "Army quality" },
+      { name: "Bronze / Хуёвый гео", imageUrl: "farfetch/bronze.png", price: 3000, chance: 25, rare: "Prohibited" },
+      { name: "Bronze / Без ордеров", imageUrl: "farfetch/bronze.png", price: 3500, chance: 25, rare: "Prohibited" },
+      { name: "Фрод", imageUrl: "farfetch/fraud.png", price: 100, chance: 42, rare: "Army quality" },
+      { name: "Невалид", imageUrl: "farfetch/invalid.png", price: 300, chance: 42, rare: "Army quality" },
     ]
   },
 };
+
 function generateSkinsLine(skins) {
   let skinsPool = [];
   skins.forEach(skin => {
@@ -1111,6 +1344,461 @@ function generateRandomNumber(min, max) {
   return Math.random() * (max - min) + min;
 }
 
+
+
+
+
+
+
+
+
+
+function displayInventoryUpgradeSkins() {
+  var invBox = document.querySelector('.upgrade-inv');
+  invBox.innerHTML = '';
+  const text = document.createElement('div');
+  text.textContent = "Выберите скин для апгрейда";
+  text.style.width = '100%';
+  text.style.textAlign = 'center';
+  text.style.textShadow = "0px 0px 5px rgba(255, 255, 255, 0.5)";
+  text.style.margin = '10px';
+  text.style.fontSize = '20px';
+  text.style.fontWeight = 'bold';
+  invBox.prepend(text);
+  let inventory = localStorage.getItem('inventory');
+  let totalValue = 0;
+  if (inventory) {
+    inventory = JSON.parse(inventory);
+
+    inventory.forEach((skin, index) => {
+      const skinBox = createSkinUpgradeBox(skin, index);
+      invBox.appendChild(skinBox);
+    });
+  } else {
+    const noSkinsMessage = document.createElement('div');
+    noSkinsMessage.textContent = "У вас нету скинов";
+    noSkinsMessage.style.textAlign = 'center';
+    noSkinsMessage.style.textShadow = "0px 0px 5px rgba(255, 255, 255, 0.5)";
+    noSkinsMessage.style.margin = '10px';
+    noSkinsMessage.style.fontSize = '20px';
+    noSkinsMessage.style.fontWeight = 'bold';
+    invBox.appendChild(noSkinsMessage);
+  }
+}
+
+function createSkinUpgradeBox(skin, index) {
+  const skinBox = document.createElement('div');
+  skinBox.className = 'skin-box';
+      skinBox.style.width = '150px';
+      skinBox.style.cursor = "pointer";
+      skinBox.style.height = '150px';
+      skinBox.style.margin = '10px 0';
+      skinBox.style.border = '2.4px solid #efefef16';
+      skinBox.style.borderRadius = '10px';
+      skinBox.style.alignItems = 'center';
+      skinBox.style.textAlign = 'center';
+      skinBox.style.display = "flex";
+      skinBox.style.justifyContent = "center"
+      skinBox.style.flexWrap = "wrap"
+      skinBox.style.fontSize = '20px';
+      skinBox.style.fontWeight = 'medium';
+      skinBox.style.background = '#e2e2e200';
+      skinBox.style.backdropFilter = 'blur(50px)';
+      skinBox.style.zIndex = "111110";
+  const borderColor = {
+    'Contraband': '#FFD700',
+    'Secret': '#FF0000',
+    'Classified': '#ee00ff',
+    'Prohibited': '#6a00ff',
+    'Army quality': '#005eff'
+  }[skin.rare] || '#efefef16';
+  skinBox.style.borderBottom = `4px solid ${borderColor}`;
+
+
+
+  skinBox.addEventListener('click', () => {
+    window.selectedSkinForUpgrade = skin;
+    console.log("Выбран скин для апгрейда:", skin);
+    displayPossibleUpgradeOptions(skin);
+    if(window.selectedSkinForUpgrade.price && window.selectedUpgradeTarget.price) {
+  const successChance = window.selectedSkinForUpgrade.price / window.selectedUpgradeTarget.price * 100;
+  const upgradeChanceDisplay = document.getElementById('upgrade-chance-display');
+  upgradeChanceDisplay.textContent = "Шанс: " + successChance.toFixed(2) + "%";
+  var size = 24 * successChance / 100 + 16
+  upgradeChanceDisplay.style.fontSize = `${size}px`;
+  }
+  });
+
+
+
+
+  const skinImage = document.createElement('img');
+  skinImage.src = skin.imageUrl;
+  skinImage.alt = skin.name;
+  skinImage.style.width = '55%';
+  skinImage.style.margin = '0 auto';
+
+  const skinName = document.createElement('div');
+  skinName.textContent = skin.name;
+  skinName.style.textAlign = 'center';
+  skinName.style.textShadow = "0px 0px 3px rgba(255, 255, 255, 0.5)";
+  skinName.style.fontSize = '14px';
+  skinName.style.fontWeight = 'bold';
+
+  const pseudoElement = document.createElement("div");
+  pseudoElement.style.flexBasis = "100%";
+  const pseudoElement2 = document.createElement("div");
+  pseudoElement2.style.flexBasis = "100%";
+  const skinPrice = document.createElement('div');
+  skinPrice.textContent = skin.price + " Дублей";
+  skinPrice.style.textAlign = 'center';
+  skinPrice.style.textShadow = "0px 0px 3px rgba(255, 255, 255, 0.5)";
+  skinPrice.style.fontSize = '12px';
+  skinPrice.style.fontWeight = 'bold';
+  skinBox.append(skinName,  pseudoElement, skinImage,pseudoElement2, skinPrice);
+
+  return skinBox;
+}
+
+function createSkinUpgrade2Box(skin, index) {
+  const skinBox = document.createElement('div');
+  skinBox.className = 'skin-box';
+      skinBox.style.width = '150px';
+      skinBox.style.cursor = "pointer";
+      skinBox.style.height = '150px';
+      skinBox.style.margin = '10px 0';
+      skinBox.style.border = '2.4px solid #efefef16';
+      skinBox.style.borderRadius = '10px';
+      skinBox.style.alignItems = 'center';
+      skinBox.style.textAlign = 'center';
+      skinBox.style.display = "flex";
+      skinBox.style.justifyContent = "center"
+      skinBox.style.flexWrap = "wrap"
+      skinBox.style.fontSize = '20px';
+      skinBox.style.fontWeight = 'medium';
+      skinBox.style.background = '#e2e2e200';
+      skinBox.style.backdropFilter = 'blur(50px)';
+      skinBox.style.zIndex = "111110";
+  const borderColor = {
+    'Contraband': '#FFD700',
+    'Secret': '#FF0000',
+    'Classified': '#ee00ff',
+    'Prohibited': '#6a00ff',
+    'Army quality': '#005eff'
+  }[skin.rare] || '#efefef16';
+  skinBox.style.borderBottom = `4px solid ${borderColor}`;
+
+
+
+  skinBox.addEventListener('click', () => {
+    window.selectedUpgradeTarget = skin;
+    console.log("Выбран скин для получения в апгрейде:", skin);
+    if(window.selectedSkinForUpgrade.price && window.selectedUpgradeTarget.price) {
+  const successChance = window.selectedSkinForUpgrade.price / window.selectedUpgradeTarget.price * 100;
+  const upgradeChanceDisplay = document.getElementById('upgrade-chance-display');
+  upgradeChanceDisplay.textContent = "Шанс: " + successChance.toFixed(2) + "%";
+  var size = 24 * successChance / 100 + 16
+  upgradeChanceDisplay.style.fontSize = `${size}px`;
+  }
+  });
+
+
+
+
+  const skinImage = document.createElement('img');
+  skinImage.src = skin.imageUrl;
+  skinImage.alt = skin.name;
+  skinImage.style.width = '55%';
+  skinImage.style.margin = '0 auto';
+
+  const skinName = document.createElement('div');
+  skinName.textContent = skin.name;
+  skinName.style.textAlign = 'center';
+  skinName.style.textShadow = "0px 0px 3px rgba(255, 255, 255, 0.5)";
+  skinName.style.fontSize = '14px';
+  skinName.style.fontWeight = 'bold';
+
+  const pseudoElement = document.createElement("div");
+  pseudoElement.style.flexBasis = "100%";
+  const pseudoElement2 = document.createElement("div");
+  pseudoElement2.style.flexBasis = "100%";
+  const skinPrice = document.createElement('div');
+  skinPrice.textContent = skin.price + " Дублей";
+  skinPrice.style.textAlign = 'center';
+  skinPrice.style.textShadow = "0px 0px 3px rgba(255, 255, 255, 0.5)";
+  skinPrice.style.fontSize = '12px';
+  skinPrice.style.fontWeight = 'bold';
+  skinBox.append(skinName,  pseudoElement, skinImage,pseudoElement2, skinPrice);
+
+  return skinBox;
+}
+var isUpgrading = false
+function performUpgrade() {
+  if (isUpgrading) {
+    setTimeout(createNotification("Вы уже играете.","top-right",2750),250)
+    return;
+  }
+
+  isUpgrading = true;
+  if (!window.selectedSkinForUpgrade || !window.selectedUpgradeTarget) {
+    console.error("Не выбран скин для апгрейда или целевой скин");
+    return;
+  }
+
+  const inventory = JSON.parse(localStorage.getItem('inventory') || '[]');
+  const upgradeIndex = inventory.findIndex(skin => skin.name === window.selectedSkinForUpgrade.name && skin.price === window.selectedSkinForUpgrade.price);
+  if (upgradeIndex === -1) {
+    createNotification("Наёба.нет", "top-right", 2750);
+    return;
+  }
+  if(window.selectedSkinForUpgrade.price && window.selectedUpgradeTarget.price) {
+  var successChance = window.selectedSkinForUpgrade.price / window.selectedUpgradeTarget.price * 100;
+  var upgradeChanceDisplay = document.getElementById('upgrade-chance-display');
+  upgradeChanceDisplay.textContent = "Шанс: " + successChance.toFixed(2) + "%";
+  var size = 24 * successChance / 100 + 16
+  upgradeChanceDisplay.style.fontSize = `${size}px`;
+  }
+  const isUpgradeSuccessful = Math.random() * 100 <= successChance;
+  var rantime = Math.floor(generateRandomNumber(4,10))
+  animateUpgrade(isUpgradeSuccessful,rantime);
+  inventory.splice(upgradeIndex, 1);
+  localStorage.setItem('inventory', JSON.stringify(inventory));
+  setTimeout(() => {
+    if (isUpgradeSuccessful) {
+      inventory.splice(upgradeIndex, 1);
+      inventory.push(window.selectedUpgradeTarget);
+      localStorage.setItem('inventory', JSON.stringify(inventory));
+      console.log("Апгрейд успешен:", window.selectedUpgradeTarget);
+      createNotification("Апгрейд успешен! Получен скин: " + window.selectedUpgradeTarget.name, "top-right", 2750);
+    } else {
+      console.log("Апгрейд не успешен");
+      createNotification("Апгрейд не успешен", "top-right", 2750);
+    }
+    isUpgrading = false;
+    displayInventoryUpgradeSkins();
+    window.selectedSkinForUpgrade = null
+  }, rantime*1000);
+}
+function displayPossibleUpgradeOptions(selectedSkin) {
+  const upgradeContainer = document.querySelector('.upgrade-choose');
+  upgradeContainer.innerHTML = '';
+  const allSkins = [
+      { name: "Дубль", imageUrl: "duble.png", price: 125000, chance: 0.35, rare: "Contraband" },
+      { name: "Бакс", imageUrl: "dollar.png", price: 49000, chance: 1.65, rare: "Secret" },
+      { name: "Евро", imageUrl: "euro.png", price: 32500, chance: 1.65, rare: "Secret" },
+      { name: "Польские злоты", imageUrl: "zlota.png", price: 7000, chance: 6.95, rare: "Classified" },
+      { name: "Турецкая лира", imageUrl: "lira.png", price: 5000, chance: 6.95, rare: "Classified" },
+      { name: "Рубль", imageUrl: "ruble.png", price: 1111, chance: 15, rare: "Prohibited" },
+      { name: "Тенге", imageUrl: "tenge.png", price: 900, chance: 15, rare: "Prohibited" },
+      { name: "Кириешки", imageUrl: "suhar2.png", price: 34, chance: 34, rare: "Army quality" },
+      { name: "Сухарики", imageUrl: "suhar1.png", price: 13, chance: 34, rare: "Army quality" },
+      { name: "Private", imageUrl: "farfetch/private.png", price: 210000, chance: 2.5, rare: "Contraband" },
+      { name: "Platinum", imageUrl: "farfetch/platinum.png", price: 70000, chance: 4.25, rare: "Secret" },
+      { name: "Gold", imageUrl: "farfetch/gold.png", price: 55000, chance: 4.25, rare: "Secret" },
+      { name: "Silver", imageUrl: "farfetch/silver.png", price: 24000, chance: 12.5, rare: "Classified" },
+      { name: "Bronze", imageUrl: "farfetch/bronze.png", price: 16000, chance: 12.5, rare: "Classified" },
+      { name: "Bronze / Хуёвый гео", imageUrl: "farfetch/bronze.png", price: 3000, chance: 25, rare: "Prohibited" },
+      { name: "Bronze / Без ордеров", imageUrl: "farfetch/bronze.png", price: 3500, chance: 25, rare: "Prohibited" },
+      { name: "Фрод", imageUrl: "farfetch/fraud.png", price: 100, chance: 42, rare: "Army quality" },
+      { name: "Невалид", imageUrl: "farfetch/invalid.png", price: 300, chance: 42, rare: "Army quality" },
+      { name: "Brain Tree", imageUrl: "paymentcase/b3.png", price: 19000000, chance: 2, rare: "Contraband" },
+      { name: "Adyen", imageUrl: "paymentcase/adyen.png", price: 9000000, chance: 4.75, rare: "Secret" },
+      { name: "ZEN", imageUrl: "paymentcase/zen.png", price: 1600000, chance: 8, rare: "Classified" },
+      { name: "Stripe", imageUrl: "paymentcase/stripe.png", price: 2000000, chance: 8, rare: "Classified" },
+      { name: "Shopify", imageUrl: "paymentcase/shop.png", price: 500000, chance: 18, rare: "Prohibited" },
+      { name: "Пэйпалыч", imageUrl: "paymentcase/pp.png", price: 170000, chance: 18, rare: "Prohibited" },
+      { name: "GMPays", imageUrl: "paymentcase/gm.png", price: 50000, chance: 28.5, rare: "Army quality" },
+      { name: "NicePay", imageUrl: "paymentcase/nicepay.png", price: -10000, chance: 28.5, rare: "Army quality" },
+      { name: "СБП", imageUrl: "paymentcase/sbp.png", price: 60000, chance: 28.5, rare: "Army quality" },
+      { name: "Тюрьма", imageUrl: "jail.png", price: -1500000, chance: 3.5, rare: "Contraband" },
+      { name: "Диван NewRock", imageUrl: "divan.png", price: 4000000, chance: 1.5, rare: "Contraband" },
+      { name: "Рюкзак NewRock", imageUrl: "backpack.png", price: 1500000, chance: 5.5, rare: "Secret" },
+      { name: "Башмаки NewRock", imageUrl: "bashmak.png", price: 400000, chance: 8.5, rare: "Classified" },
+      { name: "Сандали NewRock", imageUrl: "sandals.png", price: 500000, chance: 8.5, rare: "Classified" },
+      { name: "N Dog Plush", imageUrl: "ndog.png", price: 110000, chance: 16, rare: "Prohibited" },
+      { name: "Гавайка BadDragons", imageUrl: "bdhawai.png", price: 90000, chance: 16, rare: "Prohibited" },
+      { name: "Крестик NewRock", imageUrl: "newrocknecklace.png", price: 10000, chance: 32, rare: "Army quality" },
+      { name: "Деп FarmSkins", imageUrl: "zlota.png", price: 7000, chance: 31, rare: "Army quality" },
+      { name: "Карты BadDragons", imageUrl: "BDcard.png", price: 10000, chance: 31, rare: "Army quality" },
+      { name: "Сперма", imageUrl: "cum.png", price: 25000, chance: 5, rare: "Contraband" },
+      { name: "Моча", imageUrl: "urine.png", price: 15000, chance: 12, rare: "Secret" },
+      { name: "Говно", imageUrl: "poop.png", price: 2500, chance: 12.5, rare: "Classified" },
+      { name: "Яйко", imageUrl: "egg.png", price: 1000, chance: 27.5, rare: "Prohibited" },
+  ];
+
+  allSkins.forEach(skin => {
+    if (skin.price > selectedSkin.price) {
+      const skinElement = createSkinUpgrade2Box(skin);
+      upgradeContainer.appendChild(skinElement);
+    }
+  });
+}
+function animateUpgrade(isSuccessful, rantime) {
+  const upgradePlay = document.querySelector('.upgrade-play');
+  const fillDiv = document.createElement('div');
+  fillDiv.className = 'upgrade-fill';
+  upgradePlay.appendChild(fillDiv);
+
+  if (isSuccessful) {
+    fillDiv.style.animation = `fillUpgradeSuccess ${rantime}s forwards`;
+  } else {
+    const failPoint = generateRandomNumber(30, 80);
+    const failPoint2 = failPoint + generateRandomNumber(1, 10);
+    const animationName = `fillUpgradeFail-${Math.random().toString(36).substr(2, 9)}`;
+    document.styleSheets[0].insertRule(`
+      @keyframes ${animationName} {
+        0% { height: 0%; background: linear-gradient(to top, transparent, limegreen); opacity: 0; }
+        30% { height: 30%; background: linear-gradient(to top, transparent, limegreen); opacity: 0.3; }
+        ${failPoint2}% { height: ${failPoint}%; background: linear-gradient(to top, transparent, limegreen); opacity: 0.5; }
+        100% { height: ${failPoint}%; background: linear-gradient(to top, transparent, limegreen); opacity: 0; }
+      }
+    `, document.styleSheets[0].cssRules.length);
+
+    fillDiv.style.animation = `${animationName} ${rantime}s forwards`;
+  }
+
+  fillDiv.addEventListener('animationend', () => {
+    fillDiv.remove();
+  });
+}
+
+function generateRandomNumber(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+function generateRandomNumber(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+function displayInventorySkins() {
+  var invBox = document.querySelector('.profile-inv');
+  invBox.innerHTML = '';
+  const text = document.createElement('div');
+  text.textContent = "Ваш инвентарь";
+  text.style.width = '100%';
+  text.style.textAlign = 'center';
+  text.style.textShadow = "0px 0px 5px rgba(255, 255, 255, 0.5)";
+  text.style.margin = '10px';
+  text.style.fontSize = '26px';
+  text.style.fontWeight = 'bold';
+  invBox.prepend(text);
+  
+  const sellAllButton = document.createElement('button');
+  sellAllButton.className = 'button-72';
+  sellAllButton.style.marginTop = '10px';
+  sellAllButton.onclick = () => sellAllSkins(inventory, totalValue);
+  invBox.appendChild(sellAllButton)
+  const pseudoElement = document.createElement("div");
+pseudoElement.style.flexBasis = "100%";
+invBox.appendChild(pseudoElement);
+  let inventory = localStorage.getItem('inventory');
+  let totalValue = 0;
+  if (inventory) {
+    inventory = JSON.parse(inventory);
+
+    inventory.forEach((skin, index) => {
+      const skinBox = createSkinBox(skin, index);
+      totalValue += skin.price;
+      sellAllButton.textContent = `Продать ВСЁ за ${totalValue} Дублей`;
+      invBox.appendChild(skinBox);
+    });
+  } else {
+    const noSkinsMessage = document.createElement('div');
+    noSkinsMessage.textContent = "У вас нету скинов";
+    noSkinsMessage.style.textAlign = 'center';
+    noSkinsMessage.style.textShadow = "0px 0px 5px rgba(255, 255, 255, 0.5)";
+    noSkinsMessage.style.margin = '10px';
+    noSkinsMessage.style.fontSize = '20px';
+    noSkinsMessage.style.fontWeight = 'bold';
+    invBox.appendChild(noSkinsMessage);
+  }
+}
+
+function createSkinBox(skin, index) {
+  const skinBox = document.createElement('div');
+  skinBox.className = 'skin-box';
+      skinBox.style.width = '250px';
+      skinBox.style.height = '250px';
+      skinBox.style.margin = '10px 0';
+      skinBox.style.padding = '10px';
+      skinBox.style.border = '2.4px solid #efefef16';
+      skinBox.style.borderRadius = '15px';
+      skinBox.style.alignItems = 'center';
+      skinBox.style.textAlign = 'center';
+      skinBox.style.display = "flex";
+      skinBox.style.justifyContent = "center"
+      skinBox.style.flexWrap = "wrap"
+      skinBox.style.fontSize = '20px';
+      skinBox.style.fontWeight = 'medium';
+      skinBox.style.background = '#e2e2e200';
+      skinBox.style.backdropFilter = 'blur(50px)';
+      skinBox.style.zIndex = "111110";
+  const borderColor = {
+    'Contraband': '#FFD700',
+    'Secret': '#FF0000',
+    'Classified': '#ee00ff',
+    'Prohibited': '#6a00ff',
+    'Army quality': '#005eff'
+  }[skin.rare] || '#efefef16';
+  skinBox.style.borderBottom = `4px solid ${borderColor}`;
+
+  const skinImage = document.createElement('img');
+  skinImage.src = skin.imageUrl;
+  skinImage.alt = skin.name;
+  skinImage.style.width = '55%';
+  skinImage.style.margin = '0 auto';
+
+  const skinName = document.createElement('div');
+  skinName.textContent = skin.name;
+  skinName.style.textAlign = 'center';
+  skinName.style.textShadow = "0px 0px 3px rgba(255, 255, 255, 0.5)";
+  skinName.style.fontSize = '23px';
+  skinName.style.fontWeight = 'bold';
+
+  const sellButton = document.createElement('button');
+  sellButton.textContent = `Продать за ${skin.price} Дублей`;
+  sellButton.className = 'button-62';
+  sellButton.onclick = () => sellSkin(index);
+  const pseudoElement = document.createElement("div");
+  pseudoElement.style.flexBasis = "100%";
+
+  skinBox.append(skinName,  pseudoElement, skinImage, sellButton);
+
+  return skinBox;
+}
+
+function sellSkin(index) {
+  let inventory = JSON.parse(localStorage.getItem('inventory') || '[]');
+  if (index >= 0 && index < inventory.length) {
+    const skinPrice = inventory[index].price;
+
+    creditBalance(skinPrice);
+    inventory.splice(index, 1);
+    localStorage.setItem('inventory', JSON.stringify(inventory));
+    displayInventorySkins();
+
+    createNotification("+" + skinPrice + " Дублей", "top-right", 2750);
+    playSellSound();
+  }
+}
+function sellAllSkins(inventory, totalValue) {
+  creditBalance(totalValue);
+  localStorage.setItem('inventory', JSON.stringify([]));
+  displayInventorySkins();
+  createNotification(`Все скины проданы за ${totalValue} Дублей`, "top-right", 2750);
+  playSellSound();
+}
 function displayCaseSkins(caseId) {
   const selectedCase = cases[caseId];
   if (!selectedCase || !Array.isArray(selectedCase.skins)) {
@@ -1184,10 +1872,20 @@ function displayCaseSkins(caseId) {
   openCaseButton.style.marginBottom = '30px';
   openCaseButton.style.breakAfter = "always";
   incaseBox.appendChild(openCaseButton);
+  const openInputMult = document.createElement('input');
+  openInputMult.placeholder = `X`;
+  openInputMult.type = `number`;
+  openInputMult.min = `1`;
+  openInputMult.max = `25`;
+  openInputMult.className = 'input-style';
+  openInputMult.id = 'openInputMult';
+  openInputMult.style.marginBottom = '30px';
+  openInputMult.style.breakAfter = "always";
   const pseudoElement = document.createElement("div");
 pseudoElement.style.flexBasis = "100%";
 incaseBox.appendChild(pseudoElement);
 incaseBox.appendChild(openCaseButton);
+incaseBox.appendChild(openInputMult);
   const showBox = document.createElement('div');
   showBox.style.width = '97.5%';
   showBox.style.border = '2.4px solid #efefef16';
@@ -1273,19 +1971,41 @@ incaseBox.appendChild(openCaseButton);
 
   openCaseButton.addEventListener('click', function() {
     boop()
-    if (isCaseRunning) {
-    setTimeout(createNotification("Вы уже играете.","top-right",2750),250)
+    let numberOfOpenings = parseInt(document.getElementById('openInputMult').value) || 1;
+  if (isCaseRunning) {
+    setTimeout(createNotification("Вы уже играете.","top-right",2750),250);
     return;
-    }
-    isCaseRunning = true;
+  }
 
-    if(debitBalance(selectedCase.price)) {
-      setTimeout(createNotification(`-`+selectedCase.price,"top-right",2750), 150)
+  if (numberOfOpenings < 1 || numberOfOpenings > 5) {
+    createNotification("Введите число открытий от 1 до 5.", "top-right", 2750);
+    return;
+  }
+  const runCaseOpening = (index) => {
+    if (index < numberOfOpenings) {
+      if (debitBalance(selectedCase.price)) {
+        setTimeout(createNotification(`-${selectedCase.price} Дублей`, "top-right", 2750), 150);
+        performCaseOpening(() => {
+          runCaseOpening(index + 1);
+        });
+      } else {
+        setTimeout(createNotification(`Недостаточно средств`, "top-right", 2750), 150);
+      }
+    } else {
+      isCaseRunning = true;
+    }
+  };
+
+  isCaseRunning = false;
+  runCaseOpening(0);
+});
+
+function performCaseOpening(callback) {
   skinsshowBox1.innerHTML = '';
   const totalChances = selectedCase.skins.reduce((acc, skin) => acc + skin.chance, 0);
   let skinsArray = [];
 
-  for (let i = 0; i < 2; i++) { 
+  for (let i = 0; i < 2; i++) {
     selectedCase.skins.forEach(skin => {
       const proportion = Math.round((skin.chance / totalChances) * 100);
       for (let j = 0; j < proportion; j++) {
@@ -1294,10 +2014,11 @@ incaseBox.appendChild(openCaseButton);
     });
   }
 
-  skinsArray = skinsArray.sort(() => 0.5 - Math.random()); 
+  skinsArray = skinsArray.sort(() => 0.5 - Math.random());
 
   let randomIndex = Math.floor(Math.random() * skinsArray.length);
   let selectedSkin = skinsArray[randomIndex];
+
 
   skinsArray.forEach((skin, index) => {
     const skinBox = document.createElement('div');
@@ -1390,20 +2111,20 @@ function animate(time) {
     console.log("цена скина * стандартный множитель | " + selectedSkin.price + " * " + standartmul + " = " + sellprice)
     }
     if((sellprice) >0){
-      setTimeout(createNotification(`Продан за `+sellprice+" Дублей","top-right",2750), 1650)
-      setTimeout(createNotification(`+`+sellprice,"top-right",2750), 2250)
+      addSkinToInventory(selectedSkin,sellprice)
         } else {
           setTimeout(createNotification(sellprice,"top-right",2750), 2250)
+          creditBalance(sellprice)
         }
-    creditBalance(sellprice)
     playCaseSound()
     isCaseRunning = false;
   }
 }
 
 requestAnimationFrame(animate);
-} else setTimeout(createNotification(`Недостаточно средств`,"top-right",2750), 150)
-});
+if (callback) callback();
+}
+
 
 
 
@@ -1435,7 +2156,7 @@ function boop() {
 
 
 var zati4ka = 0
-var version = "1.92"
+var version = "2.0"
 function submitNickname() {
   if(document.getElementById('nickname-input').value !== null && zati4ka == 0) {
   zati4ka = 1
@@ -1823,6 +2544,9 @@ if (!Math.floor10) {
     <div class="content">
       <h1>Профиль <span id="user-nickname2">Nickname</span></h1>
       <h3>Всего выведено:<span id="withdrawed"></span> Дублей</h3>
+      <div class="profile-inv">
+
+      </div>
       <button class="button-72" onclick="logout()">Выйти из аккаунта</button>
     </div>
   </div>
@@ -1833,11 +2557,15 @@ if (!Math.floor10) {
         <span>/</span>
     </div>
     <img id="case-icon" src="case.svg" onclick="closeMainbox();boop()">
+    <div class="content">
+      <span>/</span>
+  </div>
+    <img id="case-icon" src="upgrade.svg" onclick="openUpgradeBox();boop();displayInventoryUpgradeSkins()">
     </div>
     <div class="user-info-box">
-      <img id="logout-icon" src="profile_icon.svg" onclick="openProfileWindow()">
+      <img id="logout-icon" src="profile_icon.svg" onclick="openProfileWindow();displayInventorySkins()">
       <div class="content">
-        <span id="user-nickname">Nickname</span> | Версия:1.92 | Баланс:<span id="user-balance">0</span> Дублей
+        <span id="user-nickname">Nickname</span> | Версия:2.0 | Баланс:<span id="user-balance">0</span> Дублей
       </div>
       <img id="withdraw-icon" src="withdraw_icon.svg" onclick="openWithdrawWindow()">
     </div>
@@ -1853,6 +2581,15 @@ if (!Math.floor10) {
     </div>
     <div class="incase-box" id="incase-box">
       <img src="cross.svg" class="close-icon" onclick="closeIncaseBox()" />
+    </div>
+    <div class="upgrade-box" id="upgrade-box">
+      <div class="upgrade-inv"></div>
+      <div class="upgrade-play">
+        <div id="upgrade-chance-display">Шанс: 0%</div>
+        <div class="pseudo-element"></div>
+        <button class="button-72" onclick="performUpgrade()">Апгрейд</button>
+      </div>
+      <div class="upgrade-choose"></div>
     </div>
     <div class="maincase-box" id="maincase-box">
       <div class="content">
